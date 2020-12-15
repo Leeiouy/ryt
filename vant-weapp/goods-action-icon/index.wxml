@@ -28,8 +28,9 @@
     dot="{{ dot }}"
     info="{{ info }}"
     class="van-goods-action-icon__icon"
-    custom-class="icon-class"
+    custom-class="icon-class" 
+    color='{{color}}'
   />
   <slot wx:else name="icon" />
-  <text class="text-class">{{ text }}</text>
+  <text class="text-class" style="color:{{color}}">{{ text }}</text>
 </van-button>

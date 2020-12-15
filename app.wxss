@@ -3,6 +3,7 @@
 /* @import 'components/wux.wxss'; */
 @import 'assets/styles/weui.wxss';
 @import 'assets/styles/skyvow.wxss';
+@import 'vant-weapp/common/index.wxss';
 
 page {
   font-size: 28rpx;

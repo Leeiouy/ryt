@@ -12,6 +12,7 @@ VantComponent({
     icon: String,
     disabled: Boolean,
     loading: Boolean,
+    color:String
   },
   methods: {
     onClick(event) {

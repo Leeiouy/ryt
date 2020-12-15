@@ -104,7 +104,16 @@
     "van-checkbox": "vant-weapp/checkbox/index",
     "van-checkbox-group": "vant-weapp/checkbox-group/index",
     "van-popup": "vant-weapp/popup/index",
-    "van-picker": "vant-weapp/picker/index"
+    "van-picker": "vant-weapp/picker/index",
+    "van-goods-action": "vant-weapp/goods-action/index",
+    "van-goods-action-icon": "vant-weapp/goods-action-icon/index",
+    "van-goods-action-button": "vant-weapp/goods-action-button/index",
+    "van-action-sheet": "vant-weapp/action-sheet/index",
+    "van-button": "vant-weapp/button/index",
+    "van-stepper": "vant-weapp/stepper/index",
+    "van-empty": "vant-weapp/empty/index",
+    "van-icon": "vant-weapp/icon/index",
+    "van-image": "vant-weapp//image/index"
 
   }
 }

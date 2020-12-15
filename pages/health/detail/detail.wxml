@@ -4,16 +4,48 @@
   <view class='banners' style="height:{{height}};width:100%;">
     <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true' bindchange="change">
       <block wx:for="{{goodsData.images}}" wx:key="*this">
-      <swiper-item>
-        <image lazy-load="true" class='i-img' mode='aspectFill' src='{{item}}'></image>
-      </swiper-item>
+        <swiper-item>
+          <image lazy-load="true" class='i-img' mode='aspectFill' src='{{item}}'></image>
+        </swiper-item>
       </block>
     </swiper>
     <view class='num'>
       <view class='cu-num'>{{currentNum}}/{{goodsData.images.length}}</view>
     </view>
   </view>
-  <view class="desc">
+  <view class="goods_desc">
+    <view class="goods_desc_title">{{goodsData.goods_name}}</view>
+    <view class="goods_desc_playDetail">
+      <view class="goods_desc_playDetail_top ali-c jus-b">
+        <view>5人在拼单，可直接参与</view>
+        <view class="ali-c">
+          <view>查看更多</view>
+          <van-icon name="arrow" />
+        </view>
+      </view>
+      <view style="margin-top:20rpx">
+        <block wx:for="{{3}}">
+          <view class="pd_list ali-c van-hairline--top  pt20">
+            <van-image round width="70rpx" height="70rpx" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+            <view class="pd_list_name">Lee</view>
+            <view class="flex1" style="text-align:right;margin-right:20rpx">还差5人拼成</view>
+            <van-button type="danger" round size="small">立即拼单</van-button>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="goods_desc_playDetail">
+      <view class="goods_desc_playDetail_top ali-c jus-b">
+        <view style="color:#d2d2d2">[拼团玩法]</view>
+        <view class="ali-c">
+          <view>玩法详情</view>
+          <van-icon name="arrow" />
+        </view>
+      </view>
+      <view style="margin-top:20rpx">支付开团邀请好友参团，人数不足自动退款</view>
+    </view>
+  </view>
+  <!-- <view class="desc">
     <view class="desc-title">{{goodsData.goods_name}}</view>
     <view class="li-prices flex">
       <view class="li-price">
@@ -33,39 +65,27 @@
         <text>￥{{goodsData.lianc_price}}</text>
       </view>
     </view>
-  </view>
-
-  <navigator url="../proxy/proxy?status={{status}}&proxyBg={{proxyBg}}" class="proxy" wx:if="{{isBigHealth == 0}}">
-    <image src="/images/enter.png"></image>
-  </navigator>
-
-
-  <!--图文详情、发圈素材-->
+  </view> -->
+  <!-- 图文详情、发圈素材 -->
   <view class="detail-tab">
     <view class="detail-tab-navbar flex">
-      <view class="item flexc {{activeIndex == 0 ? 'on' : ''}}" id="0" bindtap='tabClick'>图文详情</view>
+      <view class="item flexc {{activeIndex == 0 ? 'on' : ''}}" id="0" bindtap='tabClick'>
+        图文详情
+      </view>
       <view class="item flexc" bindtap="toMaterial">发圈素材</view>
     </view>
     <view class="detail-tab-panel" wx:if="{{goodsData.content}}">
-      <!--图文内容-->
+      <!-- 图文内容 -->
       <view class="detail-tab-content info" hidden="{{activeIndex != 0}}">
-        <!--通过wxParese解析html-->
+        <!-- 通过wxParese解析html -->
         <template is="wxParse" data="{{wxParseData: goodsinfo.nodes}}" />
       </view>
     </view>
   </view>
-
-  
-<!--为空时-->
-<view class='shopcart-none' wx:if="{{!goodsData.content}}">
-  <image src="/images/info_none.png" class='none-ico'></image>
-  <view class='none-tip'>当前暂无图文详情~</view> 
-</view>
-  <!--图文详情、发圈素材-end-->
-  <view class="blank"></view>
-
+  <!-- 为空时 -->
+  <van-empty description="暂无商品描述信息哦~" wx:if="{{!goodsData.content}}" />
   <!-- 底部 -->
-  <view class='detail-foot weui-flex {{isX? "foot-bottom" :""}}'>
+  <!-- <view class='detail-foot weui-flex {{isX? "foot-bottom" :""}}'>
     <view class="flex foot-left ali-c">
       <view class="flexc cart-left">
         <view class="flexv flexc ali-c" wx:if="{{goodsData.is_collect == 0}}" bindtap='onOffCollect' data-collect="0" data-status="2">
@@ -89,74 +109,89 @@
       <view wx:if="{{!optionsData.type == 2 || !optionsData.type == 1}}" class="flexc join" bindtap='showCart' data-joinorbuy="join">加入购物车</view>
       <view class="flexc buy" bindtap='showCart' data-joinorbuy="buy" wx:if="{{!seckillData}}">立即购买</view>
     </view>
-  </view>
-
-  <!-- 底部end -->
-
+  </view> -->
+  <van-goods-action >
+    <van-goods-action-icon icon="chat-o" text="客服" dot />
+    <van-goods-action-icon icon="like-o" color="{{goodsData.is_collect?'red':''}}" text="收藏" bind:click='collect' />
+    <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+    <van-goods-action-button text="加入购物车" type="warning" />
+    <van-goods-action-button text="立即购买" bind:click='buyGoods' />
+  </van-goods-action>
 </view>
-
-
-<!--遮罩-->
+<!-- 遮罩 -->
+<van-action-sheet show="{{ infoShow }}" bind:click-overlay='overlayClick'>
+  <view class="carContent">
+    <view class="goodsDetail ali-c jus-b van-hairline--bottom">
+      <image src="{{goodsData.images[0]}}" mode="widthFix"></image>
+      <view class="goodsInfo flex1">
+        <view class="goodsPrice ali-c">
+          <view class="rmbIcon">￥</view>
+          <view class="rmb">70.00</view>
+          <view class="goodsPrice_text">拼团价</view>
+        </view>
+        <view class="goodsText">请选择商品规格</view>
+      </view>
+    </view>
+    <block wx:for="{{goodsData.item_sku}}">
+      <view class="guige  van-hairline--bottom">
+        <view class="guige_item">
+          <view class="guige_title">{{item.spec_name}}</view>
+          <view class="guige_list ali-c">
+            <view class="guige_list_item" wx:for="{{item.sub}}" wx:for-item="subItem" wx:for-index="subIndex" wx:key="subitem">
+              {{subItem.spec_value}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="goods_num ali-c jus-b">
+      <view>购买数量</view>
+      <van-stepper value="{{ 0 }}" bind:change="onChange" />
+    </view>
+    <van-button round type="primary" block size="normal" color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))">
+      立即购买
+    </van-button>
+  </view>
+</van-action-sheet>
 <view class='mask' hidden='{{mask}}' catchtap='hideAllBox'></view>
-
-
-
-<!--购物车弹窗-->
+<!-- 购物车弹窗 -->
 <view class='lay-box detail-cart' hidden="{{cartBox}}">
   <view class='box-cart-title'>
     <image src="{{goodsData.images[0]}}" class='box-img'></image>
     <view class='price-box'>
-      <!--价格库存-->
+      <!-- 价格库存 -->
       <view class='price'>￥{{specActivePrice}}</view>
       <view class="sales">库存({{inventory}})</view>
-      <!--右上角关闭按钮-->
+      <!-- 右上角关闭按钮 -->
       <image src="/images/ico-close.png" class='lay-close' bindtap='showCart'></image>
     </view>
   </view>
   <scroll-view scroll-y class='box-content'>
-
-    <!-- 单规格选择 -->
-    <!-- <view wx:if='{{goodsData.spec_type == 10}}' class='box-spec'>
-      <view class='cor-grey'>规格</view>
-      <view class='spec-items'> -->
-        <!--规格列表-->
-        <!-- <view class='spec-item {{specActive == goodsData.goods_id ? "on" : ""}}' 
-          data-gui_id="{{goodsData.goods_id}}" data-item_id="{{item.item_id}}" data-price="{{specActivePrice}}" data-inventory="{{inventory}}" data-limit="{{item.limit_number}}" bindtap="OneSelectSpec">{{goodsData.spec_name}}</view>
-      </view>
-    </view> -->
-
-
-    <!--多规格-多属性选择-->
+    <!-- 多规格-多属性选择 -->
     <view wx:if='{{goodsData.spec_type == 20}}' class='box-spec' wx:for="{{goodsData.item_sku}}" wx:key="*this" wx:for-index="boxindex">
       <view class='cor-grey'>{{item.spec_name}}</view>
       <view class='spec-items'>
-        <!--属性列表-->
-        <button class='spec-item {{attr.isHasSpec ? "on" : ""}} {{attr.isCould ? "" : "grey"}}' disabled="{{!attr.isCould}}" wx:for="{{item.sub}}" wx:for-item="attr" wx:key="*this" data-gui_id="{{attr.id}}" data-item_id="{{attr.id}}" data-num="{{attr.num}}" data-sub="{{item.sub}}"
-          data-index="{{boxindex}}" data-index_x="{{index}}" data-attr="{{attr}}" data-spname="{{attr.spec_value}}" bindtap="selectSpec">
+        <!-- 属性列表 -->
+        <button class='spec-item {{attr.isHasSpec ? "on" : ""}} {{attr.isCould ? "" : "grey"}}' disabled="{{!attr.isCould}}" wx:for="{{item.sub}}" wx:for-item="attr" wx:key="*this" data-gui_id="{{attr.id}}" data-item_id="{{attr.id}}" data-num="{{attr.num}}" data-sub="{{item.sub}}" data-index="{{boxindex}}" data-index_x="{{index}}" data-attr="{{attr}}" data-spname="{{attr.spec_value}}" bindtap="selectSpec">
           {{attr.spec_value}}
         </button>
       </view>
     </view>
-
-    <!--选择数量-->
+    <!-- 选择数量 -->
     <view class='updown-box jus-b ali-c'>
       <view class='cor-grey'>数量</view>
-      <!--商品数量加减按钮-->
+      <!-- 商品数量加减按钮 -->
       <view class='updown flexc'>
-        <!--减-->
-        <view class='down' hover-class='button-hover' bindtap='reduceNumber'>
-          -
-        </view>
-        <!--输入框-->
+        <!-- 减 -->
+        <view class='down' hover-class='button-hover' bindtap='reduceNumber'>-</view>
+        <!-- 输入框 -->
         <input type='number' class='nums' value='{{goodsNumber}}' bindinput="inputValueChange"></input>
-        <!--加-->
-        <view class='up' hover-class='button-hover' bindtap='addNumber'>
-          +
-        </view>
+        <!-- 加 -->
+        <view class='up' hover-class='button-hover' bindtap='addNumber'>+</view>
       </view>
     </view>
   </scroll-view>
-  <view class='box-btn {{isX? "cart-bottom" :""}}' bindtap='cartBoxClick' data-joinorbuy="{{joinOrBuy}}">确定</view>
+  <view class='box-btn {{isX? "cart-bottom" :""}}' bindtap='cartBoxClick' data-joinorbuy="{{joinOrBuy}}">
+    确定
+  </view>
 </view>
-
-

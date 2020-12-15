@@ -50,3 +50,13 @@ export const healthGoodsDetail = (parma) => api.post('Bighealth/order_delivered'
 
 // 大健康 订单商品 
 export const centerInfo = (parma) => api.post('Mycenter/my_center', parma);
+
+
+
+
+
+//-----------------------------------商品详情页面-------------------------------------------------------
+//商品详情
+export const goodsDetail =(parma) => api.post('item/getItemDetail', parma);
+//收藏商品
+export const goodsCollection =(parma) => api.post('collection/setCollect', parma);

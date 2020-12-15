@@ -4,14 +4,42 @@ var WxParse = require('../../../wxParse/wxParse.js');
 var utils = require("../../../utils/util.js");
 const https = require('../../../config/https')
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    hasLogin: true,
+
+    //-----------------数据-----------------
     goodsId: "", //商品id
     goodsData: "", //商品内容
+
+
+
+
+
+
+
+
+    //-----------------逻辑-----------------
+    infoShow: false, //规格弹窗展示
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    hasLogin: true,
+
+
     level: "", //等级
     currentNum: 1,
     autoplay: true,
@@ -46,9 +74,95 @@ Page({
     marry: [], //规格匹配
     nowmarry: 0, //没有此类搭配
     cart_num: "", //购物车数量
-    height:"",
-    isX:false, //判断是否为iphonX
+    height: "",
+    isX: false, //判断是否为iphonX
   },
+
+  onLoad: function (options) {
+    this.setData({
+      goodsId: options.goods_id,
+      isBigHealth: options.isBigHealth || 0
+    })
+    this.getData()
+  },
+  //获取数据
+  getData() {
+    https.goodsDetail({
+      goods_id: this.data.goodsId,
+      token: wx.getStorageSync('token')
+    }).then(res => {
+      if (res.code == 1) {
+        console.log(res);
+        //  调用wxParse解析html文本
+        res.data.content && WxParse.wxParse('goodsinfo', 'html', res.data.content, this, 5);
+        this.setData({
+          goodsData: res.data
+        })
+      }
+    })
+  },
+  //是否登录
+  isLogin() {
+    if (!wx.getStorageSync('token')) {
+      wx.showModal({
+        title: '温馨提示',
+        content: '您暂未登录，是否要去登录？',
+        confirmText: "确定",
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/logintwo/index?type=1',
+            })
+          }
+        }
+      })
+      return false
+    } else {
+      return true
+    }
+  },
+
+  //立即购买
+  buyGoods() {
+    this.setData({
+      infoShow: true
+    })
+
+  },
+
+  overlayClick() {
+
+    this.setData({
+      infoShow: false
+    })
+  },
+
+
+  //收藏
+  collect(e) {
+    if (!this.isLogin()) {
+      return
+    }
+    const token = wx.getStorageSync('token');
+    const itemId = this.data.goodsData.goods_id;
+    https.goodsCollection({
+      token,
+      itemId,
+      type: "1",
+      status: this.data.goodsData.is_collect ? 1 : 2
+    }).then(res => {
+      console.log(res);
+    })
+  },
+
+
+
+
+
+
+
+
+
 
   // 到购物车
   clickToShopcart() {
@@ -72,7 +186,7 @@ Page({
     }
   },
   // 轮播图切换
-  change: function(e) {
+  change: function (e) {
     let current = e.detail.current + 1
     this.setData({
       currentNum: current
@@ -81,35 +195,35 @@ Page({
 
   //购物车弹窗---显示隐藏
   showCart(e) {
-    if (!this.data.hasLogin) {
-      wx.showModal({
-        title: '温馨提示',
-        content: '请先登录',
-        confirmText: "去登录",
-        success(res) {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: '../logintwo/index?type=1',
-            })
-          }
-        }
-      })
-      return
-    }
-    if (this.data.isBigHealth == 0) {
-      wx.showToast({
-        title: '该商品必须是大健康分销商才能下单！',
-        icon: 'none'
-      })
-      return
-    }
+    // if (!this.data.hasLogin) {
+    //   wx.showModal({
+    //     title: '温馨提示',
+    //     content: '请先登录',
+    //     confirmText: "去登录",
+    //     success(res) {
+    //       if (res.confirm) {
+    //         wx.navigateTo({
+    //           url: '../logintwo/index?type=1',
+    //         })
+    //       }
+    //     }
+    //   })
+    //   return
+    // }
+    // if (this.data.isBigHealth == 0) {
+    //   wx.showToast({
+    //     title: '该商品必须是大健康分销商才能下单！',
+    //     icon: 'none'
+    //   })
+    //   return
+    // }
     this.setData({
       // hasUserInfo: true, //判断用户已登录，关闭授权窗口
       cartBox: !this.data.cartBox, //显示隐藏购物车弹窗
       mask: !this.data.mask, //显示隐藏遮罩层
       joinOrBuy: e.currentTarget.dataset.joinorbuy //判断是点击的加入购物车还是点击的立即购买
     });
-  }, 
+  },
   //点击遮罩层隐藏弹窗
   hideAllBox() {
     this.setData({
@@ -143,18 +257,10 @@ Page({
       url: '../material/material',
     })
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
-    this.setData({
-      goodsId: options.goods_id,
-      isBigHealth: options.isBigHealth || 0
-    })
-    this.init()
-  },
 
-  getStatus () {
+
+
+  getStatus() {
     https.healthProxyStatus({
       token: wx.getStorageSync('token')
     }).then(res => {
@@ -180,108 +286,9 @@ Page({
     })
   },
 
-  init() {
-    let that = this
-    wx.showLoading({
-      title: '加载中...'
-    });
-    wx.request({
-      url: app.baseURL + '/item/getItemDetail',
-      data: {
-        goods_id: that.options.goods_id,
-        token:wx.getStorageSync('token')
-      },
-      success(res) {
-        if (res.data.code == 1) {
-          if (res.data.data.content != null) {
-            //调用wxParse解析html文本
-            WxParse.wxParse('goodsinfo', 'html', res.data.data.content, that, 5);
-          }
-          if (res.data.data.spec_type == 10) {
-            that.setData({
-              specActivePrice: res.data.data.goods_price,
-              inventory: res.data.data.stock_nums
-            })
-          } else if (res.data.data.spec_type == 20) {
-            res.data.data.item_sku.forEach(item => {
-              if (item.sub) {
-                item.sub.forEach(citem => {
-                  citem.isHasSpec = false; // 选中的样式
-                  citem.isCould = true; // true可以选的样式， false不可选的样式
-                })
-              }
-            });
-            that.setData({
-              specActivePrice: res.data.data.goods_price,
-              inventory: res.data.data.stock_nums
-            })
-          }
-          // if (res.data.code) {
-          //   clearInterval(this.countFun); //清除定时器避免重复
-          //   this.countFun = setInterval(() => {
-          //     data.time--;  //时间自减
-          //     data.time < 0 && clearInterval(this.countFun);  // 时间到了清除定时器
-          //     this.setData({ ['data.time']: utils.seckill(data.time) });
-          //   }, 1000);
-          // }
-          // let inventory = 0;
-          // res.data.list.forEach(item => {
-          //   inventory += (item.inventory - 0);
-          // })
-
-          that.setData({
-            goodsData: res.data.data
-          })
-          wx.hideLoading();
-        } else if (res.data.code == 0) {
-          wx.showModal({
-            title: '温馨提示',
-            content: res.data.msg,
-            showCancel: false,
-            success(res) {
-              if (res.confirm) {
-                wx.navigateBack()
-              }
-            }
-          })
-          wx.hideLoading();
-          return
-        }
-        typeof cb == 'function' && cb();
-      }
-    })
-  },
-
-  //收藏商品
-  onOffCollect(e) {
-    if (!this.data.hasLogin) {
-      wx.showModal({
-        title: '温馨提示',
-        content: '请先登录',
-        confirmText: "去登录",
-        success(res) {
-          if (res.confirm) {
-            wx.navigateTo({
-              url: '../logintwo/index?type=1',
-            })
-          }
-        }
-      })
-    }else{
-      if (this.data.isBigHealth == 0) {
-        wx.showToast({
-          title: '该商品必须是大健康分销商才能下单！',
-          icon: 'none'
-        })
-      } else {
-        this.collect(e);
-      }
-    }
-  },
-
 
   // 产品参数
-  showPro(){
+  showPro() {
     this.setData({
       mask: false,
       productBox: false
@@ -289,61 +296,7 @@ Page({
   },
 
 
-  //收藏
-  collect(e) {
-    console.log(e.currentTarget)
-    const state = e.currentTarget.dataset.collect;
-    const status = e.currentTarget.dataset.status;
-    const token = wx.getStorageSync('token');
-    const itemId = this.data.goodsData.goods_id;
-    wx.showLoading({
-      title: '加载中...'
-    });
-    wx.request({
-      url: app.baseURL + '/collection/setCollect',
-      data: {
-        token: token,
-        item_id: itemId,
-        type: "1",
-        status: status
-      },
-      success: (res) => {
-        if (res.statusCode == 200) {
-          //返回数据成功
-          console.log(res)
-          let data = res.data;
-          if (res.data.code == 1) {
-            wx.showToast({
-              title: res.data.msg,
-            })
-            let goodsData = this.data.goodsData
-            if (state == 0) {
-              goodsData.is_collect = 1
-            } else if (state == 1) {
-              goodsData.is_collect = 0
-            }
-            this.setData({
-              goodsData: goodsData
-            })
-          } else {
-            wx.showModal({
-              title: '温馨提示',
-              content: '未登录',
-              confirmText: '去登录',
-              success(res) {
-                if (res.confirm) {
-                  wx.navigateTo({
-                    url: '../logintwo/index?type=1',
-                  })
-                }
-              }
-            })
-          }
-        }
-        wx.hideLoading()
-      }
-    });
-  },
+
 
   //购物车弹窗---选择商品多规格
   OneSelectSpec(e) {
@@ -357,7 +310,7 @@ Page({
       inventory: dataset.inventory, //选中的规格库存数
       limit: dataset.limit || null //选中的商品限购数量
     })
-   
+
   },
 
   //购物车弹窗---选择商品多属性多规格
@@ -365,7 +318,7 @@ Page({
     wx.showLoading({
       title: '请稍后...',
       duration: 0,
-      mask:true,
+      mask: true,
     })
     this.setData({
       nowmarry: 0,
@@ -431,7 +384,7 @@ Page({
     let marrydq = [];
     for (var v = 0; v < this.data.marry.length; v++) {
       console.log(v)
-      var exist = typeof(this.data.marry[v]) == 'undefined';
+      var exist = typeof (this.data.marry[v]) == 'undefined';
       marrydq.push(exist);
     }
     guige = this.data.marry.join("_");
@@ -599,10 +552,10 @@ Page({
               })
             }
             // wx.hideLoading();
-           
+
           }
         },
-         complete: function () {
+        complete: function () {
           setTimeout(function () {
             wx.hideLoading()
           }, 1000)
@@ -651,7 +604,7 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function() {
+  onReady: function () {
 
   },
 
@@ -659,7 +612,7 @@ Page({
    * 生命周期函数--监听页面显
    * 示
    */
-  onShow: function() {
+  onShow: function () {
 
     if (this.data.isBigHealth == 0) {
       this.getStatus()
@@ -670,7 +623,7 @@ Page({
       this.setData({
         hasLogin: false
       })
-    }else{
+    } else {
       this.setData({
         hasLogin: true
       })
@@ -691,14 +644,14 @@ Page({
 
     })
     wx.getSystemInfo({
-      success: function(res) {
+      success: function (res) {
         if (res.model.search('iPhone X') != -1) {
           that.setData({
-            isX:true
+            isX: true
           })
         }
         that.setData({
-          height: res.screenHeight+'rpx'
+          height: res.screenHeight + 'rpx'
         })
       },
     })
@@ -720,7 +673,7 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     this.setData({
       cartBox: true,
       mask: true
@@ -731,28 +684,28 @@ Page({
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function() {
+  onUnload: function () {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function() {
+  onPullDownRefresh: function () {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function() {
+  onReachBottom: function () {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   }
 })
