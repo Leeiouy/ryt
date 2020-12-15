@@ -1,0 +1,21 @@
+<!--pages/chooserankcard/index.wxml-->
+<view class="card-list" wx:if="{{!isNone}}">
+  <block wx:for="{{bankCardList}}" wx:key="*this">
+    <view class="rankcards flex jus-b ali-c">
+      <view class="left flexv">
+        <text>{{item.openbank}}</text>
+        <text>{{item.bankaccount}}</text>
+      </view>
+      <icon type="circle" bindtap="choseBank" data-name="{{item.openbank}}" data-or="{{item.account}}" data-bankid="{{item.id}}" data-index="{{index}}" wx:if="{{!item.status}}" size="23"></icon>
+      <icon type="success" wx:if="{{item.status}}" color="#FE504F" size="23"></icon>
+    </view>
+  </block>
+</view>
+
+<!--空列表-->
+<view class='shopcart-none' wx:if="{{isNone}}">
+  <image src="/images/none-order.png" class='none-ico'></image>
+  <view class='none-tip'>您还没有银行卡~</view>
+</view>
+
+<view class="add-card" bindtap="tomanage" style="margin-bottom:{{marginBottom}}">添加银行卡</view>

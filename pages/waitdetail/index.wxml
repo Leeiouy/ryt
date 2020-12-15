@@ -1,0 +1,47 @@
+ <view class="order-list">
+  <view class='item'>
+    <!--订单信息-->
+    <block wx:for="{{orderList}}" wx:key="{{item.id}}">
+      <view class='item-title jus-b'>
+        <text>订单号：{{item.order_no}}</text>
+        <view class='cor-red'>
+          <!-- <text wx:if="{{item.order_status==10}}">待确定</text> -->
+          <text wx:if="{{item.order_status==20 || item.order_status==10}}">待发货</text>
+          <text wx:if="{{item.order_status==30}}">待收货</text>
+          <text wx:if="{{item.order_status==50}}">待完成</text>
+          <text wx:if="{{item.order_status==0}}">已取消({{item.reason}})</text>
+        </view>
+      </view>
+      <!--商品列表-->
+      <view class='item-goods' wx:for="{{item.sub}}" wx:key="{{item.goods-id}}" wx:for-item="newitem">
+        <view class="flex inner {{item.order_status == 0 ? 'op' : ''}}">
+          <view class='item-goods-img'>
+            <image src="{{newitem.image}}" class='fill'></image>
+          </view>
+          <view class='flex1'>
+            <view class='oneline twoline'>{{newitem.goods_name}}
+            </view>
+            <view class='ali-c jus-b'>
+              <view>
+                <view class="guige">规格：{{newitem.key_name}}</view>
+                <view class='cor-grey'>￥{{newitem.price}}</view>
+              </view>
+              <view>×{{newitem.total_num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+    <!--总价-->
+    <view class='item-total' wx:if="{{status == 2}}">共
+      <text>{{totalNum}}</text>件商品，<text wx:if="{{totalfreight}}">运费￥{{totalfreight}}</text> 应缴款:
+      <text class='item-total-price' wx:if="{{totalfreight}}">¥{{(totalPrice + totalfreight) ? (totalPrice + totalfreight) : 0}}</text>
+      <text class='item-total-price' wx:else>¥{{totalPrice ? totalPrice : 0}}</text>
+    </view>
+    <view class='item-total' wx:if="{{status == 1}}">共
+      <text>{{totalNum}}</text>件商品，<text wx:if="{{totalfreight}}">运费￥{{totalfreight}}</text> 应收款:
+      <text class='item-total-price' wx:if="{{totalfreight}}">¥{{(totalPrice + totalfreight) ? (totalPrice + totalfreight) : 0}}</text>
+      <text class='item-total-price' wx:else>¥{{totalPrice ? totalPrice : 0}}</text>
+    </view>
+  </view>
+</view>

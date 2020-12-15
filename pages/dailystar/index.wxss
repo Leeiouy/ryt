@@ -1,0 +1,194 @@
+/* pages/dailystar/index.wxss */
+
+.top {
+  padding-top: 20rpx;
+  background-image: url("https://riyuetaoguoji.com/images/common_bg@2x.png");
+  background-size: 100% 100%;
+}
+
+.title {
+  width: 37.3%;
+  height: 60rpx;
+  border: 2rpx solid rgba(255, 255, 255, 1);
+  border-radius: 5rpx;
+  font-size: 32rpx;
+  margin: 0 auto;
+}
+.yers{
+  width:140rpx;
+  text-align: center;
+  line-height: 60rpx;
+  color: #FFFFFF;
+}
+
+.today{
+  background:rgba(255,255,255,1);
+  color: #FD993F;
+}
+.top-rank {
+  width: 100%;
+  height: 460rpx;
+  color: #fff;
+  padding: 0 100rpx;
+}
+.top-rank>view{
+  width: 33.33%;
+}
+.second, .third {
+  margin-top: 130rpx;
+}
+
+.first-bg {
+  width: 135rpx;
+  height: 183rpx;
+  position: relative;
+  overflow: hidden;
+}
+.first-bg .lined{
+  width: 135rpx;
+  height: 178rpx;
+  margin: auto;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.first-bg image{
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 4rpx;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.second-bg {
+  width: 116rpx;
+  height: 130rpx;
+  padding: 0 0 14rpx;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.second-bg .lined{
+  width: 116rpx;
+  height: 130rpx;
+  margin: auto;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.second-bg image{
+  width: 110rpx;
+  height: 114rpx;
+  margin: auto;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.third-bg {
+  width: 116rpx;
+  height: 120rpx;
+  z-index: 60;
+}
+
+.name {
+  font-size: 28rpx;
+  height: 35rpx;
+}
+
+.number {
+  font-size: 24rpx;
+}
+
+.case {
+  font-size: 32rpx;
+}
+
+.head {
+  position: absolute;
+  top: 212rpx;
+  width: 128rpx;
+  height: 126rpx;
+  z-index: 50;
+  border-radius: 50%;
+}
+
+.headtwo {
+  position: absolute;
+  top: 293rpx;
+  width: 105rpx;
+  height: 105rpx;
+  z-index: 50;
+  border-radius: 50%;
+}
+.headthree{
+  position: absolute;
+  top: 273rpx;
+  width: 105rpx;
+  height: 100rpx;
+  z-index: 50;
+  border-radius: 50%;
+}
+.ranks {
+  padding: 20rpx 50rpx;
+}
+
+.rank-item {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid rgba(204, 204, 204, 1);
+}
+
+.portrait {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin: 0 60rpx 0 35rpx;
+  background-color: #def;
+}
+.portrait image{
+  border-radius: 50%;
+}
+.nums {
+  color: rgba(228, 89, 42, 1);
+  font-size: 28rpx;
+  margin-right: 15rpx;
+}
+/* 为空 */
+.shopcart-none{
+  width: 60%;
+  margin:107rpx auto;
+
+}
+.none-ico {
+  width: 417rpx;
+  height:320rpx;
+}
+
+.none-tip {
+  margin: 20rpx auto;
+  color: #666666;
+  text-align: center;
+}
+.ico{
+  box-sizing: border-box;
+  width: 128rpx;
+  height: 128rpx;
+  margin-top: 16rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.mico{
+  box-sizing: border-box;
+  width: 116rpx;
+  height: 116rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  overflow: hidden;
+}

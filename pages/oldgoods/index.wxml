@@ -1,0 +1,73 @@
+<!--pages/oldgoods/index.wxml-->
+<view class="tabs">
+  <view class='tab {{currentIndex==0?"active":""}}' bindtap='tab' data-index="0" data-type="1">
+    <view class="text">{{now}}</view>
+  </view>
+  <view class='tab {{currentIndex==1?"active":""}}' bindtap='tab' data-index="1" data-type="2">
+    <view class="text">{{yers}}</view>
+  </view>
+  <view class='tab {{currentIndex==2?"active":""}}' bindtap='tab' data-index="2" data-type="3">
+    <view class="text">{{before}}</view>
+  </view>
+  <view class='tab {{currentIndex==3?"active":""}}' bindtap='tab' data-index="3" data-type="4">
+    <view class="text">{{early}}</view>
+  </view>
+</view>
+<!--为空时-->
+<view class='shopcart-none' wx:if="{{isNone}}">
+  <image src="/images/none-order.png" class='none-ico'></image>
+  <view class='none-tip'>当前还没有商品~</view> 
+</view>
+<scroll-view scroll-y style="height:calc(100vh-80px)" wx:if="{{!isNone}}">
+  <view class="goods">
+    <block wx:for="{{todayGoods}}" wx:key="{{item.goods_id}}" >
+      <view class="limited">
+      <view bindtap="skip" data-id="{{item.goods_id}}" data-time="{{item.end_time}}">
+        <view class="limited-goods">
+          <image class="sold" src="{{item.image}}"></image>
+          <image class="sold-out" wx:if="{{item.end_time + extra_time <= day}}" src="../../images/soldout.png"></image>
+        </view>
+      </view>
+        <view class="limited-bottom">
+          <view class="goods-name twoline">{{item.goods_name}}</view>
+              <view class="li-prices flex">
+                <view class="li-price" wx:if="{{item.goods_price}}">
+                  <text>团购价</text>
+                  <text>￥{{item.goods_price}}</text>
+                </view>
+                <view class="li-price agence" wx:if="{{item.retail_price && hasLogin}}">
+                  <text>分销价</text>
+                  <text>￥{{item.retail_price}}</text>
+                </view>
+                <view class="li-price agence" wx:if="{{item.direct_price}}">
+                  <text>直属价</text>
+                  <text>￥{{item.direct_price}}</text>
+                </view>
+                <view class="li-price agence" wx:if="{{item.lianc_price}}">
+                  <text>联创价</text>
+                  <text>￥{{item.lianc_price}}</text>
+                </view>
+              </view>
+              
+           <!-- <view class="nums">2019-09-19</view> -->
+          </view>
+          <view class="li-done flex" hidden="{{item.buyer_num == 0}}">
+              <view class="heads flex">
+                <view class="head" wx:for="{{item.buyer}}" wx:key="index">
+                  <image  src="{{item}}" ></image>
+                </view>
+              </view>
+              <view class="nums">{{item.buyer_num}}人已抢</view>
+              <navigator url="../productdetail/index?goods_id={{item.goods_id}}" 
+              hover-class="none" class="li-right li-on">
+                立即抢购
+              </navigator>
+          </view>
+      </view>
+    </block>
+  </view>
+  <!--没有更多提示-->
+  <view class="weui-loadmore weui-loadmore_line classify-nomore"  wx:if="{{!isNone}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">哎呀!已经到底啦</view>
+  </view>
+</scroll-view>

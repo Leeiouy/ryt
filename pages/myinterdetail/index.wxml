@@ -1,0 +1,59 @@
+<view class="detail">
+  <view class="time-search">
+    <view class="start flexc">
+      <picker mode="date" bindchange="selectStart">
+        <text class="cor-grey">{{start}}</text>
+      </picker>
+    </view>
+    <view class="line"></view>
+    <view class="end flexc">
+      <picker mode="date" bindchange="selectEnd">
+        <text class="cor-grey">{{end}}</text>
+      </picker>
+    </view>
+    <view class="search-btn" bindtap="search">查询</view>
+  </view>
+
+  <view class="tabs-panel">
+    <view class="tabs">
+      <view class='tab {{currentIndex==0?"active":""}}' data-type="1" bindtap='tab' data-index="0">
+        <text>收入</text>
+      </view>
+      <view class='tab {{currentIndex==1?"active":""}}' data-type="2" bindtap='tab' data-index="1">
+        <text>支出</text>
+      </view>
+      <view class='tab {{currentIndex==2?"active":""}}' data-type="3" bindtap='tab' data-index="2">
+        <text>冻结</text>
+      </view>
+    </view>
+    <view class="tab-content">
+      <block wx:for="{{list}}">
+        <view class="item jus-b ali-c">
+          <view class="flexv">
+            <text>{{item.memo}}</text>
+            <text class="timer">{{item.createtime}}</text>
+          </view>
+          <view class="right ali-c flexv" hidden="{{currentIndex == 0 || currentIndex == 2}}">
+            <!-- <text style="text-decoration:line-through;" wx:if="{{item.status == 3}}">{{item.money}}</text> -->
+            <text>{{item.money}}</text>
+            <!-- <text class="cor-grey" style="font-size:23rpx;" wx-if="{{item.status == 3}}">订单已取消</text> -->
+          </view>
+          <navigator url="../myinterdetailtwo/index?id={{item.order_id}}" hover-class="none" wx:if="{{currentIndex == 0 || currentIndex == 2}}">
+          <view class="right ali-c">
+            <text style="text-decoration:line-through;" wx:if="{{item.status == 3}}">{{item.money}}</text>
+            <text wx:else>{{item.money}}</text>
+             <text class="cor-grey" style="font-size:23rpx;" wx-if="{{item.status == 3}}">订单已取消</text>
+            <view class="weui-cell__ft weui-cell__ft_in-access" style="margin-left:20rpx"></view>
+           
+          </view>
+          </navigator>
+        </view>
+      </block>
+    </view>
+      
+    <!--到底了提示-->
+    <view class="weui-loadmore weui-loadmore_line classify-nomore"  wx:if="{{list.length}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,66 @@
+<!--pages/orderaftersale/index.wxml-->
+<!--为空提示模板-->
+<import src='../template/empty.wxml' />
+
+<view>
+  <view class="tabs">
+    <view class='tab {{currentIndex==0?"active":""}}' data-status="10" bindtap='tab' data-index="0">
+      <text>退款中</text>
+    </view>
+    <view class='tab {{currentIndex==1?"active":""}}' data-status="20" bindtap='tab' data-index="1">
+      <text>退款成功</text>
+    </view>
+    <view class='tab {{currentIndex==2?"active":""}}' data-status="30" bindtap='tab' data-index="2">
+      <text>退款失败</text>
+    </view>
+  </view>
+
+  <!--内容列表-->
+  <view class="order-list" wx:if="{{!isNone && hasLogin}}">
+    <block wx:for="{{orderList}}" wx:key="*this">
+      <view class='item'>
+        <!--订单信息-->
+        <view class='item-title jus-b'>
+          <text>订单编号：{{item.order_no}}</text>
+          <view class='cor-red'>
+            <text wx:if="{{item.refund_status==10}}">退款中</text>
+            <text wx:if="{{item.refund_status==20}}">退款成功</text>
+            <text wx:if="{{item.refund_status==30}}">退款失败</text>
+          </view>
+        </view>
+        <!--商品列表-->
+        <view class='item-goods'>
+          <view class='flex inner' wx:for="{{item.sub}}">
+            <view class='item-goods-img'>
+              <image src="{{item.image}}" class='fill'></image>
+            </view>
+            <view class='flex1'>
+              <view class='twoline'>{{item.goods_name}}</view>
+              <view class='ali-c jus-b'>
+                <view>
+                  <view class="guige">{{item.key_name}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--总价-->
+        <view class='item-total'>共
+          <text>{{item.total_num}}</text>件商品 合计:
+          <text class='cor-red'>¥{{item.pay_price}}</text>
+        </view>
+        <!--操作按钮-->
+        <view class='operation'>
+          <view class="goodsdetail" bindtap="toRefund" data-id="{{item.id}}">查看详情</view>
+        </view>
+      </view>
+    </block>
+    <!--到底了提示-->
+    <view class="weui-loadmore weui-loadmore_line classify-nomore">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+    </view>
+  </view>
+  
+    <!--为空提示-->
+    <template is="empty" data="{{emptyTip}}" wx:if="{{isNone || !hasLogin}}" />
+</view>

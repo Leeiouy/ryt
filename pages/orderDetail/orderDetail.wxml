@@ -1,0 +1,87 @@
+<!--pages/orderDetail/orderDetail.wxml-->
+<view class='od-box {{aftersale ? "bottom" : ""}}'>
+  <!--订单状态-->
+  <view class='od-state flex'>
+    <text>订单状态：</text>
+    <view>
+      <text wx:if="{{(data.order_status==20||data.order_status==10)&&!data.is_confirm_order}}">待确定</text>
+      <text wx:if="{{data.order_status == 20 && data.is_confirm_order}}">待发货</text>
+      <text wx:if="{{data.order_status == 30}}">待收货</text>
+      <text wx:if="{{data.order_status == 50}}">已完成</text>
+      <text wx:if="{{data.order_status == 0}}">已取消</text>
+    </view>
+  </view>
+  <!--收货地址-->
+  <view class='default flex'>
+    <view class='address-ico flexc'>
+      <image src="/images/address_icon_adress.png"></image>
+    </view>
+    <view class='default-left flex1'>
+      <view class='jus-b default-user'>
+        <text>收货人：{{data.address.name}}</text>
+        <text>{{data.address.phone}}</text>
+      </view>
+      <view class='default-address flex'>
+        <view class='flex1'>收货地址：{{data.address.site}}</view>
+      </view>
+    </view>
+  </view>
+  <!--订单信息-->
+  <view class='od-infor'>
+    <view>订单编号：{{data.order_no}}</view>
+    <view>下单时间：{{addTime}}</view>
+  </view>
+  <!--商品信息-->
+  <view class="order-list">
+    <view class='item'>
+      <!--订单信息-->
+      <view class='item-title jus-b'>
+        <text>订单编号：{{data.order_no}}</text>
+      </view>
+      <!--商品列表-->
+      <view class='item-goods'>
+        <view class='flex' hover-class='none' wx:for="{{data.sub}}" wx:key="*this">
+          <view class='item-goods-img'>
+            <image src="{{item.image}}" class='fill'></image>
+          </view>
+          <view class='flex1'>
+            <view class='twoline'>{{item.goods_name}}</view>
+            <view class='ali-c jus-b'>
+              <view>
+                <view>规格：{{item.key_name}}</view>
+                <view class='cor-grey'>￥{{item.goods_price}}</view>
+              </view>
+              <view>×{{item.total_num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--价格信息-->
+  <view class='od-moeny'>
+    <view class='jus-b'>
+      <text>商品运费：</text>
+      <text>¥{{data.express_price}}</text>
+    </view>
+    <view class='jus-b'>
+      <text>实付款：</text>
+      <text class='cor-red'>¥{{data.pay_price}}</text>
+    </view>
+  </view>
+<view class="message flex ali-c">
+  <view class="buyer">买家留言：</view>
+  <view>{{data.remark}}</view>
+</view>
+</view>
+
+
+
+<!--底部-->
+<view class='od-foot' wx:if="{{ !aftersale }}">
+  <navigator class='operation-btn' hover-class='none' wx:if="{{data.order_status == 20}}" url='/pages/aftersale/index?orderid={{data.id}}'>申请售后</navigator>
+  <navigator class='operation-btn' hover-class='none' wx:if="{{data.order_status == 30}}" url='/pages/logistics/index?orderid={{data.id}}'>查看物流</navigator>
+  <view class='operation-btn red' wx:if="{{data.order_status == 30}}" bindtap="confirmReceipt" data-order_id="{{data.id}}">确认收货</view>
+  <view class='operation-btn red' wx:if="{{data.order_status == 10}}" bindtap="del" data-order_id="{{data.id}}">取消订单</view>
+</view>

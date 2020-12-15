@@ -1,0 +1,98 @@
+<view class="daily">
+  <view class="top">
+    <!-- <view class="title flex">
+      <view class="yers {{type == 1?'today':''}}" bindtap="tabToday" data-type="1">今天</view>
+      <view class="yers {{type == 2?'today':''}}" bindtap="tabYers" data-type="2">昨天</view>
+    </view> -->
+    <!-- 今天 -->
+    <view class="top-rank flex ali-c" wx:if="{{type == 1}}">
+      <view class="second flex flexv ali-c">
+        <block wx:if="{{list[1]}}">
+        <view class="second-bg flexc">
+          <image src="/images/common_def_b.png" class="lined"></image>
+          <view class="mico"><image src="{{list[1].avatar}}" mode="aspectFill"></image></view>
+        </view>
+        <view class="name">{{list[1].mobile}}</view>
+        <view class="case">{{list[1].num}}单</view>
+        </block>
+      </view>
+      <view class="first flex flexv ali-c">
+        <block wx:if="{{list[0]}}">
+        <view class="first-bg flexc">
+          <image src="/images/common_def.png" class="lined"></image>
+          <view class="ico"><image src="{{list[0].avatar}}" mode="aspectFill"></image></view>
+        </view>
+        <view class="name">{{list[0].mobile}}</view>
+        <view class="case">{{list[0].num}}单</view>
+        </block>
+      </view>
+      <view class="third flex flexv ali-c">
+        <block wx:if="{{list[2]}}">
+        <view class="second-bg flexc">
+          <image src="/images/common_def_c.png" class="lined"></image>
+          <view class="mico"><image src="{{list[2].avatar}}" mode="aspectFill"></image></view>
+        </view>
+        <view class="name">{{list[2].mobile}}</view>
+        <view class="case">{{list[2].num}}单</view>
+        </block>
+      </view>
+    </view>
+
+    <!-- 昨天 -->
+    <view class="top-rank flex jus-b ali-c" wx:if="{{type == 2}}">
+      <view class="second flex flexv ali-c">
+        <block wx:if="{{list[1]}}">
+        <view class="second-bg flexc">
+          <image src="/images/common_def_b.png" class="lined"></image>
+          <view class="mico"><image src="{{list[1].avatar}}" mode="aspectFill"></image></view>
+        </view>
+        <view class="name">{{list[1].mobile}}</view>
+        <view class="case">{{list[1].num}}单</view>
+        </block>
+      </view>
+      <view class="first flex flexv ali-c">
+        <block wx:if="{{list[0]}}">
+        <view class="first-bg flexc">
+          <image src="/images/common_def.png" class="lined"></image>
+          <view class="ico"><image src="{{list[0].avatar}}" mode="aspectFill"></image></view>
+        </view>
+        <view class="name">{{list[0].mobile}}</view>
+        <view class="case">{{list[0].num}}单</view>
+        </block>
+      </view>
+      <view class="third flex flexv ali-c">
+        <block wx:if="{{list[2]}}">
+        <view class="second-bg flexc">
+          <image src="/images/common_def_c.png" class="lined"></image>
+          <view class="mico"><image src="{{list[2].avatar}}" mode="aspectFill"></image></view>
+        </view>
+        <view class="name">{{list[2].mobile}}</view>
+        <view class="case">{{list[2].num}}单</view>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="ranks" wx:if="{{list.length > 0}}">
+    <block wx:for="{{list}}" wx:key="{{item.user_id}}">
+      <view class="rank-item flex ali-c jus-b">
+        <view class="item-left flex ali-c">
+          <text>{{index+1}}</text>
+          <view class="portrait">
+            <image src="{{item.avatar? item.avatar : '/images/default.png'}}"
+             mode="aspectFill"></image>
+          </view>
+          <text class="name">{{item.mobile == null ? '无' : item.mobile}}</text>
+        </view>
+        <view class="item-right">
+          <text class="nums">{{item.num}}</text>
+          <text>单</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!--为空时-->
+  <view class='shopcart-none' wx:if="{{list.length < 1}}">
+    <image src="/images/none-order.png" class='none-ico'></image>
+    <view class='none-tip'>暂无排名信息~</view>
+  </view>
+</view>

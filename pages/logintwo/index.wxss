@@ -1,0 +1,67 @@
+/* pages/logintwo/index.wxss */
+
+.login {
+  padding: 0 77rpx;
+}
+
+.logo {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 89rpx 250rpx;
+}
+.user-input{
+  padding: 41rpx 0;
+  border-bottom: 1rpx solid #DDDDDD;
+}
+.user-input input{
+  margin-left: 29rpx;
+  width: 500rpx;
+}
+.user-logo {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.password-logo {
+  width: 30rpx;
+  height: 35rpx;
+}
+
+.login-btn {
+  width: 95%;
+  height: 88rpx;
+  background: rgba(228, 89, 42, 1);
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 88rpx;
+  text-align: center;
+  margin-top: 88rpx;
+}
+
+.log-oparation {
+  color: #999;
+  margin-top: 48rpx;
+}
+
+.register{
+  color: rgba(228, 89, 42, 1);
+
+}
+button:after{
+  border: none;
+}
+.agreement{
+  display: flex;
+  align-items: center;
+  margin: 30rpx 0;
+}
+.agreement-txt{
+  display: flex;
+  align-items: center;
+  margin-left: 10rpx;
+}
+.orange{
+  color: #E4592A;
+}

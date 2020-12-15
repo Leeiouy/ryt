@@ -1,0 +1,61 @@
+<!--pages/userInformation/userInformation.wxml-->
+<!--更换头像-->
+<view class="weui-cells weui-cells_after-title">
+  <!-- <view class="weui-cell weui-cell_access" hover-class='none' bindtap="clickChangeImage"> -->
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd" style="font-size:28rpx">头像</view>
+    <view class="weui-cell__ft">
+      <view class="user-box">
+        <image src="{{avatar}}" mode="aspectFill" 
+        bindtap="showAction" class="user-head"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<!--其他信息-->
+<view class="user-info weui-cells">
+  <!-- <navigator url="/pages/nickname/nickname" class="weui-cell weui-cell_access" hover-class="none"> -->
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd" style="font-size:28rpx">昵称</view>
+    <navigator url="../changenickname/index?nickName={{nickName}}" open-type="redirect" hover-class="none" class="weui-cell__ft weui-cell__ft_in-access">
+      <view class="weui-cell__ft" wx:if="{{!editName}}">{{nickName || '请设置昵称'}}</view>
+      <view class="weui-cell__ft" wx:if="{{editName}}">{{editName}}</view>
+    </navigator>
+  </view>
+  <!-- </navigator> -->
+  <view class="weui-cell weui-cell_access" bindtap='clickActionSheet'>
+    <view class="weui-cell__bd" style="font-size:28rpx">性别</view>
+    <picker mode="selector" range="{{genderArr}}" data-index="{{index}}" bindchange="selectGender">
+      <view class="weui-cell__ft weui-cell__ft_in-access">
+        <text>{{gender || '待完善'}}</text>
+        <!-- <text wx:if="{{data.gender == 2}}">男</text> -->
+      </view>
+    </picker>
+  </view>
+
+</view>
+<view class="user-info weui-cells">
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd" style="font-size:28rpx">手机号</view>
+    <view class="weui-cell__ft user-phone weui-cell__ft">
+      <!-- <navigator url="/pages/bindingMobile/bindingMobile" wx:if="{{!mobile}}" class='weui-cell__ft_in-access'>去绑定</navigator> -->
+      <!-- <text wx:else class='weui-cell__ft'>15912342103</text> -->
+      <text class='weui-cell__ft'>{{data.mobile}}</text>
+    </view>
+  </view>
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd" style="font-size:28rpx">团品邀请人</view>
+    <view class="">
+      <text class='weui-cell__ft' wx:if="{{!birth}}">{{!!data.myInviter_name ? data.myInviter_name:'无邀请人' }}</text>
+      <text wx:else>{{birth}}</text>
+    </view>
+  </view>
+
+  <view class="weui-cell weui-cell_access">
+    <view class="weui-cell__bd" style="font-size:28rpx">大健康邀请人</view>
+    <view class="">
+      <text class='weui-cell__ft' wx:if="{{!birth}}">{{!!data.healthInviter_name ? data.healthInviter_name :'无邀请人' }}</text>
+      <text wx:else>{{birth}}</text>
+    </view>
+  </view>
+</view>

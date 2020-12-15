@@ -1,0 +1,142 @@
+/* pages/orderDetail/orderDetail.wxss */
+page{
+  background: #f1f1f1;
+}
+.od-box{
+  padding-bottom: 130rpx;
+}
+.od-box.bottom{
+  padding-bottom: 0
+}
+.od-state{
+  /* height: 100rpx; */
+  line-height: 100rpx;
+  padding: 0 28rpx;
+  background: #E4592A;
+  font-size: 32rpx;
+  margin-top: 1px;
+  color: #fff;
+}
+
+/*收货地址*/
+.default{
+  padding: 20rpx 19.5rpx;
+  margin-top:20rpx;
+  background: #fff;
+}
+.default-address{
+  margin-top: 29rpx;
+}
+.address-ico image{
+  width: 28rpx;
+  height: 36rpx;
+  margin-top:4rpx;
+  margin-right: 14rpx;
+}
+.default-ico{
+  width: 20rpx;
+  margin-left: 10rpx;
+}
+.default-ico image{
+  width: 12rpx;
+  height: 22rpx;
+}
+/*订单信息*/
+.od-infor{
+  margin-top:20rpx;
+  padding: 10rpx 28rpx;
+  line-height: 60rpx;
+  color:#666666;
+  background: #fff;
+}
+/*商品列表*/
+.order-list {
+  margin-top:20rpx;
+}
+.order-list .item:not(:last-child){
+  margin-bottom: 20rpx;
+}
+.order-list .item .item-title{
+  height: 82rpx;
+  line-height: 80rpx;
+  padding: 0 28rpx;
+  background: #fff;
+}
+.order-list .item .item-goods{
+  padding: 30rpx;
+  padding-right: 29rpx;
+}
+.order-list .item .item-goods navigator{
+  padding: 28rpx 28rpx 28rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.order-list .item .item-goods navigator:last-child{
+  border-bottom: 0;
+}
+.order-list .item .item-goods .item-goods-img{
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+}
+.order-list .item .item-goods .oneline{
+  /* line-height: 40rpx; 
+  font-size: 30rpx; */
+  margin-bottom: 20px;
+}
+.order-list .item .item-goods .guige{
+  line-height: 60rpx;
+}
+.order-list .item .item-total{
+  height: 70rpx;
+  line-height: 68rpx;
+  padding: 0 28rpx;
+  color:#666;
+  background: #fff;
+  text-align: right;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+/*价格信息列表*/
+.od-moeny{
+  padding: 10rpx 28rpx;
+  line-height: 60rpx;
+  background: #fff;
+  color:#666;
+}
+.message{
+  background-color: #fff;
+  padding: 20rpx 30rpx;
+  margin-top: 20rpx;
+}
+.message input{
+  width: 77%;
+}
+/*网页底部*/
+.od-foot{
+  position: fixed;
+  bottom:0;
+  left:0;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 28rpx;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background: #fff;
+  border-top:1px solid #e5e5e5;
+  z-index: 9;
+}
+.od-foot .operation-btn{
+  width: 152rpx;
+  height: 54rpx;
+  line-height: 50rpx;
+  margin-left: 20rpx;
+  border: 2rpx solid #e5e5e5;
+  color:#7b7b7b;
+  text-align: center;
+  border-radius: 8rpx;
+}
+.od-foot .operation-btn.red{
+  color:#f13130;
+  border-color: #f13130;
+}
+

@@ -1,0 +1,39 @@
+<!--pages/register/index.wxml-->
+<view class="login">
+  <form bindsubmit="submit">
+    <view class="form">
+      <view class="user-input ali-c">
+        <image class="user-logo" src="/images/user.png"></image>
+        <input name="mobile" type="number" maxlength="11" placeholder="请输入手机号码" bindinput='mobileInputEvent'></input>
+      </view>
+      <view class="user-input ali-c">
+        <image class="user-logo" src="/images/code.png"></image>
+        <input name="code" type="number" placeholder="请输入验证码"></input>
+        <view bindtap="getCode" wx:if="{{disable}}" class="get-code">获取动态验证码</view>
+        <view class='get-code disable' wx:else>{{time}}s</view>
+      </view>
+      <view class="user-input ali-c">
+        <image class="password-logo" src="/images/yaoqinghaoyou.png"></image>
+        <input name="inviteCode" placeholder="请输入邀请码" value="{{qrcode}}"
+        wx:if="{{qrcode}}" disabled	password></input>
+        <input name="inviteCode" placeholder="请输入邀请码" wx:else></input>
+      </view>
+      <view class="user-input ali-c">
+        <image class="password-logo" src="/images/password.png"></image>
+        <input type="password" name="password" placeholder="请输入密码"></input>
+      </view>
+      <view class="user-input ali-c">
+        <image class="password-logo" src="/images/password.png"></image>
+        <input type="password" name="surePassword" placeholder="确认密码"></input>
+      </view>
+    </view>
+    <button class="login-btn" form-type="submit">注册</button>
+  </form>
+  <view class="log-oparation flexc">
+    <view class="regis ali-c">
+      <text>已有账号?</text>
+      <view class="register" bindtap="toLogin">去登录</view>
+    </view>
+  </view>
+</view>
+<view class="proc"><icon type="{{status}}" bindtap="agree" color="{{color}}" size="16"></icon> <text> 点击注册代表您同意 </text><navigator url="../Agreement/index" hover-class="none">《日悦淘用户协议》</navigator></view>

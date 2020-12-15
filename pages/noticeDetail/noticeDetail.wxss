@@ -1,0 +1,37 @@
+/* pages/noticeDetail/noticeDetail.wxss */
+@import "../../wxParse/wxParse.wxss"; 
+page{
+  background-color: #fff;
+}
+.article{
+  padding: 33rpx;
+  background-color: #fff;
+}
+.article-title{
+  font-size: 34rpx;
+}
+.createtime{
+  color:#888;
+  margin: 20rpx 75rpx 20rpx 0;
+}
+.views{
+  margin: 20rpx 0;
+}
+.article-con{
+  line-height: 40rpx;
+}
+.article-con image{
+  max-width: 100%;
+}
+.view-img {
+  width: 28rpx;
+  height:32rpx;
+  margin-right: 18rpx;
+}
+.bottom{
+  width: 100%;
+  background-color: #fff;
+  padding: 35rpx 52rpx;
+  display: flex;
+
+}

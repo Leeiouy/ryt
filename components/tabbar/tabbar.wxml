@@ -1,0 +1,38 @@
+<view class="weui-tabbar {{c}}">
+  <!-- 选中的时候往weui-tabbar__item加class:weui-bar__item_on -->
+  <navigator  data-id="{{current}}" open-type="switchTab" url="/pages/index/index" hover-class="none" class="weui-tabbar__item {{current == 0 ? 'weui-bar__item_on' : ''}}">
+    <view style="position: relative;display:inline-block;">
+      <image src="/images/bottom_icon_home_s@2x.png" wx:if="{{current == 0}}" class="weui-tabbar__icon"></image>
+      <image src="/images/bottom_icon_home.png" wx:else class="weui-tabbar__icon"></image>
+    </view>
+    <view class="weui-tabbar__label">首页</view>
+  </navigator>
+  <!-- <navigator open-type="switchTab" url="/pages/shoudan/index" hover-class="none" class="weui-tabbar__item {{current == 1 ? 'weui-bar__item_on' : ''}}" wx:if="{{level >1 && rx_status == 1}}">
+    <view style="position: relative;display:inline-block;">
+      <image src="/images/shoudan_s.png" wx:if="{{current == 1}}" class="weui-tabbar__icon"></image>
+      <image src="/images/shoudan.png" wx:else class="weui-tabbar__icon"></image>
+    </view>
+    <view class="weui-tabbar__label">收单</view>
+  </navigator>
+  <navigator open-type="switchTab" url="/pages/subcase/index" hover-class="none" class="weui-tabbar__item {{current ==2 ? 'weui-bar__item_on' : ''}}">
+    <view style="position: relative;display:inline-block;">
+      <image src="/images/bottom_icon_Commoditylist_s@2x.png" wx:if="{{current == 2}}" class="weui-tabbar__icon"></image>
+      <image src="/images/bottom_icon_Commoditylist@2x.png" wx:else class="weui-tabbar__icon"></image>
+    </view>
+    <view class="weui-tabbar__label">交单</view>
+  </navigator> -->
+  <navigator open-type="switchTab" url="/pages/address/address" hover-class="none" class="weui-tabbar__item {{current == 3 ? 'weui-bar__item_on' : ''}}">
+    <view style="position: relative;display:inline-block;">
+      <image src="/images/bottom_icon_addressbook_s@2x.png" wx:if="{{current == 3}}" class="weui-tabbar__icon"></image>
+      <image src="/images/bottom_icon_addressbook@2x.png" wx:else class="weui-tabbar__icon"></image>
+    </view>
+    <view class="weui-tabbar__label">通讯录</view>
+  </navigator>
+  <navigator open-type="switchTab" url="/pages/my/index" hover-class="none" class="weui-tabbar__item {{current == 4 ? 'weui-bar__item_on' : ''}}">
+    <view style="position: relative;display:inline-block;">
+      <image src="/images/bottom_icon_me_s@2x.png" wx:if="{{current == 4}}" class="weui-tabbar__icon"></image>
+      <image src="/images/bottom_icon_me@2x.png" wx:else class="weui-tabbar__icon"></image>
+    </view>
+    <view class="weui-tabbar__label">我的</view>
+  </navigator>
+</view>

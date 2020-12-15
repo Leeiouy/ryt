@@ -1,0 +1,41 @@
+/* pages/passRecoverySet/passRecoverySet.wxss */
+page{
+  background: #f1f1f1;
+}
+.pass-recovery-box{
+  margin-top: 20rpx;
+}
+.pass-recovery-box .title{
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-top:20rpx;
+  padding: 0 28rpx;
+  color:#b2b2b2;
+}
+.pass-recovery-box .pass-recovery{
+  height: 90rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  background: #fff;
+  padding: 0 28rpx;
+}
+.pass-recovery-box .pass-recovery label{
+  width: 140rpx;
+}
+.pass-recovery-box .pass-recovery .getCode{
+  width: 150rpx;
+  height: 56rpx;
+  line-height: 56rpx;
+  border-radius: 28rpx;
+  font-size: 24rpx;
+  background: #f13130;
+  text-align: center;
+  color:#fff;
+}
+.pass-recovery-box .pass-recovery .getCode.disable{
+  background: #b2b2b2;
+}
+
+.recovery-submit{
+  padding: 120rpx 28rpx;
+}
+

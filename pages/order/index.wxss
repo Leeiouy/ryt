@@ -1,0 +1,212 @@
+/* pages/order/order.wxss */
+@import '../template/empty.wxss';
+
+page {
+  background: #f1f1f1;
+}
+
+/*订单类型*/
+
+/* 隐藏滚动条 */
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.search {
+  width: 100%;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 20rpx 30rpx;
+}
+
+.search input {
+  box-sizing: border-box;
+  height: 88rpx;
+  border-radius: 5rpx;
+  width: 100%;
+  background: #f5f5f5;
+  padding-left: 68rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.search .ph-style {
+  color: #999;
+  font-size: 26rpx;
+  
+}
+
+.search image {
+  height: 28rpx;
+  width: 28rpx;
+  position: absolute;
+  left: 50rpx;
+}
+
+
+
+.navbar {
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 30rpx;
+  z-index: 9;
+}
+
+.navbar .navbar-box {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+}
+
+.navbar .navbar__item {
+  width: 170rpx;
+  padding: 26rpx 0;
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar__slider {
+  width: 170rpx;
+  height: 5rpx;
+  background: #fd6732;
+  border-radius: 1px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.navbar__item.bar__item_on {
+  color: #fd6732;
+}
+
+/*订单列表*/
+
+.order-list {
+  padding-top: 238rpx;
+}
+
+.order-list .item {
+  margin-bottom: 20rpx;
+}
+
+.order-list .item.hide {
+  display: none;
+}
+
+.order-list .item .item-title {
+  height: 82rpx;
+  line-height: 80rpx;
+  padding: 0 28rpx;
+  background: #fff;
+}
+
+.order-list .item .item-goods {
+  /* padding-left: 28rpx; */
+}
+
+.order-list .item .item-goods .inner {
+  padding: 28rpx 28rpx 28rpx 0;
+  width: 100%;
+}
+.goods_name{
+  height: 79rpx;
+}
+
+.goods_name text {
+  color: #1FAB22;
+}
+
+.order-list .item .item-goods .inner:last-child {
+  border-bottom: 0;
+}
+
+.order-list .item .item-goods .item-goods-img {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  margin-left: 28rpx;
+}
+
+.order-list .item .item-goods .oneline {
+  /* height: 20px;
+  line-height: 20rpx;  */
+  font-size: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.guigge {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: rgba(151, 151, 151, 1);
+}
+
+.order-list .item .item-total {
+  height: 70rpx;
+  line-height: 68rpx;
+  padding: 0 28rpx;
+  color: #666;
+  background: #fff;
+  text-align: right;
+}
+
+.order-list .item .operation {
+  padding: 16rpx 28rpx;
+  background: #fff;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.order-list .item .operation .operation-btn {
+  height: 54rpx;
+  line-height: 50rpx;
+  padding: 0 15rpx;
+  margin-left: 20rpx;
+  border: 2rpx solid #e5e5e5;
+  color: #7b7b7b;
+  text-align: center;
+  border-radius: 28rpx;
+}
+
+.order-list .item .operation button.operation-btn {
+  margin: 0 0 0 20rpx;
+  font-size: 30rpx;
+  color: #fff;
+  background-color: #f13130;
+  border-color: #f13130;
+}
+
+.order-list .item .operation button.operation-btn::after {
+  border: none;
+}
+
+.order-list .item .operation .operation-btn.red {
+  color: #e4592a;
+  border-color: #e4592a;
+}
+
+/* .empty-imgbox{
+  width: 300rpx;
+} */
+.code{
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  text-align: center;
+}
+.code image{
+  width: 300rpx;
+  height: 300rpx;
+}
+.code-tips{
+  white-space: nowrap;
+}

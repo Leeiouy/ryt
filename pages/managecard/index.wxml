@@ -1,0 +1,47 @@
+<!--pages/addBankCard/addBankCard.wxml-->
+<form bindsubmit="formSubmit">
+  <view class='addressAdd-box'>
+    <view class='item flex'>
+      <view class='item-label'>开户银行</view>
+      <view class="flex1 ali-c bank" bindtap='clickActionSheet'>
+        <view class="default flex1" wx:if="{{onIndex < 0}}">请选择开户银行</view>
+        <view class='flex1' wx:else>{{bankList[onIndex]}}</view>
+        <input type='text' value='{{bankList[onIndex]}}' name="bank"></input>
+        <image src='/images/right_arrow.png'></image>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>持卡人</view>
+      <view class='flex1'>
+        <input type='text' name="username" placeholder='请输入您的真实姓名'></input>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>银行卡号</view>
+      <view class='flex1'>
+        <input type='number' confirm-type="done" name="cardNumber" placeholder='请输入银行卡号'></input>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>开户地区</view>
+      <picker mode="region" bindchange="choseRegion">
+      <view class="ali-c jus-b">
+        <view class='flex1'>
+          <text class="default">{{region}}</text>
+        </view>
+        <image class="arrow" src='/images/right_arrow.png'></image>
+        </view>
+      </picker>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>支行名称</view>
+      <view class='flex1'>
+        <input type='text' name="branch" placeholder='请输入支行名称'></input>
+      </view>
+    </view>
+    <!--提交按钮-->
+    <view class='submit-box'>
+      <button class="weui-btn" form-type='submit' type="warn" style="margin-bottom:{{marginBottom}}">确定</button>
+    </view>
+  </view>
+</form>

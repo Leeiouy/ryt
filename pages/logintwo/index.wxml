@@ -1,0 +1,36 @@
+<!--pages/logintwo/index.wxml-->
+<view class="login">
+  <image class="logo" src="/images/login.png"></image>
+<form bindsubmit="formSubmit">
+  <view class="form">
+    <view class="user-input ali-c">
+        <image class="user-logo" src="/images/user.png"></image>
+        <input name="phone" value="{{phone}}" type="number" placeholder="请输入手机号码"></input>
+    </view>
+    <view class="user-input ali-c">
+        <image class="password-logo" src="/images/password.png"></image>
+        <input type="password" value="{{password}}" name="password" placeholder="请输入密码"></input>
+    </view>
+  </view>
+  <!-- <view class="agreement">
+    <van-checkbox value="{{ flag }}" bind:change="onChange" 
+    checked-color="#E4592A" icon-size="16px"/>
+    <view class="agreement-txt">
+      <text>请同意</text>
+      <navigator class="orange">《日悦淘使用协议》</navigator>
+    </view>
+  </view> -->
+  <button formType="submit" class="login-btn">登录</button>
+</form>
+  <view class="log-oparation jus-b ali-c">
+    <navigator url="../forgetpassword/index" hover-class="none">
+      <text>忘记密码？</text>
+      </navigator>
+      <view class="regis ali-c">
+        <text>还没有账号?</text>
+        
+        <navigator url="../register/index" hover-class="none"><view class="register">去注册</view></navigator>
+        
+      </view>
+    </view>
+</view>

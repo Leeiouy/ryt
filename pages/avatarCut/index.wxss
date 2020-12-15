@@ -1,0 +1,40 @@
+/* pages/avatarCut/avatarCut.wxss */
+page{
+height: 100%;
+}
+.cropper-wrapper{
+position: absolute;
+top: 0;
+left: 0;
+}
+
+.cropper-buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 40rpx;
+  font-size: 30rpx;
+/* background:rgba(0, 0, 0, 0.95); */
+  color: #ffffff;
+}
+.upload{
+  padding-top:7rpx; 
+  border-radius: 8rpx;
+  text-align: center;
+  width: 140rpx;
+  height: 60rpx;
+  background: #04b00f;
+}
+.getCropperImage{
+  padding-top:7rpx; 
+  border-radius: 8rpx;
+  text-align: center;
+  width: 110rpx;
+  height: 60rpx;
+  background: #04b00f;
+}
+.myCanvas {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}

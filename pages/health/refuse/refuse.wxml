@@ -1,0 +1,10 @@
+<!--pages/health/refuse/refuse.wxml-->
+<view class="my-container">
+  <view class="response">
+    <textarea bindinput="myInput" placeholder="请填写您的拒绝原因～" placeholder-class="ph-style" maxlength="150"></textarea>
+    <view class="count">{{content.length > 0 ? content.length : 0}}/150</view>
+  </view>
+
+
+  <view class="btn {{content.length > 0 ? 'on' : ''}}">提交</view>
+</view>

@@ -1,0 +1,20 @@
+<!--pages/noticeDetail/noticeDetail.wxml-->
+
+<!--引入wxParse文件-->
+<import src="/wxParse/wxParse.wxml" />
+
+<view class='article'>
+  <view class='article-title'>{{news.title}}</view>
+  <view class='flex'>
+    <text class="cor-grey createtime">{{news.createtime}}</text>
+    <view class="ali-c views">
+      <image class="view-img" src="/images/liulan-2@2x.png"></image>
+      <text class="cor-grey">{{news.views}}次阅读</text>
+    </view>
+  </view>
+  <view class='article-con'>
+    <!--wxParse解析html文本-->
+    <template is="wxParse" data="{{wxParseData: newsinfo.nodes}}" />
+  </view>
+</view>
+<view class="bottom"></view>

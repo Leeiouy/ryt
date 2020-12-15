@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "业绩排行",
+  "usingComponents": {
+    "select":"../../components/selectbox/index"
+  }
+}

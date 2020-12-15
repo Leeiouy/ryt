@@ -1,0 +1,40 @@
+<!--pages/addressAdd/addressAdd.wxml-->
+<form bindsubmit="formSubmit">
+  <view class='addressAdd-box'>
+    <view class='item flex'>
+      <view class='item-label'>收货人</view>
+      <view class='flex1'>
+        <input type='text' name="username" value="{{shperson}}" placeholder='请输入收货人姓名'></input>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>联系电话 </view>
+      <view class='flex1'>
+        <input type='number' name="mobile" value="{{mobile}}" placeholder='请输入收货人联系电话'></input>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>省/市/区</view>
+      <view class='flex1'>
+        <picker mode="region" name="region" value="{{region}}" bindchange='regionChange'>
+          <text>{{region}}</text>
+        </picker>
+      </view>
+      <image src="/images/right_arrow.png" class='to-ico'></image>
+    </view>
+    <view class='item flex'>
+      <view class='flex1'>
+        <textarea placeholder='请输入收货人的详细地址' name="detail" value="{{detail_info}}" class='item-textarea'></textarea>
+      </view>
+    </view>
+    <view class='item jus-b item-default'>
+      <view class='item-label'>设为默认地址</view>
+      <switch color="#f13130" name="default" wx:if="{{status == 0}}"/>
+      <switch color="#f13130" name="default" wx:if="{{status == 1}}"/>
+    </view>
+    <!--提交按钮-->
+    <view class='submit-box'>
+      <button class="weui-btn" form-type='submit' type="warn">保存</button>
+    </view>  
+  </view>
+</form>

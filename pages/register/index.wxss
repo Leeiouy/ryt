@@ -1,0 +1,65 @@
+/* pages/register/index.wxss */
+
+
+.login {
+  padding: 82rpx 77rpx;
+}
+
+.user-input{
+  padding: 41rpx 0;
+  border-bottom: 1rpx solid #DDDDDD;
+}
+.user-input input{
+  margin-left: 29rpx;
+}
+.user-logo {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.password-logo {
+  width: 30rpx;
+  height: 35rpx;
+}
+.get-code{
+  color: #E4592A;
+}
+.disable{
+  /* background: #b2b2b2; */
+  color: #b2b2b2;
+  font-size: 28rpx;
+}
+.login-btn {
+  width: 95%;
+  height: 88rpx;
+  background: rgba(228, 89, 42, 1);
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 88rpx;
+  text-align: center;
+  margin-top: 74rpx;
+}
+
+.log-oparation {
+  color: #999;
+  margin-top: 48rpx;
+}
+
+.register{
+  color: rgba(228, 89, 42, 1);
+}
+.proc{
+  position: fixed;
+  bottom: 43rpx;
+  font-size: 24rpx;
+  display: flex;
+  margin-left: 147rpx;
+}
+icon{
+  margin-right: 16rpx;
+}
+navigator{
+  color: #E4592A;
+}

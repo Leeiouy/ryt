@@ -1,0 +1,27 @@
+<!--pages/cash/index.wxml-->
+<form bindsubmit="formsubmit">
+  <view class="weui-panel__bd" style="margin-top:22rpx">
+    <view class="weui-media-box weui-media-box_small-appmsg">
+      <view class="weui-cells weui-cells_in-small-appmsg">
+        <navigator url="../chooserankcard/index" class="weui-cell weui-cell_example weui-cell_access" hover-class="weui-cell_active">
+          <view class="weui-cell__bd weui-cell_primary">
+            <view><text>{{bankName}}</text><text class="bank-num">{{or}}</text> </view>
+            
+          </view>
+          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+        </navigator>
+      </view>
+    </view>
+  </view>
+
+  <view class="cash">
+    <text>提现金额</text>
+    <view class="input flex">
+      <text>￥</text>
+      <input type="number" value="{{cash}}" name="cash" size="30" style="height:60rpx"></input>
+    </view>
+    <view class="desc">我的余额{{data.balance}}元，<text bindtap="allDraw" data-balance="{{data.balance}}">全部提现</text> </view>
+  </view>
+
+  <button form-type="submit" data-min="{{data.min_withdraw}}" hover-class="none">提现</button>
+  </form>

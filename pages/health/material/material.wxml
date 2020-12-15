@@ -1,0 +1,73 @@
+<view>
+  <navigator url="../productdetail/index?goods_id={{content.goods_id}}" hover-class="none">
+    <view class="top weui-cells detail-promise-cell">
+      <view class="flex ali-c">
+        <view class="good-img">
+          <image src="{{content.my_img[0]}}"></image>
+        </view>
+        <view class="good-title">{{content.shareDesc}}</view>
+      </view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+    </view>
+  </navigator>
+  <view class="middle">
+    <text class="info">
+      {{content.shareContent}}
+    </text>
+    <view class="photos">
+      <block wx:for="{{images}}" wx:key="*this" wx:if="{{images.length}}">
+        <image class="img" src="https://riyuetaoguoji.com{{item}}"></image>
+      </block>
+    </view>
+  </view>
+  <!-- <view class="record">
+    <view class="jus-b ali-c">
+      <text>转发 <text class="record-nums">489</text></text>
+      <navigator url="../record/index" hover-class="none" class="re-right ali-c">
+        <text class="seeall">查看全部</text>
+        <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+      </navigator>
+    </view>
+    <view class="list">
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+    </view>
+  </view> -->
+
+  <view class="bot-opration jus-b" style="padding-bottom:{{paddingBottm}}">
+    <view class="opration flexc" bindtap="copyText">
+      <image class="copy" src="/images/copy.png"></image>
+      <text>复制文案</text>
+    </view>
+    <view class="load-opration flexc" bindtap="downLoad">
+      <image class="download" src="/images/download.png"></image>
+      <text>下载图片</text>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,42 @@
+/* pages/userInformation/userInformation.wxss */
+page{
+  background: #f1f1f1;
+  font-size: 28rpx;
+}
+.weui-cells{
+  font-size: 26rpx;
+}
+.user-box{
+  width: 110rpx;
+  height: 110rpx;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.user-head{
+  max-width: 100%;
+  max-height: 100%;
+}
+.user-info:before{
+  border-top:0;
+}
+.user-info .weui-cell:before{
+  left:0;
+  border-color:#dedede;
+}
+.user-info .weui-cell{
+  padding: 15px;
+}
+.user-phone{
+  color:#333;
+}
+
+.weui-cell__ft_in-access{
+  padding-right: 20rpx;
+}
+.weui-cell__ft_in-access:after{
+  border-width: 2rpx 2rpx 0 0;
+}
+.weui-cells:after {
+  border: none;
+}

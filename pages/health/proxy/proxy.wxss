@@ -1,0 +1,160 @@
+/* pages/health/proxy/proxy.wxss */
+
+.my-container {
+  min-height: 100vh;
+  width: 100vw;
+  padding-top: 720rpx;
+  padding-bottom: 50rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background: url('https://riyuetaoguoji.com/images/bg1.png') no-repeat top center;
+  background-size: 100%; */
+}
+
+.table {
+  width: 690rpx;
+  height: 570rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  padding: 110rpx 70rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.table .tag {
+  height: 87rpx;
+  width: 563rpx;
+  position: absolute;
+  top: -16rpx;
+}
+
+.table .line {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 110rpx;
+  width: 100%;
+  border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 15rpx;
+}
+
+.table .line .text {
+  width: 170rpx;
+  color: #343434;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.table .line input {
+  flex: 1;
+}
+.table .line .ph-style {
+  color: #A2A2A2;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.table .line image {
+  height: 28rpx;
+  width: 14rpx;
+}
+.table .btn {
+  height: 80rpx;
+  width: 100%;
+  background: linear-gradient(0deg, #FAC082 0%, #FDD49C 100%);
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #BE1A1A;
+  font-size: 30rpx;
+  margin-top: 100rpx;
+}
+
+
+.flex-d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status {
+  font-size: 30rpx;
+  color: #343434;
+  margin-bottom: 58rpx;
+}
+
+.retry {
+  height: 72rpx;
+  width: 180rpx;
+  border-radius: 36rpx;
+  border: 1px solid #FF7E52;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF7E52;
+  font-size: 30rpx;
+}
+
+.my-container.status-box {
+  background: url('https://riyuetaoguoji.com/images/bg.png') no-repeat center top;
+  background-size: 100%;
+  padding: 0;
+} 
+
+
+.status-img {
+  height: 219rpx;
+  width: 216rpx;
+  margin-top: 77rpx;
+  margin-bottom: 256rpx;
+}
+
+
+
+.mask {
+  display: flex;
+  flex-direction: column;
+}
+
+.mask .box {
+  width: 100%;
+  margin-top: auto;
+  border-radius: 16rpx 16rpx 0 0;
+  overflow: hidden;
+}
+
+.mask .btns {
+  height: 160rpx;
+  width: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 30rpx;
+  z-index: 999;
+}
+
+.mask .btns .btn {
+  height: 82rpx;
+  width: 250rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34rpx;
+  font-weight: 500;
+  border-radius: 10rpx;
+}
+
+.mask .btns .cancel {
+  color: #FFC15D;
+  background: #F1F2F3;
+}
+
+.mask .btns .confirm {
+  background: #FFC15D;
+  color: #fff;
+}

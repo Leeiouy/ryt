@@ -1,0 +1,100 @@
+/* pages/myinterdetail/index.wxss */
+page {
+  background-color: #f5f5f5;
+}
+.time-search{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 25rpx 0;
+  margin-bottom: 10rpx;
+  background-color: #fff;
+}
+.start,.end{
+  width:260rpx;
+height:60rpx;
+border:1rpx solid rgba(224,224,224,1);
+border-radius:5rpx;
+}
+.line {
+  width: 30rpx;
+  height: 4rpx;
+  background: rgba(153, 153, 153, 1);
+}
+
+.search-btn {
+  width: 100rpx;
+  height: 60rpx;
+  background: rgba(254, 193, 73, 1);
+  border-radius: 5rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  line-height: 60rpx;
+  text-align: center;
+}
+
+
+.tabs {
+
+  display: flex;
+  /* padding: 0 40rpx; */
+  border-bottom: 1rpx solid #dcdcdc;
+  background-color: #fdfdfd;
+  box-shadow: 2rpx 2rpx 0rpx 0rpx rgba(233, 233, 233, 0.86);
+  justify-content: space-around;
+}
+
+.tab {
+  padding: 30rpx 0;
+  text-align: center;
+}
+
+.tab text {
+  color: #666666;
+}
+
+.active {
+  border-bottom: 4rpx solid #E4592A;
+}
+.active text{
+  color: #E4592A;
+}
+
+.panel-one{
+  padding: 30rpx 71rpx 30rpx 110rpx;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+}
+.tab-content{
+  background-color: #fff;
+}
+.item{
+  border-bottom: 1rpx solid #E0E0E0;
+  padding: 27rpx 31rpx;
+}
+.timer{
+  font-size: 26rpx;
+  color: #A6A6A6
+}
+.right{
+  font-size: 32rpx;
+  color: #FD7040;
+}
+/* .mid-line{
+  width: 500rpx;
+  height: 2rpx;
+  background: rgba(153, 153, 153, 1);
+  z-index: 9999;
+  padding-top: -20rpx;
+} */
+.frozen{
+  font-size: 32rpx;
+  color: #999999;
+}
+
+.weui-cell__ft_in-access:after{
+  border-width: 1rpx 1rpx 0 0;
+
+}

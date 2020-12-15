@@ -1,0 +1,8 @@
+<!--pages/orderSuccess/index.wxml-->
+<view class="order">
+  <image src="/images/none-order.png"></image>
+  <view class="ordertext">{{title || '订单提交成功'}}</view>
+  <view class="ordertext">{{tip || '请到订单-待交单中查看订单'}}</view>
+  <view class="ordertext" wx:if="{{total}}"><text>总金额：</text><text>{{total}}元</text></view>
+  <view class="toOrder" bindtap="toOrder">查看订单</view>
+</view>

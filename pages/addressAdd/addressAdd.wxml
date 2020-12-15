@@ -1,0 +1,58 @@
+<!--pages/addressAdd/addressAdd.wxml-->
+
+<!-- 同步微信收货地址 -->
+<view bindtap='getCity' class='wxcity jus-b ali-c'>
+  <view class='ali-c'>
+    <image class='img' src='/images/share-icon_01.png'></image>
+    <view>获取微信收货地址</view>
+  </view>
+  <image src="/images/right_arrow.png" class='to-ico'></image>
+</view>
+
+<form bindsubmit="formSubmit">
+  <view class='addressAdd-box'>
+    <view class='item flex'>
+      <view class='item-label'>收货人</view>
+      <view class='flex1'>
+        <input type='text' value='{{shperson}}' name="username" placeholder='请输入收货人姓名'></input>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>联系电话 </view>
+      <view class='flex1'>
+        <input type='number' value='{{mobile}}' name="mobile" placeholder='请输入收货人联系电话'></input>
+      </view>
+    </view>
+    <view class='item flex'>
+      <view class='item-label'>省/市/区</view>
+      <view class='flex1'>
+        <picker mode="region" value='{{address}}' name="region" bindchange="regionChange">
+          <text wx:if="{{!address}}" class='placeholdercolor'>请选择</text>
+          <text wx:else>{{address}}</text>
+        </picker>
+      </view>
+      <image src="/images/right_arrow.png" class='to-ico'></image>
+    </view>
+    <view class='item flex'>
+      <view class='flex1'>
+        <textarea placeholder='请输入收货人的详细地址' value='{{detail_info}}' name="detail" class='item-textarea'></textarea>
+      </view>
+    </view>
+    <view class="flexv ai_text">
+      <view class="cor-red">智能填写</view>
+      <view class="info">
+        <textarea placeholder="粘贴地址信息/格式：姓名 电话 地址信息" bindinput="init" value="{{text}}"></textarea>
+      </view>
+      <view bindtap="changtext" class="confirm"><text>填写</text></view>
+    </view>
+    <view class='item jus-b item-default'>
+      <view class='item-label flex1'>设为默认地址</view>
+      <switch color="#fd6732" name="default"/>
+    </view>
+
+    <!--提交按钮-->
+    <view class='submit-box'>
+      <button class="weui-btn" form-type='submit'>保存</button>
+    </view>  
+  </view>
+</form>

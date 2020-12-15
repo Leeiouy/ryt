@@ -1,0 +1,19 @@
+<!--pages/myinterdetailtwo/index.wxml-->
+<view class='collect'>
+  <!--商品-->
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class='collect-item flex ali-c'>
+      <view class='img-box' data-id="{{item.id}}">
+        <image src="{{item.image}}" class='fill'></image>
+      </view>
+      <view class='item-intro flex1'>
+        <view class='twoline' data-id="{{item.id}}">{{item.goods_name}}</view>
+        <view class="yellow">{{item.username}}</view>
+      </view>
+    </view>
+  </block>
+  <!--到底了-->
+  <view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+  </view>
+</view>

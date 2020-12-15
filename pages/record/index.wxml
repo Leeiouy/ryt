@@ -1,0 +1,34 @@
+
+  <view class="record">
+    <view class="list">
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+      <view class="item jus-b ali-c">
+        <view class="left ali-c">
+          <image class="head" src=""></image>
+          <text>丸子姐姐</text>
+        </view>
+        <text>2019.09.27</text>
+      </view>
+    </view>
+  </view>
+

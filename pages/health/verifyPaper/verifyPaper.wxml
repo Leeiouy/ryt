@@ -1,0 +1,4 @@
+<view class="card">
+  <canvas canvas-id="myCanvas" style="width:750rpx;height:1078rpx;"/>
+</view>
+<view class="share_btn" bindtap="saveImage">保存图片</view>

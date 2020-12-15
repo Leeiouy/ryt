@@ -1,0 +1,93 @@
+<view>
+  <view class="info">
+    <image src="https://riyuetaoguoji.com/images/-s-my-bg.png"></image>
+    <view class="my-info">
+      <view class="flex ali-c jus-b">
+        <view class="info-left flex ali-c">
+          <view class="info-box">
+            <image class="portrait" mode="aspectFill"
+            src="{{data.avatar}}"></image>
+          </view>
+          <text class="nick">{{data.username}}</text>
+          <image class='lev' wx:if="{{data.level==1}}" src="/images/fenxiao.png"></image>
+          <image class='lev' wx:if="{{data.level==2}}" src="/images/direct.png"></image>
+          <image class='lev' wx:if="{{data.level==3}}" src="/images/lianc.png"></image>
+        </view>
+        <navigator url="../myachieverank/index" hover-class="none">
+          <view class="achieve ali-c">
+            <text>业绩排行</text>
+            <image class="down" src="/images/more.png"></image>
+          </view>
+        </navigator>
+      </view>
+      <view class="salenums jus-b ali-c">
+        <view class="today">
+          <view class="nums">{{data.today_sales}}</view>
+          <view class="nums">今日销量（个人）</view>
+        </view>
+        <view class="yers">
+          <view class="nums">{{data.yesterday_sales}}</view>
+          <view class="nums">昨日销量（个人）</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="achieves">
+    <view class="day-achieve">
+      <view class="day-top jus-b">
+        <text>每日业绩</text>
+        <picker value="{{today}}" mode="date" bindchange="selectDay">
+          <view class="time flex ali-c">
+            <text>{{today}}</text>
+            <image src="/images/down.png" class="down"></image>
+          </view>
+        </picker>
+      </view>
+      <view class="content jus-b">
+        <view class="con-left flexv ali-c">
+          <view class="personal">个人业绩</view>
+          <view class="person-achie">
+            <text>{{dayAch.self_sales}}元</text>
+            <text>{{dayAch.self_order}}单</text>
+          </view>
+        </view>
+        <view class="mid-line"></view>
+        <view class="con-right flexv ali-c">
+          <view>团队业绩</view>
+          <view class="team-achie">
+            <text>{{dayAch.team_sales}}元</text>
+            <text>{{dayAch.team_order}}单</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="day-achieve">
+      <view class="day-top jus-b">
+        <text>每月业绩</text>
+        <picker mode="date" fields="month" bindchange="selectMonth">
+          <view class="time flex ali-c">
+            <text>{{month}}</text>
+            <image src="/images/down.png" class="down"></image>
+          </view>
+        </picker>
+      </view>
+      <view class="content jus-b">
+        <view class="con-left flexv ali-c">
+          <view class="personal">个人业绩</view>
+          <view class="person-achie">
+            <text>{{monthAch.self_sales}}元</text>
+            <text>{{monthAch.self_order}}单</text>
+          </view>
+        </view>
+        <view class="mid-line"></view>
+        <view class="con-right flexv ali-c">
+          <view>团队业绩</view>
+          <view class="team-achie">
+            <text>{{monthAch.team_sales}}元</text>
+            <text>{{monthAch.team_order}}单</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

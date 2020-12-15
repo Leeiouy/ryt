@@ -1,0 +1,15 @@
+<!--pages/myboss/index.wxml-->
+<view class="myboss flexv">
+  <view class="code-box flexv">
+    <view class="head flex">
+      <view class="name">微信号：</view>
+      <input type="text" wx:if="{{wechat_num}}" class="infos flex1 oneline" bindinput="init" disabled placeholder="请输入微信号" maxlength="30" value="{{wechat_num}}" ></input>
+      <input type="text" wx:else class="infos flex1 oneline" bindinput="init" disabled placeholder="TA还没有填写微信号哦" maxlength="30" ></input>
+    </view>
+
+    <view class="code flex">
+      <image src="{{avatar}}" mode="aspectFit" wx:if="{{avatar}}"></image>
+      <image src="/images/default.png" mode="aspectFit" wx:else></image>
+    </view>
+  </view>
+</view>

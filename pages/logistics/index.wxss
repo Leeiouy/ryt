@@ -1,0 +1,88 @@
+
+page{
+  background: #f1f1f1;
+}
+/*订单信息*/
+.logistics-title {
+  padding: 28rpx;
+  background: #fff;
+}
+.logistics-title .goods-img{
+  width: 170rpx;
+  height: 170rpx;
+  border: 1px solid #e5e5e5;
+  margin-right: 20rpx;
+}
+.logistics-title .flex1{
+  padding: 10rpx 0;
+  line-height: 50rpx;
+  font-size: 28rpx;
+  color:#888;
+}
+/*物流信息*/
+.logistics-info{
+  margin-top:42rpx;
+  background: #fff;
+}
+.logistics-info .item{
+  padding-right: 28rpx;
+}
+.logistics-info .item-left{
+  width: 120rpx;
+  position: relative;
+}
+/*物流信息灰点样式*/
+.logistics-info .item-left .dot{
+  position: absolute;
+  top:28rpx;
+  left:50%;
+  width: 20rpx;
+  height: 20rpx;
+  background: #dedede;
+  margin-left: -10rpx;
+  border-radius: 100%;
+}
+/*物流信息红点样式*/
+.logistics-info .item-left .dot.on{
+  top:30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: -15rpx;
+  background: #f13130;
+  border: 5rpx solid #f9adac;
+}
+/*物流信息灰色竖线样式*/
+.logistics-info .item-left:before{
+  content: "";
+  position: absolute;
+  top:0;
+  bottom:0;
+  left:50%;
+  width: 1px;
+  background: #e5e5e5;
+}
+/*第一条物流信息，显示红点，灰色竖线顶部和红点顶部齐平*/
+.logistics-info .item:first-child .item-left:before{
+  top:30rpx;
+}
+/*最后一条物流信息，显示灰点，灰色竖线底部和灰点底部齐平*/
+.logistics-info .item:last-child .item-left:before{
+  top: 0;
+  bottom: auto;
+  height: 26rpx;
+}
+/*当只有一条物流信息时，只显示一个红点，没有竖线*/
+.logistics-info .item-left.only:before{
+  width: 0;
+}
+.logistics-info .flex1{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+.logistics-info .item:last-child .flex1{
+  border-bottom: 0;
+}
+.logistics-info .flex1 .item-title{
+  font-size: 28rpx;
+}
+

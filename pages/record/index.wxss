@@ -1,0 +1,21 @@
+/* pages/record/index.wxss */
+.record {
+  padding: 29rpx 30rpx 0;
+  background-color: #fff;
+  margin: 0 30rpx 42rpx;
+}
+
+.record-nums {
+  color: #fc4902;
+}
+
+.item {
+  padding: 30rpx 0;
+  border-bottom: 1rpx solid #e0e0e0;
+}
+
+.head {
+  width: 64rpx;
+  height: 64rpx;
+  border-radius: 50%;
+}

@@ -1,0 +1,56 @@
+<view class="my-container">
+    <view class="tabbar">
+      <view class="item {{currentIndex == 0 ? 'on' : ''}}" data-index="0" bindtap="mySwitch">
+        <text>待审核</text>
+        <view class="block"></view>
+      </view>
+      <view class="item {{currentIndex == 10 ? 'on' : ''}}" data-index="10" bindtap="mySwitch">
+        <text>已通过</text>
+        <view class="block"></view>
+      </view>
+      <view class="item {{currentIndex == 20 ? 'on' : ''}}" data-index="20" bindtap="mySwitch">
+        <text>已拒绝</text>
+        <view class="block"></view>
+      </view>
+    </view>
+
+    <view class="list" wx:if="{{list.length > 0}}">
+      <view class="item" wx:for="{{list}}" wx:key="index">
+        <view class="line">
+          <view>姓名：{{item.name}}</view>
+          <view>申请级别：{{item.distributor}}</view>
+        </view>
+        <view class="line">
+          <view>电话：{{item.mobile}}</view>
+          <view class="person">
+            <text>邀请人：</text>
+            <image src="{{imgBaseUrl + item.inviter.avatar}}"></image>
+            <text>{{item.inviter.nickname}}</text>
+          </view>
+        </view> 
+
+        <view class="line" style="height:60rpx;">
+          <view>申请时间：{{item.createtime}}</view>
+        </view>
+        <view class="line" wx:if="{{item.updatetime}}" style="height:60rpx;">
+          <view>审核时间：{{item.updatetime}}</view>
+        </view>
+
+        <view class="btns" wx:if="{{currentIndex == 0}}">
+          <view class="btn agree" bindtap="agree" data-uid="{{item.user_id}}">通过</view>
+          <!-- <view class="btn refuse" bindtap="toRefuse" data-uid="{{item.user_id}}">拒绝</view> -->
+          <view class="btn refuse" bindtap="refuse" data-uid="{{item.user_id}}">拒绝</view>
+        </view>
+
+        <view class="btns" wx:if="{{currentIndex == 20}}">
+          <view class="btn refuse" bindtap="delete" data-uid="{{item.user_id}}">删除</view>
+        </view>
+      </view>
+    
+    </view>
+
+    <view class="empty" wx:else>
+      <image src="/images/none-order.png"></image>
+      <text>暂无申请</text>
+    </view>
+</view>

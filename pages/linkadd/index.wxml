@@ -1,0 +1,41 @@
+<view class="form">
+
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <view class="weui-label">
+        <image class="icon_contact" src="/images/addre_icon_contact.png"></image>
+      </view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="联系人" />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <view class="weui-label">
+        <image class="icon_contact" src="/images/addre_icon_number.png"></image>
+      </view>
+    </view>
+    <view class="weui-cell__bd">
+      <input class="weui-input" placeholder="手机号码" />
+    </view>
+  </view>
+  <view class="weui-cell">
+    <view class="weui-cell__hd">
+      <view class="weui-label">
+        <image class="icon_contact" src="/images/address_icon_adress.png"></image>
+      </view>
+    </view>
+    <view class="weui-cell__bd address">
+      <!-- <input class="weui-input" placeholder="地区" /> -->
+      <text>地区</text>
+        <picker mode="region" value='{{address}}' name="region" bindchange="regionChange">
+          <text wx:if="{{!address}}" class='placeholdercolor'>请选择</text>
+          <text wx:else>{{address}}</text>
+        </picker>
+    </view>
+  </view>
+      <view class='address-detail'>
+        <textarea placeholder='请输入收货人的详细地址' value='{{detail_info}}' name="detail" class='item-textarea'></textarea>
+      </view>
+</view>

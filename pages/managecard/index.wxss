@@ -1,0 +1,52 @@
+/* pages/addBankCard/addBankCard.wxss */
+page{
+  background: #f1f1f1;
+}
+.addressAdd-box{
+  margin-top:20rpx;
+}
+.addressAdd-box .item{
+  padding: 28rpx;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  align-items: center;
+}
+.addressAdd-box .item:nth-child(2){
+  margin-top: 15rpx
+}
+.addressAdd-box .bank image{
+  width: 12rpx;
+  height: 22rpx;
+}
+.default{
+  color: #808080;
+}
+.addressAdd-box .bank input{
+  display: none;
+}
+.addressAdd-box .item .item-label{
+  width:170rpx;
+  vertical-align:middle;
+}
+
+.addressAdd-box .submit-box{
+  position: fixed;
+width: 100%;
+bottom: 0rpx;
+
+}
+.addressAdd-box button{
+  background-color: #FD7040;
+  color: #fff;
+  border-radius: 0rpx
+}
+.placeholdercolor{
+  color:#808080;
+}
+.arrow{
+  width: 12rpx;
+  height: 22rpx;
+}
+picker{
+  width: 78%;
+}

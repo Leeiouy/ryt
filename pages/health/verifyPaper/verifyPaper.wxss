@@ -1,0 +1,20 @@
+page{
+  background-color: rgba(245, 245, 245, 1);
+}
+.card{
+  background-color: #fff;
+  width: 750rpx;
+  height: 1078rpx;
+  margin: 0 auto 30rpx;
+}
+.share_btn{
+  width:564rpx;
+  line-height: 82rpx;
+  border-radius: 50rpx;
+  background-color: #E4592A;
+  text-align: center;
+  color: #fff;
+  font-size: 30rpx;
+  display: block;
+  margin: 0  auto;
+}

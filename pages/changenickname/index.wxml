@@ -1,0 +1,12 @@
+<!--pages/changenickname/index.wxml-->
+<form  bindsubmit="formSubmit">
+<view class="weui-cells weui-cells_after-title">
+  <view class="weui-cell ">
+    <view class="weui-cell__bd">
+      <input class="weui-input" name="name" value="{{nickName}}" placeholder="请输昵称" />
+    </view>
+  </view>
+</view>
+
+<button formType="submit" hover-class="none">保存</button>
+</form>

@@ -1,0 +1,110 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logintwo/index",
+    "pages/link/index",
+    "pages/my/index",
+    "pages/subcase/index",
+    "pages/dailystar/index",
+    "pages/oldgoods/index",
+    "pages/order/index",
+    "pages/orderDetail/orderDetail",
+    "pages/logistics/index",
+    "pages/aftersale/index",
+    "pages/productdetail/index",
+    "pages/waitdetail/index",
+    "pages/linkadd/index",
+    "pages/linkdetail/index",
+    "pages/orderplace/index",
+    "pages/myteam/index",
+    "pages/orderaftersale/index",
+    "pages/orderrefund/index",
+    "pages/Material/index",
+    "pages/myAchieve/index",
+    "pages/achieveRank/index",
+    "pages/mycollect/index",
+    "pages/shoppingcart/index",
+    "pages/myinterdetail/index",
+    "pages/myintegral/index",
+    "pages/setting/index",
+    "pages/feedback/index",
+    "pages/about/index",
+    "pages/invite/index",
+    "pages/chooserankcard/index",
+    "pages/cash/index",
+    "pages/managecard/index",
+    "pages/myCard/index",
+    "pages/address/address",
+    "pages/addressAdd/addressAdd",
+    "pages/addressModify/addressModify",
+    "pages/replyAftersale/index",
+    "pages/myachieverank/index",
+    "pages/record/index",
+    "pages/login/login",
+    "pages/subcasewaite/index",
+    "pages/myinformation/index",
+    "pages/changenickname/index",
+    "pages/myinterdetailtwo/index",
+    "pages/shoudan/index",
+    "pages/register/index",
+    "pages/forgetpassword/index",
+    "pages/orderSuccess/index",
+    "pages/addresselete/index",
+    "pages/notice/notice",
+    "pages/noticeDetail/noticeDetail",
+    "pages/web/index",
+    "pages/Agreement/index",
+    "pages/passRecoverySet/index",
+    "pages/mycode/index",
+    "pages/myboss/index",
+    "pages/oferList/oferList",
+    "pages/myteam1/index",
+    "pages/myteam2/index",
+    "pages/empower/empower",
+    "pages/avatarCut/index",
+    "pages/health/index/index",
+    "pages/health/detail/detail",
+    "pages/health/proxy/proxy",
+    "pages/myAchieveHealth/myAchieveHealth",
+    "pages/health/proxyVerify/proxyVerify",
+    "pages/health/refuse/refuse",
+    "pages/health/boss/boss",
+    "pages/health/team/team",
+    "pages/health/material/material",
+    "pages/health/teamNext/teamNext",
+    "pages/health/verifyPaper/verifyPaper"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#E4592A",
+    "navigationBarTitleText": "日悦淘",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [{
+        "pagePath": "pages/index/index"
+      },
+      {
+        "pagePath": "pages/shoudan/index"
+      },
+      {
+        "pagePath": "pages/subcase/index"
+      },
+      {
+        "pagePath": "pages/address/address"
+      },
+      {
+        "pagePath": "pages/my/index"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "usingComponents": {
+    "van-checkbox": "vant-weapp/checkbox/index",
+    "van-checkbox-group": "vant-weapp/checkbox-group/index",
+    "van-popup": "vant-weapp/popup/index",
+    "van-picker": "vant-weapp/picker/index"
+
+  }
+}

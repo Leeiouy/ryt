@@ -1,0 +1,27 @@
+<!--pages/forgetpassword/index.wxml-->
+<view class="login">
+<form bindsubmit="formSubmit">
+  <view class="form">
+    <view class="user-input ali-c">
+        <image class="user-logo" src="/images/user.png"></image>
+        <input name="mobile" type="number" maxlength="11" placeholder="请输入手机号码" bindinput='mobileInputEvent'></input>
+    </view>
+    
+    <view class="user-input ali-c">
+        <image class="user-logo" src="/images/code.png"></image>
+        <input name="code" type="number" placeholder="请输入验证码"></input>
+        <view bindtap="getCode" wx:if="{{disable}}" class="get-code">获取动态验证码</view>
+        <view class='get-code disable' wx:else>{{time}}s</view>
+    </view>
+    <view class="user-input ali-c">
+        <image class="password-logo" src="/images/password.png"></image>
+        <input type="password" name="password" placeholder="请输入新密码"></input>
+    </view>
+    <view class="user-input ali-c">
+        <image class="password-logo" src="/images/password.png"></image>
+        <input type="password" name="confirm" placeholder="确认新密码"></input>
+    </view>
+  </view>
+    <button class="login-btn" form-type="submit">确定</button>
+  </form>
+</view>

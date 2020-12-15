@@ -1,0 +1,82 @@
+<!--pages/integral/index.wxml-->
+<view>
+<view class="info">
+  <image src="https://riyuetaoguoji.com/images/integral_bg.png"></image>
+  <view class="intergral">
+    <view class="useful flexv flexc ali-c">
+      <text>{{info.balance}}</text>
+      <text>当前可用积分</text>
+    </view>
+  </view>
+  <view class="withdrawl" bindtap="toCash">积分提现</view>
+  <view class="inter-detail">
+    <view class="inter flexv ali-c">
+      <text>待解冻积分</text>
+      <text>{{info.freeze_integral}}</text>
+    </view>
+    <view class="inter flexv ali-c">
+      <text>总积分0.0</text>
+      <text>{{info.total_integral}}</text>
+    </view>
+    <view class="inter flexv ali-c">
+      <text>已使用</text>
+      <text>{{info.used_integral}}</text>
+    </view>
+  </view>
+</view>
+
+<view class="achieves">
+  <view class="day-achieve">
+    <view class="day-top jus-b">
+      <text>日积分统计</text>
+      <picker value="{{today}}" mode="date" bindchange="selectDay">
+        <view class="time flex ali-c">
+          <text>{{today}}</text>
+          <image src="/images/down.png" class="down"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="content jus-b">
+      <view class="person-achie flexv ali-c">
+        <text>{{dayInter.get_integral}}</text>
+        <text>获得积分</text>
+      </view>
+      <view class="person-achie flexv ali-c">
+        <text>{{dayInter.used_integral}}</text>
+        <text>已使用积分</text>
+      </view>
+      <view class="person-achie flexv ali-c">
+        <text>{{dayInter.freeze_integral}}</text>
+        <text>待解冻积分</text>
+      </view>
+    </view>
+  </view>
+  <view class="day-achieve">
+    <view class="day-top jus-b">
+      <text>每月积分统计</text>
+      <picker mode="date" fields="month" bindchange="selectMonth">
+        <view class="time flex ali-c">
+          <text>{{month}}</text>
+          <image src="/images/down.png" class="down"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="content jus-b">
+      <view class="person-achie flexv ali-c">
+        <text>{{momthInter.get_integral}}</text>
+        <text>获得积分</text>
+      </view>
+      <view class="person-achie flexv ali-c">
+        <text>{{momthInter.used_integral}}</text>
+        <text>已使用积分</text>
+      </view>
+      <view class="person-achie flexv ali-c">
+        <text>{{momthInter.freeze_integral}}</text>
+        <text>待解冻积分</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view class="btn" bindtap="toIntergal">查看积分明细</view>
+</view>

@@ -1,0 +1,206 @@
+page {
+  background: #f1f1f1;
+}
+
+.p-d {
+  font-size: 24rpx;
+  margin-left: 54rpx;
+  margin-top: 25rpx;
+}
+
+.address {
+  width: 100%;
+  background-color: #fff;
+  padding-top: 30rpx;
+  padding-bottom: 40rpx;
+  position: relative;
+}
+
+.address-top {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 88rpx;
+}
+
+.address-top text {
+  font-size: 30rpx;
+  font-weight: bold;
+  font-stretch: normal;
+  color: #333;
+}
+
+.add-address {
+  display: flex;
+  align-items: center;
+  margin-top: 15rpx;
+  padding: 0 24rpx;
+  justify-content: space-between;
+}
+
+.add-address text {
+  font-size: 30rpx;
+  color: #444;
+  width: 85%;
+  line-height: normal;
+  word-wrap: break-word;
+}
+
+.location {
+  width: 33rpx;
+  height: 37rpx;
+}
+
+.arrow {
+  width: 12rpx;
+  height: 22rpx;
+}
+
+.line {
+  width: 100%;
+  height: 6rpx;
+  position: absolute;
+  bottom: 0rpx;
+}
+
+/*商品清单列表*/
+
+.placeholder-goods .title-ico {
+  width: 25rpx;
+  height: 30rpx;
+  margin-right: 10rpx;
+  margin-top: -2rpx;
+}
+
+.placeholder-goods  .weui-media-box__title {
+  line-height: 20px;
+  font-size: 14px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+
+.placeholder-goods .weui-media-box__desc {
+  height: 20px;
+}
+
+.placeholder-goods .weui-media-box__desc .price {
+  color: #f00;
+  font-size: 14px;
+}
+
+/*备注*/
+
+.ps-panel {
+  background-color: #fff;
+  padding: 21rpx 31rpx 21rpx;
+  margin-bottom: 80rpx;
+}
+
+.texta {
+  width: 1005;
+  height: 180rpx;
+  background-color: #f5f5f5;
+  border-radius: 5rpx;
+  margin-top: 20rpx;
+  padding: 20rpx 0 0 20rpx;
+}
+
+textarea {
+  width: 100%;
+  height: 100%;
+}
+
+/*信息列表*/
+
+.total-list {
+  font-size: 26rpx;
+  margin-top: 20rpx;
+}
+
+.total-list .weui-panel__hd {
+  color: #333;
+}
+
+.total-list:before, .total-list:after {
+  border: 0;
+}
+
+.total-list .weui-cell:before {
+  border: 0;
+}
+
+.total-list .weui-cell .weui-cell__ft {
+  color: #f00;
+}
+
+.total-information {
+  text-align: right;
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+}
+
+.total-information text {
+  color: #f00;
+}
+
+/*底部提交*/
+
+.placehoder-foot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  border-top: 1px solid #e5e5e5;
+}
+
+.placehoder-foot .font {
+  padding-right: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: right;
+}
+
+.placehoder-foot .font text {
+  color: #ff5000;
+}
+
+.placehoder-foot .placeholder-sub {
+  width: 220rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  background: #e4592a;
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+  font-size: 28rpx;
+}
+
+.group-remind {
+  height: 120rpx;
+  padding: 0 30rpx;
+  background-color: #fef6d6;
+}
+
+.group-remind .icon image {
+  width: 37rpx;
+  height: 37rpx;
+}
+
+.group-remind .text {
+  margin-left: 30rpx;
+  color: #ff6612;
+}
+
+.guige {
+  line-height: 46rpx;
+}
+/* iphone x */
+.foot-bottom {
+  height: 130rpx;
+  border-bottom: 30rpx solid #fff;
+}

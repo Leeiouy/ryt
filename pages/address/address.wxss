@@ -1,0 +1,141 @@
+/* pages/address/address.wxss */
+
+page {
+  background: #f1f1f1;
+}
+
+.address-list {
+  padding-top: 24rpx;
+  padding-bottom: 275rpx;
+}
+
+.list-bottom {
+  padding-bottom: 300rpx;
+}
+
+.address-list .address-item {
+  margin-bottom: 24rpx;
+  padding: 0 28rpx;
+  background: #fff;
+}
+
+.address-list .address-user {
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+}
+
+.address-list .address-where {
+  max-height: 80rpx;
+  line-height: 40rpx;
+}
+
+.address-set {
+  position: relative;
+  margin-top: 10rpx;
+}
+
+.address-set::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -28rpx;
+  right: -28rpx;
+  height: 1px;
+  background: #dcdcdc;
+  transform: scaleY(0.5);
+}
+
+.address-set {
+  height: 90rpx;
+  align-items: center;
+  color: #969696;
+}
+
+.address-set .address-set-btn icon {
+  margin-right: 10rpx;
+}
+
+.address-set-btn text.on {
+  color: #fd6732;
+}
+
+.address-set .operate .flexc {
+  margin-left: 20rpx;
+}
+
+.address-set .operate image {
+  width: 30rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+}
+
+.address-foot {
+  position: fixed;
+  bottom: 110rpx;
+  left: 0;
+  /* margin-bottom: 104rpx; */
+  width: 100%;
+  z-index: 9;
+  background-color: #fff;
+  padding: 18rpx 0;
+}
+
+.btn {
+  width: 95%;
+  height: 80rpx;
+  line-height: 80rpx;
+  background: rgba(247, 104, 39, 1);
+  border-radius: 42rpx;
+  color: #fff;
+  text-align: center;
+  font-size: 32rpx;
+  margin: 0 auto;
+}
+
+/*空*/
+
+.shopcart-none .none-ico {
+  display: block;
+  width: 495rpx;
+  height: 335rpx;
+  margin: 160rpx auto 44rpx;
+}
+
+.shopcart-none .none-tip {
+  color: #888;
+  text-align: center;
+}
+
+.shopcart-none .none-btn {
+  display: block;
+  width: 200rpx;
+  height: 80rpx;
+  border: 1px solid #fd6732;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  color: #fd6732;
+  text-align: center;
+  line-height: 76rpx;
+  margin: 44rpx auto;
+}
+/* 搜索 */
+.search {
+  background-color: #fff;
+  display: flex;
+}
+.search-ico {
+  width: 30rpx;
+  height: 32rpx;
+}
+.search-bg {
+  width: 94%;
+  margin: 20rpx auto;
+  background-color: #f8f8f8;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}
+input {
+  width: 70%;
+  margin-left: 15rpx;
+}

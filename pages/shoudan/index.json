@@ -1,0 +1,8 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTitleText": "收单",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "mp-tabbar": "../../components/tabbar/tabbar"}
+}

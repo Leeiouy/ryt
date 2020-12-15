@@ -1,0 +1,10 @@
+{
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#E4592A",
+  "navigationBarTitleText": "个人中心",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "mp-tabbar": "../../components/tabbar/tabbar"
+  }
+  
+}

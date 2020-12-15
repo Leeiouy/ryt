@@ -1,0 +1,72 @@
+/*订单列表*/
+page{
+  background-color: #f5f5f5;
+}
+.op{
+  opacity: 0.5;
+}
+.order-list {
+  margin-top: 22rpx;
+}
+
+.order-list .item {
+  margin-bottom: 20rpx;
+}
+
+.order-list .item.hide {
+  display: none;
+}
+
+.order-list .item .item-title {
+  height: 82rpx;
+  line-height: 80rpx;
+  padding: 0 28rpx;
+  background: #fff;
+}
+
+.order-list .item .item-goods .inner {
+  padding: 28rpx 28rpx 28rpx 0;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.order-list .item .item-goods .inner:last-child {
+  border-bottom: 0;
+  background: rgba(245, 245, 245, 1);
+}
+
+.order-list .item .item-goods .item-goods-img {
+  width: 160rpx;
+  height: 160rpx;
+  margin-right: 20rpx;
+  margin-left: 30rpx;
+}
+
+.order-list .item .item-goods .oneline {
+  /* height: 20px;
+  line-height: 20rpx;  */
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+
+.guige {
+  font-size: 24rpx;
+  color: #979797;
+}
+
+.cor-grey{
+  color:#FF5000
+}
+.order-list .item .item-total {
+  height: 70rpx;
+  line-height: 68rpx;
+  padding: 0 28rpx;
+  color: #666;
+  background: #fff;
+  text-align: right;
+  border-bottom: 2rpx solid #e5e5e5;
+}
+
+.item-total-price{
+  font-size: 30rpx;
+  color: #444;
+}

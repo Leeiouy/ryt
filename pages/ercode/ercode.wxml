@@ -1,0 +1,5 @@
+<!--pages/ercode/ercode.wxml-->
+<view class="ercode flexv ali-c">
+  <image src="/images/ercode.jpg"></image>
+  <text>请扫描上方二维码 即可查询物流信息</text>
+</view>

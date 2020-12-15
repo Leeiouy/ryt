@@ -1,0 +1,52 @@
+<!--pages/myteam/index.wxml-->
+<view wx:if="{{hasLogin}}">
+<view class="tabs">
+  <view class='tab {{currentIndex==0?"active":""}}' bindtap='tab' data-index="0" data-type="1">
+    <text>分销商（{{count}}）</text>
+  </view>
+  <view class='tab {{currentIndex==1?"active":""}}' bindtap='tab' data-index="1" data-type="2">
+    <text>直属（{{twoCount}}）</text>
+  </view>
+  <view class='tab {{currentIndex==2?"active":""}}' bindtap='tab' data-index="2" data-type="3">
+    <text>联创（{{threeCount}}）</text>
+  </view>
+</view>
+
+<view class="">
+  <view class="panel-one">
+    <text>用户信息</text>
+    <text>他的团队（人）</text>
+    <text>总收益（积分）</text>
+  </view>
+  <view class="team-panel" wx:if="{{!isNone}}">
+    <block wx:for="{{list}}" wx:key="id">
+      <view class="team-item ali-c" data-id="{{item.id}}" bindtap="see">
+        <view class="left flex">
+          <image class="head" src="{{item.avatar}}"></image>
+          <view class="left-mid">
+            <view class="flex ali-c">
+              <text>{{item.username}}</text>
+              <image class="distri" wx:if="{{item.level == 1}}" src="/images/fenxiao.png"></image>
+              <image class="distri" wx:if="{{item.level == 2}}" src="/images/direct.png"></image>
+              <image class="distri" wx:if="{{item.level == 3}}" src="/images/lianc.png"></image>
+            </view>
+            <view class="phone-num">{{item.mobile}}</view>
+          </view>
+        </view>
+        <view class="middle">{{item.invite_num}}</view>
+        <view class="right">{{item.balance}}</view>
+        <view class="more mr"></view>
+      </view>
+    </block>
+    <!--到底了提示-->
+    <view class="weui-loadmore weui-loadmore_line classify-nomore"  wx:if="{{list.length}}">
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+    </view>
+  </view>
+  <!--为空时-->
+  <view class='shopcart-none' wx:if="{{isNone}}">
+    <image src="https://riyuetaoguoji.com/images/team-none.png" class='none-ico'></image>
+    <view class='none-tip'>暂无团队信息~</view>
+  </view>
+</view>
+</view>

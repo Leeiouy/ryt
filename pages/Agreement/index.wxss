@@ -1,0 +1,4 @@
+/* pages/Agreement/index.wxss */
+.info{
+  margin: 20rpx;
+}

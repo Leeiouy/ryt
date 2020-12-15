@@ -1,0 +1,20 @@
+<!--单个商品模板-->
+<template name="product">
+  <view class='product' hover-class='none'>
+    <image src="{{baseGoodsImgUrl}}{{img}}" class='product-img'></image>
+    <view class='product-name twoline'>{{title}}</view>
+    <view class='product-prices'>
+      <view class='info-left ali-c'>
+        <text class='new'>￥{{price}}</text>
+        <!-- <text class='old'>￥{{marketprice}}</text> -->
+      </view>
+      <text class='info-right ali-c'>已售{{sales}}</text>
+    </view>
+  </view>
+</template>  
+
+<template name="loading">
+  <view class="loading" wx:if="{{loading}}">
+    <view class='load-box'></view>
+  </view>
+</template>

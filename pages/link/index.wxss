@@ -1,0 +1,64 @@
+/*搜索框*/
+page{
+  background-color: #f5f5f5;
+}
+.classify-head{
+  height: 88rpx;
+  padding:0 100rpx 0 200rpx;
+  display: flex;
+  align-items: center;
+  background: #E4592A;
+  border-bottom: 1px solid #e5e5e5;
+}
+.classify-head .navigatBack{
+  width: 88rpx;
+  height: 100%;
+}
+.classify-head .navigatBack image{
+  width: 16rpx;
+  height: 32rpx;
+}
+.classify-head .input-box{
+  flex: 1;
+  height:60rpx;
+  background: #f0f0f0;
+  border-radius: 28rpx;
+  position: relative;
+  padding: 0 50rpx 0 10rpx;
+}
+.classify-head .input-box text{
+  margin-left: 10rpx;
+  color:#888;
+}
+.classify-head .input-box image{
+  width: 38rpx;
+  height: 38rpx;
+}
+.classify-head .input-box input{
+  height: 56rpx;
+  line-height: 56rpx;
+  margin: 0 10rpx;
+  flex: 1;
+}
+.classify-head .input-box .reset-input{
+  position: absolute;
+  right: 16rpx;
+  top:14rpx;
+}
+
+.linklist{
+  padding: 0 60rpx;
+  background-color: #fff;
+}
+.linkline{
+  padding: 50rpx 0;
+  border-bottom: 1rpx solid rgba(228,228,228,1);
+}
+.linkline:last-child{
+  border: none;
+}
+.name{
+font-size:32rpx;
+font-family:PingFang SC;
+font-weight:400;
+}

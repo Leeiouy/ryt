@@ -1,0 +1,113 @@
+<!--pages/shopcart/shopcart.wxml-->
+<import src="../template/noLogin.wxml" />
+<!-- <view wx:if="{{hasUserInfo}}"> -->
+  <view class='shopcart'>
+    <!--购物车商品列表-->
+    <view wx:for="{{carts}}" wx:key="{{index}}" wx:if="{{carts.length}}" data-id="{{item.goods_id}}" data-type="{{item.type}}" bindtap="toDetail">
+      <view wx:if="{{item.expire == 0}}" class="flex item">
+        <view class='item-select flexc'>
+        <!-- <icon wx:if="{{item.expire == 1}}" type="{{circle}}" color="{{item.selected ? '#E4592A' : '#B2B2B2'}}" data-index="{{index}}" ></icon> -->
+        <icon type="{{item.selected ? 'success' : 'circle'}}" color="{{item.selected ? '#E4592A' : '#B2B2B2'}}" data-index="{{index}}" catchtap="selectList"></icon> 
+        <!-- <icon type="circle" color="#B2B2B2" ></icon> -->
+        </view>
+        <view class='item-information flex flex1'>
+          <view class='item-image' hover-class='none'>
+            <image src="{{item.image}}"></image>
+          </view>  
+          <view class='item-infor flex1'>
+            <view hover-class='none'>
+              <view class='item-title twoline'><text wx:if="{{item.type == 4}}">#大健康#</text>{{item.goods_name}}</view>
+              <view class='ali-c jus-b'>
+                <view class='item-oldprice oneline'>{{item.key_name}}</view>
+                <view class='item-price'>￥{{item.goods_price}}</view>
+              </view>
+            </view>
+            <view class='jus-b ali-c'>
+              <!--数量加减-->
+              <view class='updown flexc'>
+                <!--减-->
+                <view class='down' hover-class='button-hover' data-index="{{index}}" data-cart_id="{{item.id}}" catchtap='reduceCount'>
+                  <!-- <image src="/images/ico-updown_01.png"></image> -->
+                  <text>-</text>
+                </view>
+                <!--输入框-->
+                <input type='number' class='nums' value='{{item.num}}'disabled></input>
+                <!--加-->
+                <view class='up' hover-class='button-hover' data-index="{{index}}" data-cart_id="{{item.id}}" data-limit="{{item.limit_num}}" data-num="{{item.inventory}}" catchtap='addCount'>
+                  <!-- <image src="/images/ico-updown_03.png"></image> -->
+                  <text>+</text>
+                </view>
+              </view>
+              <!--删除-->
+              <image src="/images/search-ico-delete.png" class='item-delete' data-index="{{index}}" data-cart_id="{{item.id}}" catchtap='deleteGoods'></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 不能购买的商品 -->
+    <view wx:for="{{carts}}" wx:key="{{index}}" wx:if="{{carts.length}}" >
+      <view wx:if="{{item.expire == 1}}" class="flex item">
+        <view class='item-select flexc'>
+        <icon type="circle" color="#B2B2B2" ></icon>
+      </view>
+      <view class='item-information flex flex1'>
+        <navigator class='item-image' hover-class='none' >
+          <image src="{{item.image}}" style="position:relative;" style="opacity:0.4"></image>
+          <image style="position:absolute;width:100rpx;height:100rpx;z-index:99;margin:45rpx 0 0 -145rpx;" src="../../images/shopping_shou.png"></image>
+        </navigator>  
+        <view class='item-infor flex1'>
+          <navigator hover-class='none'>
+            <view class='item-title twoline' style="opacity:0.4">{{item.goods_name}}</view>
+            <view class='ali-c jus-b'>
+              <view class='item-oldprice oneline' style="opacity:0.4">{{item.key_name}}</view>
+              <view class='item-price' style="opacity:0.4">￥{{item.goods_price}}</view>
+            </view>
+          </navigator>
+          <view class='jus-b ali-c'>
+            <!--数量加减-->
+            <view class='updown flexc'>
+              <!--减-->
+              <view class='down' hover-class='button-hover' data-index="{{index}}" data-cart_id="{{item.id}}" style="opacity:0.4">
+                <!-- <image src="/images/ico-updown_01.png"></image> -->
+                <text>-</text>
+              </view>
+              <!--输入框-->
+              <input type='number' class='nums' value='{{item.num}}'disabled style="opacity:0.4"></input>
+              <!--加-->
+              <view class='up' hover-class='button-hover' data-index="{{index}}" data-cart_id="{{item.id}}" data-limit="{{item.limit_num}}" data-num="{{item.inventory}}" style="opacity:0.4">
+                <!-- <image src="/images/ico-updown_03.png"></image> -->
+                <text>+</text>
+              </view>
+            </view>
+            <!--删除-->
+            <image src="/images/search-ico-delete.png" class='item-delete' data-index="{{index}}" data-cart_id="{{item.id}}" catchtap='deleteGoods'></image>
+          </view>
+        </view>
+      </view>
+      </view>
+    </view>
+    <!--空购物车-->
+    <view class='shopcart-none' wx:if="{{isNone}}">
+      <image src="/images/none-order.png" class='none-ico'></image>
+      <view class='none-tip'>您的购物车还没有商品哦~</view>
+      <navigator open-type='switchTab' url="/pages/index/index" class='none-btn' hover-class='none'>去逛逛</navigator>
+    </view>
+  </view>
+<!--底部结算-->
+  <block wx:if="{{!isNone}}">
+    <view class='seat-bottom'></view>
+    <view class='shopcart-foot flex {{isX? "foot-bottom" :""}}'>
+      <view class='foot-select flexc'>
+        <icon type='success' color="#E4592A" hidden="{{!selectAllStates}}" bindtap="selectAll"></icon>
+        <icon type='circle' color="#B2B2B2" hidden="{{selectAllStates}}" bindtap="selectAll"></icon>    
+      </view>
+      <view class='foot-all' bindtap="selectAll"><text>全选</text></view>
+      <view class='flex1 foot-total'>合计：￥{{totalPrice}} <text wx:if="{{totalFreight}}">运费: ￥{{totalFreight}}</text></view>
+      <view class='foot-sub flexc' bindtap="toPlaceOrder">去结算</view>
+    </view> 
+  </block>
+<!-- </view> -->
+
+<!-- 登录授权弹窗 -->
+<!-- <template is="noLogin" data="{{hasUserInfo}}"></template> -->

@@ -1,0 +1,11 @@
+<view class="invite">
+  <view class="invite-code flexc flexv">
+    <view class="top">您的邀请码</view>
+    <view class="code">{{code}}</view>
+    <view class="btn" bindtap="copy">复制</view>
+    <view class="line"></view>
+    <image class="qrcode" src="{{qrCode}}"></image>
+    
+    <view class="save" bindtap="downLoad">保存二维码</view>
+  </view>
+</view>

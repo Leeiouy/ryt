@@ -1,0 +1,17 @@
+<template name="noLogin">
+ <view class='mask flexc' wx:if="{{!hasUserInfo}}" style='background:rgba(0,0,0,0.8)' catchtouchmove="move">
+    <view class='noLogin' hover-class='none' style='padding: 50rpx 20rpx 20rpx 20rpx;width: 480rpx;border-radius: 10rpx;background-color: #fff;'>
+      <view class='noLogin-cards' style='text-align: center;'>
+        <image src='/images/logo.png' mode="widthFix" style='width: 130rpx;height: 130rpx;'></image>
+        <view class='text' style='font-size: 36rpx;margin-top: 10rpx;'>欧艺美容</view>
+      </view>
+      <view class='noLogin-desc' style='text-align: center;color: #999;margin-top: 30rpx;'>
+        <text>此操作需要您授权个人信息!</text>
+      </view>
+      <button class='noLogin-btn flexc' open-type="getUserInfo" bindgetuserinfo="WeChatUserInfo" style='height: 80rpx;margin-top: 30rpx;background-color: #1376cd;'>
+        <image src='/images/WeChat-icon.png' style='width: 34rpx;height: 34rpx;margin-right: 10rpx;'></image>
+        <text style='font-size: 26rpx;color: #fff;'>微信登录授权</text>
+      </button>
+    </view>
+ </view>
+</template>  

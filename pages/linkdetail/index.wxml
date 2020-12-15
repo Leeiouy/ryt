@@ -1,0 +1,39 @@
+<view>
+
+        <view class="weui-panel">
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_small-appmsg">
+                    <view class="weui-cells weui-cells_in-small-appmsg">
+                        <view class="weui-cell weui-cell_example weui-cell_access">
+                            <view class="weui-cell__hd"><image src="/images/addre_icon_contact.png" style="width: 24rpx;height: 26rpx;margin-right: 16px;vertical-align:middle;" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view>小葵</view>
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_example weui-cell_access">
+                            <view class="weui-cell__hd"><image src="/images/addre_icon_number.png" style="width: 29rpx;height: 29rpx;margin-right: 16px;vertical-align:middle;" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view>176 2103 1234</view>
+                            </view>
+                        </view>
+                        <view class="weui-cell weui-cell_example weui-cell_access">
+                            <view class="weui-cell__hd"><image src="/images/address_icon_adress.png" style="width: 25rpx;height: 31rpx;margin-right: 16px;vertical-align:middle;" /></view>
+                            <view class="weui-cell__bd weui-cell_primary">
+                                <view class="address">江西省南昌市青云谱区新地路6号昌南工业园新地路6号南昌嘉瑞科技发展有限公司7楼</view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="oporation jus-b ali-c">
+          <view class="left ali-c" bindtap="edit">
+            <image src="/images/address_icon_editor.png"></image>
+            <text>编辑</text>
+          </view>
+          <view class="right ali-c" bindtap="deleted">
+            <image src="/images/search-ico-delete.png"></image>
+            <text>删除</text>
+          </view>
+        </view>
+</view>

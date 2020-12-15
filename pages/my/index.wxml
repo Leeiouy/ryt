@@ -1,0 +1,145 @@
+<view>
+	<view class="center">
+		<view class="info">
+			<navigator url="../myinformation/index" hover-class="none" wx:if="{{hasLogin}}">
+				<view class="my-info jus-b ali-c">
+					<view class="flex">
+						<view class="info-box" wx:if="{{hasLogin}}">
+							<image class="portrait" src="{{info.avatar}}" mode="aspectFill"></image>
+						</view>
+						<view class="user-num flexv" wx:if="{{hasLogin}}">
+							<text class="nick">{{info.username}}</text>
+							<text class="mobile">{{info.mobile}}</text>
+						</view>
+						<image class="distri" wx:if="{{info.level == 1}}" src="/images/fenxiao.png"></image>
+						<image class="distri" wx:if="{{info.level == 2}}" src="/images/direct.png"></image>
+						<image class="distri" wx:if="{{info.level == 3}}" src="/images/lianc.png"></image>
+					</view>
+					<view class="info-arrow weui-cell__ft weui-cell__ft_in-access"></view>
+				</view>
+			</navigator>
+
+			<navigator url="../logintwo/index" hover-class="none" wx:if="{{!hasLogin}}">
+				<view class="my-info jus-b ali-c">
+					<view class="flex">
+						<image class="portrait" src="{{info.avatar}}"></image>
+						<view class="user-num flexv flexc" wx:if="{{!hasLogin}}">登录/注册</view>
+					</view>
+					<view class="info-arrow weui-cell__ft weui-cell__ft_in-access"></view>
+				</view>
+			</navigator>
+		</view>
+
+		<view class='order'>
+			<view class='oder-top'>
+				<text class='my-order'>我的订单</text>
+				<view bindtap='toOrder' data-type='0' data-state="1" class='all-oder'>
+					<text>查看全部订单</text>
+					<image class='jiantou' src='../../images/right_arrow.png'></image>
+				</view>
+			</view>
+			<view class='order-bottom'>
+				<view bindtap='toOrder' data-type='1' data-state="10" class='order-list'>
+					<view class="badge" wx:if="{{orders[0].badge>0}}">{{orders[0].badge}}</view>
+					<image class='list-img' mode='aspectFit' src='{{orders[0].image}}'></image>
+					<view class='order-text'>待确定</view>
+				</view>
+				<view bindtap='toOrder' data-type='2' data-state="20" class='order-list'>
+					<view class="badge" wx:if="{{orders[1].badge>0}}">{{orders[1].badge}}</view>
+					<image class='list-img wait_sent' mode='aspectFit' src='{{orders[1].image}}'></image>
+					<view class='order-text'>待发货</view>
+				</view>
+				<view bindtap='toOrder' data-type='3' data-state="30" class='order-list'>
+					<view class="badge" wx:if="{{orders[2].badge>0}}">{{orders[2].badge}}</view>
+					<image class='list-img' mode='aspectFit' src='{{orders[2].image}}'></image>
+					<view class='order-text'>已发货</view>
+				</view>
+				<view bindtap='toOrder' data-type='4' data-state="50" class='order-list'>
+					<view class="badge" wx:if="{{orders[3].badge>0}}">{{orders[3].badge}}</view>
+					<image class='list-img' mode='aspectFit' src='{{orders[3].image}}'></image>
+					<view class='order-text'>已完成</view>
+				</view>
+				<view bindtap='toAfterOrder' class='order-list'>
+					<view class="badge" wx:if="{{orders[4].badge>0}}">{{orders[4].badge}}</view>
+					<image class='list-img' mode='aspectFit' src='{{orders[4].image}}'></image>
+					<view class='order-text'>售后订单</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="invite">
+			<image src="{{data.ad}}" bindtap="toInvite"></image>
+			<navigator url="../invite/index" wx:if="{{hasLogin}}" hover-class="none">
+				<view class="invitbtn">立即点击</view>
+			</navigator>
+		</view>
+
+		<view class="nav">
+			<view class="title">团品系列</view>
+			<view class="list">
+				<view class="item" wx:for="{{serviceList}}" wx:key="index" bindtap="shortcut" data-id="{{item.id}}">
+					<image src="{{item.image}}"></image>
+					<text>{{item.name}}</text>
+				</view>
+			</view>
+		</view>
+
+		<view class="nav" wx:if="{{info.distributor > 0}}">
+			<view class="title health">
+				<text class="title">大健康系列</text>
+				<view class="level-h">
+					<image src="/images/tag-h.png	"></image>
+					<text wx:if="{{info.distributor == 1}}">分销</text>
+					<text wx:if="{{info.distributor == 2}}">直属</text>
+					<text wx:if="{{info.distributor == 3}}">联创</text>
+				</view>
+			</view>
+			<view class="list">
+				<view class="item" wx:for="{{bighealthList}}" wx:key="index" bindtap="shortcut" data-id="{{item.id}}">
+					<image src="{{item.image}}"></image>
+					<text>{{item.name}}</text>
+				</view>
+			</view>
+		</view>
+
+    <view class="nav">
+			<view class="title">常用功能</view>
+			<view class="list">
+				<view class="item" wx:for="{{toolList}}" wx:key="index" bindtap="shortcut" data-id="{{item.id}}">
+					<image src="{{item.image}}"></image>
+					<text>{{item.name}}</text>
+				</view>
+				<view class="item" wx:if="{{info.distributor > 0}}" bindtap="shortcut" data-id="{{999}}">
+					<image src="https://ryuetao.oss-cn-beijing.aliyuncs.com//uploads/20200814/b41e32fe6f908ea4874c3ab271e017c1.png"></image>
+					<text>设置二维码</text>
+				</view>
+			</view>
+		</view>
+
+
+
+		<view class="dialog-content" hidden="{{isShow}}">
+			<view class="weui-mask" bindtap="closeDialog"></view>
+			<form bindsubmit='formSubmit'>
+				<view class="dialog">
+					<image class="my-buy" src="/images/my_buy.png"></image>
+					<view class="content flex-wrap">
+						<view class="box-item {{currentId==item.id? 'item-active' : ''}}" bindtap='choseItem' data-id="{{item.id}}" data-item="{{item.name}}" wx:for="{{buyList}}" wx:key="*this">{{item.name}}</view>
+					</view>
+					<view class="desc">
+						<text class="desc-text">描述</text>
+						<view class="text-bg">
+							<textarea name="mark" placeholder="请对您想购买的商品进行简短的描述" placeholder-style="color:#cccccc"></textarea>
+						</view>
+					</view>
+					<button class="submit" form-type="submit">提交</button>
+					<image class="close" bindtap="closeDialog" src="/images/close.png"></image>
+				</view>
+			</form>
+		</view>
+	</view>
+
+	<view class="foot-space"></view>
+
+	<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" current="4"></mp-tabbar>
+</view>

@@ -1,0 +1,73 @@
+/* pages/collect/collect.wxss */
+page{
+  background: #f1f1f1;
+}
+/*收藏商品*/
+.collect-item{
+  padding: 28rpx;
+  background: #fff;
+  border-bottom: 1px solid #e5e5e5;
+}
+.collect-item .img-box{
+  width: 190rpx;
+  height: 190rpx;
+  margin-right: 20rpx;
+}
+.collect-item .twoline{
+  height: 80rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+}
+.collect-item .item-price{
+  margin-top:20rpx;
+}
+.collect-item .item-price .cor-red{
+  font-size: 36rpx;
+  margin-right: 20rpx;
+}
+.collect-item .item-price .cor-grey{
+  text-decoration: line-through;
+}
+.collect-item .item-delete{
+  width: 32rpx;
+  height: 32rpx;
+}
+.weui-loadmore__tips_in-line{
+  background: #f1f1f1;
+}
+.c-delete{
+  width: 26rpx;
+  height: 26rpx;
+  margin-top: 71rpx;
+  margin-left: 448rpx;
+}
+/*为空提示*/
+.shopcart-none{
+  overflow: hidden;
+}
+.shopcart-none .none-ico{
+  display: block;
+  width: 495rpx;
+  height: 335rpx;
+  margin: 250rpx auto 44rpx;
+}
+.shopcart-none .none-tip{
+  color:#888;
+  text-align: center;
+}
+.shopcart-none .none-btn{
+  display: block;
+  width: 200rpx;
+  height: 80rpx;
+  border: 1px solid #fd6732;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  text-align: center;
+  line-height: 76rpx;
+  margin: 44rpx auto;
+  color: #fd6732;
+}
+
+.goods-title text {
+  color: #1EAB22;
+}

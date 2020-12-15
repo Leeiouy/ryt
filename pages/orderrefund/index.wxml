@@ -1,0 +1,74 @@
+<view>
+  <view class="sates" wx:if="{{data.refund_status==10}}">退款中（等待商家回复）</view>
+  <view class="sates" wx:if="{{data.refund_status==20}}">退款成功（卖家已同意退款，商家已线下退款）</view>
+  <view class="sates" wx:if="{{data.refund_status==30}}">待发货（商家已驳回）</view>
+   <!--收货地址-->
+  <view class='address'>
+    <view class='address-top'>
+      <text>收货人：{{address.name}}</text>
+      <text>{{address.phone}}</text>
+    </view>
+    <view class='add-address'>
+    <view class='location'>
+      <image src='../../images/address_icon_adress.png'></image>
+      </view>
+      <text>收货地址：{{address.site}}</text>
+    </view>
+  </view>
+
+  
+  <!--订单信息-->
+  <view class='od-infor'>
+    <view>订单编号：{{data.order_no}}</view>
+    <view>下单时间：{{placeOrdertime}}</view>
+    <view wx:if="{{info.zftype != 0}}">支付方式：<text wx:if="{{info.zftype == 1}}">余额支付</text><text wx:if="{{info.zftype == 2}}">微信支付</text><text wx:if="{{data.zf_type == 30}}">线下支付</text></view>
+    <view>退款原因：{{data.refund_reason}}</view>
+    <view>退款详情：{{data.rerefund_question}}</view>
+  </view>
+
+  <!--商品信息-->
+  <view class="order-list" >
+    <view class='item' >
+      <!--订单信息-->
+      <view class='item-title jus-b'>
+        <text>商品信息</text>
+      </view>
+      <!--商品列表-->
+      <view class='item-goods' wx:for="{{data.sub}}" wx:key="*this">
+        <view class='flex'>
+          <view class='item-goods-img'>
+            <image src="{{item.image}}" class='fill'></image>
+          </view>
+          <view class='flex1'>
+            <view class='twoline'>{{item.goods_name}}</view>
+            <view class='ali-c jus-b'>
+              <view>
+                <view class="guige">{{item.key_name}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--价格信息-->
+  <view class='od-moeny'>
+    <view class='jus-b'>
+      <text>商品数量：</text>
+      <text>X{{totalNum}}</text>
+    </view>
+    <view class='jus-b'>
+      <text>商品运费：</text>
+      <text>¥{{data.express_price}}</text>
+    </view>
+    <view class='jus-b'>
+      <text>商品金额：</text>
+      <text>¥{{data.pay_price}}</text>
+    </view>
+    <view class='jus-b'>
+      <text>实付款：</text>
+      <text class='cor-red'>¥{{data.total_price}}</text>
+    </view>
+  </view>
+</view>

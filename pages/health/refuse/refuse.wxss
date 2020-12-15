@@ -1,0 +1,52 @@
+/* pages/health/refuse/refuse.wxss */
+.my-container {
+  background: #F5F5F5;
+  padding-top: 20rpx;
+  min-height: 100vh;
+}
+
+.response {
+  width: 100%;
+  height: 410rpx;
+  background: #fff;
+  position: relative;
+}
+
+.response textarea {
+  height: 100%;
+  width: 100%;
+  padding: 40rpx 30rpx;
+  box-sizing: border-box;
+}
+
+.response .ph-style {
+  font-size: 28rpx;
+  color: #CCCCCC;
+}
+
+.response .count {
+  position: absolute;
+  bottom: 27rpx;
+  right: 30rpx;
+  font-size: 24rpx;
+  color: #999;
+  font-weight: 500;
+}
+
+.btn {
+  height: 88rpx;
+  width: 660rpx;
+  background: #FFBFB1;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 100rpx auto 0;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.btn.on {
+  background: #FF7A4E;
+}

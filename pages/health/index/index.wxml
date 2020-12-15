@@ -1,0 +1,71 @@
+<!--pages/health/index/index.wxml-->
+<view class="my-container">
+	<!-- banner -->
+	<swiper wx:if="{{banner}}">
+		<swiper-item>
+			<image src="{{banner}}"></image>
+		</swiper-item>
+	</swiper>
+
+	<!-- list -->
+	<view id="todayGroup" wx:if="{{todayGoods.length > 0}}">
+		<view>
+			<block wx:for="{{todayGoods}}" wx:key="index">
+				<view class="today-item">
+					<navigator url="../detail/detail?goods_id={{item.goods_id}}&isBigHealth={{isBigHealth}}" hover-class="none">
+						<view class="limited-goods">
+							<image class="tips" src="/images/hentiao.png" wx:if="{{stock_alarm*100/100 > item.stock_num*100/100}}"></image>
+							<image src="{{item.image}}"></image>
+						</view>
+					</navigator>
+					<view class="limited-bottom flex jus-b">
+						<view class="li-left">
+							<view class="limited-bottom flex jus-b">
+								<view class="li-left">
+									<view class="goods-name twoline">{{item.goods_name}}</view>
+								</view>
+							</view>
+							<view class="li-prices flex">
+								<view class="li-price" wx:if="{{item.goods_price}}">
+									<text>团购价</text>
+									<text>￥{{item.goods_price}}</text>
+								</view>
+								<view class="li-price agence" wx:if="{{item.retail_price && hasLogin}}">
+									<text>分销价</text>
+									<text>￥{{item.retail_price}}</text>
+								</view>
+								<view class="li-price agence" wx:if="{{item.direct_price}}">
+									<text>直属价</text>
+									<text>￥{{item.direct_price}}</text>
+								</view>
+								<view class="li-price agence" wx:if="{{item.lianc_price}}">
+									<text>联创价</text>
+									<text>￥{{item.lianc_price}}</text>
+								</view>
+							</view>
+						</view>
+					</view>
+					<view class="li-done flex" hidden="{{item.buyer_num == 0}}">
+						<view class="heads flex">
+							<view class="head" wx:for="{{item.buyer}}" wx:key="index">
+								<image src="{{item}}"></image>
+							</view>
+						</view>
+						<view class="nums">{{item.buyer_num}}人已抢</view>
+						<navigator url="../detail/detail?goods_id={{item.goods_id}}&isBigHealth={{isBigHealth}}" hover-class="none" class="li-right li-on">
+							立即抢购
+						</navigator>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+
+	<!--为空时-->
+<view class='shopcart-none' wx:else>
+  <image src="/images/none-order.png" class='none-ico'></image>
+  <view class='none-tip'>大健康产品还未上架，敬请期待哟~</view>
+</view>
+
+
+</view>

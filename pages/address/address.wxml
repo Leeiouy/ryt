@@ -1,0 +1,54 @@
+<!--pages/address/address.wxml-->
+<view class="search">
+      <view class="search-bg flex ali-c">
+        <image class="search-ico" src="/images/ico-zoom.png"></image>
+        <input bindinput="searchAddress" value="{{info}}" 
+        placeholder="请输入收货人姓名/收货人电话"></input>
+      </view>
+</view>
+<view wx:if="{{hasLogin}}">
+  <!--收货地址列表-->
+  <view class='address-list {{isX?"list-bottom":""}}' wx:if="{{!isNone && addressList.length > 0}}">
+    <!--收货地址-->
+    <view class='address-item' wx:for="{{addressList}}" wx:key="*this">
+      <view wx:key="{{item.address_id}}"  data-id="{{item.address_id}}" data-item="{{item}}">
+        <view class='address-user jus-b'>
+          <text>{{item.name}}</text>
+          <text>{{item.phone}}</text>
+        </view>
+        <view class='address-where twoline'>{{item.province}}{{item.city}}{{item.region}}</view>
+      </view>
+      <view class='address-set jus-b'>
+        <view class='address-set-btn flexc {{active == index ? "on" : ""}}' data-id="{{item.address_id}}" data-status="{{item.isdefault}}" bindtap="setDefault">
+          <icon type="{{item.isdefault == 1 ? 'success' : 'circle'}}" size="17" color="{{item.isdefault == 1 ? '#fd6732' : '#8a8a8a'}}"></icon>
+          <text class="{{item.isdefault == 1 ? 'on': ''}}">{{item.isdefault == 1 ? '默认地址': '设为默认'}}</text>
+        </view>
+        <view class='operate flex'>
+          <view class='operate-exit flexc' data-item="{{item}}" catchtap='editAddress'>
+            <image src="/images/address_icon_editor.png"></image>
+            <text>编辑</text>
+          </view>
+          <view class='operate-del flexc' data-status="{{item.isdefault}}" data-id="{{item.address_id}}" catchtap='clickDeleteAddress'>
+            <image src="/images/search-ico-delete.png"></image>
+            <text>删除</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--为空提示-->
+    <view class='shopcart-none' wx:if="{{isNone}}">
+      <image src="https://riyuetaoguoji.com/images/address-none.png" class='none-ico'></image>
+      <view class='none-tip'>亲，你还没有添加收货地址噢哦~</view>
+      <navigator url="/pages/addressAdd/addressAdd" class='none-btn' hover-class='none'>去添加</navigator>
+    </view>
+  </view>
+
+  <!--底部-->
+  <navigator wx:if="{{!isNone}}" url="/pages/addressAdd/addressAdd" class='address-foot' style="bottom: {{marginBottm + 110}}rpx;" hover-class="none">
+    <view class="btn">添加新地址</view>
+  </navigator>
+</view>
+
+<!-- <tab></tab> -->
+<!-- <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" current="3"></mp-tabbar> -->
+<mp-tabbar style="position:fixed;height:110rpx;bottom:{{marginBottm ? marginBottm : 0}}rpx;padding-bottom:{{marginBottm ? marginBottm : 0}}rpx;width:100%;left:0;right:0;z-index:999;box-sizing:border-box;" current="3"></mp-tabbar>

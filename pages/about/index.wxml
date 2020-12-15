@@ -1,0 +1,7 @@
+<!--pages/about/index.wxml-->
+<import src="/wxParse/wxParse.wxml" />
+
+<view class="detail-tab-content info">
+  <!--通过wxParese解析html-->
+  <template is="wxParse" data="{{wxParseData: info.nodes}}" />
+</view>

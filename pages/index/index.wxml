@@ -1,0 +1,316 @@
+<view>
+	<scroll-view>
+		<view class="index" style="padding-bottom: 120rpx;">
+			<!-- margin-bottom:{{marginBottom}} -->
+			<view style="height: {{tabheight}}px">
+				<view class="statusBar" style="height: {{tabheight}}px"></view>
+			</view>
+			<view class="top">
+				<image class="top-bg" src="/images/logo.png"></image>
+				<!--轮播-->
+				<view class='swipe-box'>
+					<swiper autoplay circular interval="5000" indicator-dots="true">
+						<swiper-item wx:for="{{banner}}" wx:key="index" data-url="{{item.url}}" wx:for="{{banner}}" bindtap="clickToDetail">
+							<image lazy-load="{{true}}" src="{{item.image}}" mode="aspectFil" class="slide-image" />
+						</swiper-item>
+					</swiper>
+				</view>
+			</view>
+			<!--公告-->
+			<view class="index-notice">
+				<view class='index-notice-ico ali-c'>
+					<image src="/images/index-topic.png"></image>
+				</view>
+				<navigator class='index-notice-swiper' hover-class="none" url="../notice/notice">
+					<view class='scroll'>
+						<view class='item-box {{isTop == true ? "to-top" : ""}}'>
+							<view class='item' wx:for="{{titles}}" wx:key="index">{{item.title}}</view>
+						</view>
+					</view>
+				</navigator>
+			</view>
+
+			<!--分类导航-->
+			<view class='index-nav'>
+				<block wx:for="{{nav}}" wx:key="index">
+					<view bindtap="goNav" data-name="{{item.name}}" class='nav-item flex flexv ali-c'>
+						<image src="{{item.image}}"></image>
+						<text>{{item.name}}</text>
+					</view>
+				</block>
+			</view>
+			<!-- 限时秒杀 -->
+			<view class="limitGoods">
+				<view class="limited">
+					<block wx:for="{{limitedGoods}}" wx:key="index" wx:for-index='index'>
+						<view class="item-limited" hidden="{{item.end==1}}">
+							<view class="limit flex jus-b">
+								<view class="left">
+									<image src="/images/xianliang.png"></image>
+								</view>
+								<view class="right flex flexc" wx:if="{{item.start && item.start == 1}}">
+									<text>距结束</text>
+									<view class="time flex flexc">
+										<!-- <view class="hour time-box">{{item.timeText.d}}</view>
+                <text>:</text> -->
+										<view class="hour time-box">{{item.timeText.h}}</view>
+										<text>:</text>
+										<view class="minute time-box">{{item.timeText.m}}</view>
+										<text>:</text>
+										<view class="second time-box">{{item.timeText.s}}</view>
+									</view>
+								</view>
+								<view class="right flex flexc" wx:if="{{item.will && item.will == 1}}">
+									<text>距开始</text>
+									<view class="time flex flexc">
+										<!-- <view class="hour time-box">{{item.timeText.d}}</view>
+                <text>:</text> -->
+										<view class="hour time-box">{{item.timeText.h}}</view>
+										<text>:</text>
+										<view class="minute time-box">{{item.timeText.m}}</view>
+										<text>:</text>
+										<view class="second time-box">{{item.timeText.s}}</view>
+									</view>
+								</view>
+							</view>
+							<navigator url="../productdetail/index?goods_id={{item.goods_id}}" hover-class="none" wx:if="{{item.start && item.start == 1}}">
+								<view class="limited-goods" data-id="{{item.goods_id}}" wx:if="{{item.start && item.start == 1}}">
+									<image class="tips" src="/images/hentiao.png" wx:if="{{stock_alarm*100/100 > item.stock_num*100/100}}"></image>
+									<image src="{{item.image}}" binderror="errorFunction" data-index="{{index}}"></image>
+								</view>
+							</navigator>
+							<view class="limited-goods" wx:if="{{item.will && item.will == 1}}" data-id="{{item.goods_id}}">
+								<image class="tips" src="/images/hentiao.png" wx:if="{{stock_alarm*100/100 > item.stock_num*100/100}}"></image>
+								<image src="{{item.image}}"></image>
+							</view>
+							<view class="limited-bottom flex jus-b">
+								<view class="li-left">
+									<view class="goods-name twoline">{{item.goods_name}}</view>
+								</view>
+								<view class="li-right" wx:if="{{item.will && item.will == 1}}">
+									待秒杀
+								</view>
+							</view>
+							<view class="li-prices flex">
+								<view class="li-price" wx:if="{{item.goods_price}}">
+									<text>团购价</text>
+									<text>￥{{item.goods_price}}</text>
+								</view>
+								<view class="li-price agence" wx:if="{{item.retail_price && hasLogin}}">
+									<text>分销价</text>
+									<text>￥{{item.retail_price}}</text>
+								</view>
+								<view class="li-price agence" wx:if="{{item.direct_price}}">
+									<text>直属价</text>
+									<text>￥{{item.direct_price}}</text>
+								</view>
+								<view class="li-price agence" wx:if="{{item.lianc_price}}">
+									<text>联创价</text>
+									<text>￥{{item.lianc_price}}</text>
+								</view>
+							</view>
+							<view class="li-done flex" hidden="{{item.buyer_num == 0}}">
+								<view class="heads flex">
+									<view class="head" wx:for="{{item.buyer}}" wx:key="index">
+										<image lazy-load="true" src="{{item}}"></image>
+									</view>
+								</view>
+								<view class="nums">{{item.buyer_num}}人已抢</view>
+								<navigator wx:if="{{item.start && item.start== 1}}" url="../productdetail/index?goods_id={{item.goods_id}}" hover-class="none" class="li-right li-on">
+									去秒杀
+								</navigator>
+							</view>
+						</view>
+					</block>
+				</view>
+			</view>
+
+			<!-- 今日团品 -->
+			<view id="todayGroup" wx:if="{{todayGoods.length}}">
+				<view>
+					<view class="limited-top">
+						<view class="sub-title flex">
+							<image src="/images/title_l.png"></image>
+							<text>爆款推荐</text>
+							<image src="/images/title_r.png"></image>
+						</view>
+					</view>
+					<block wx:for="{{todayGoods}}" wx:key="index">
+						<view class="today-item">
+							<navigator url="../productdetail/index?goods_id={{item.goods_id}}" hover-class="none">
+								<view class="limited-goods">
+									<image class="tips" src="/images/hentiao.png" wx:if="{{stock_alarm*100/100 > item.stock_num*100/100}}"></image>
+									<image src="{{item.image}}"></image>
+								</view>
+							</navigator>
+							<view class="limited-bottom flex jus-b">
+								<view class="li-left">
+									<view class="limited-bottom flex jus-b">
+										<view class="li-left">
+											<view class="goods-name twoline">{{item.goods_name}}</view>
+										</view>
+									</view>
+									<view class="li-prices flex">
+										<view class="li-price" wx:if="{{item.goods_price}}">
+											<text>团购价</text>
+											<text>￥{{item.goods_price}}</text>
+										</view>
+										<view class="li-price agence" wx:if="{{item.retail_price && hasLogin}}">
+											<text>分销价</text>
+											<text>￥{{item.retail_price}}</text>
+										</view>
+										<view class="li-price agence" wx:if="{{item.direct_price}}">
+											<text>直属价</text>
+											<text>￥{{item.direct_price}}</text>
+										</view>
+										<view class="li-price agence" wx:if="{{item.lianc_price}}">
+											<text>联创价</text>
+											<text>￥{{item.lianc_price}}</text>
+										</view>
+									</view>
+								</view>
+							</view>
+							<view class="li-done flex" hidden="{{item.buyer_num == 0}}">
+								<view class="heads flex">
+									<view class="head" wx:for="{{item.buyer}}" wx:key="index">
+										<image src="{{item}}"></image>
+									</view>
+								</view>
+								<view class="nums">{{item.buyer_num}}人已抢</view>
+								<navigator url="../productdetail/index?goods_id={{item.goods_id}}" hover-class="none" class="li-right li-on">
+									立即抢购
+								</navigator>
+							</view>
+						</view>
+					</block>
+				</view>
+			</view>
+
+			<!-- 大健康推荐 -->
+			<view id="todayGroup" wx:if="{{djkGoods.length > 0}}">
+				<view>
+					<view class="limited-top">
+						<view class="sub-title flex">
+							<image src="/images/title_l.png"></image>
+							<text>大健康推荐</text>
+							<image src="/images/title_r.png"></image>
+						</view>
+					</view>
+					<block wx:for="{{djkGoods}}" wx:key="index">
+						<view class="today-item">
+							<navigator url="/pages/health/detail/detail?goods_id={{item.goods_id}}&isBigHealth={{distributor}}" hover-class="none">
+								<view class="limited-goods">
+									<image class="tips" src="/images/hentiao.png" wx:if="{{stock_alarm*100/100 > item.stock_num*100/100}}"></image>
+									<image src="{{item.image}}"></image>
+								</view>
+							</navigator>
+							<view class="limited-bottom flex jus-b">
+								<view class="li-left">
+									<view class="limited-bottom flex jus-b">
+										<view class="li-left">
+											<view class="goods-name twoline">{{item.goods_name}}</view>
+										</view>
+									</view>
+									<view class="li-prices flex">
+										<view class="li-price" wx:if="{{item.goods_price}}">
+											<text>团购价</text>
+											<text>￥{{item.goods_price}}</text>
+										</view>
+										<view class="li-price agence" wx:if="{{item.retail_price && hasLogin}}">
+											<text>分销价</text>
+											<text>￥{{item.retail_price}}</text>
+										</view>
+										<view class="li-price agence" wx:if="{{item.direct_price}}">
+											<text>直属价</text>
+											<text>￥{{item.direct_price}}</text>
+										</view>
+										<view class="li-price agence" wx:if="{{item.lianc_price}}">
+											<text>联创价</text>
+											<text>￥{{item.lianc_price}}</text>
+										</view>
+									</view>
+								</view>
+							</view>
+							<view class="li-done flex" hidden="{{item.buyer_num == 0}}">
+								<view class="heads flex">
+									<view class="head" wx:for="{{item.buyer}}" wx:key="index">
+										<image src="{{item}}"></image>
+									</view>
+								</view>
+								<view class="nums">{{item.buyer_num}}人已抢</view>
+								<navigator url="/pages/health/detail/detail?goods_id={{item.goods_id}}&isBigHealth={{distributor}}" hover-class="none" class="li-right li-on">
+									立即抢购
+								</navigator>
+							</view>
+						</view>
+					</block>
+				</view>
+			</view>
+
+			<!-- 甄选优品 -->
+			<view wx:if="{{oferItem.length}}">
+				<view class="limited-top">
+					<view class="sub-title flex">
+						<image src="/images/title_l.png"></image>
+						<text>甄选优品</text>
+						<image src="/images/title_r.png"></image>
+						<navigator url="/pages/oferList/oferList" class="more" hover-class="none">更多</navigator>
+					</view>
+				</view>
+				<block wx:for="{{oferItem}}" wx:key="index">
+					<view class="today-item">
+						<navigator url="../productdetail/index?goods_id={{item.goods_id}}" hover-class="none">
+							<view class="limited-goods">
+								<image class="tips" src="/images/hentiao.png" wx:if="{{stock_alarm*100/100 > item.stock_num*100/100}}"></image>
+								<image src="{{item.image}}"></image>
+							</view>
+						</navigator>
+						<view class="limited-bottom flex jus-b">
+							<view class="li-left">
+								<view class="limited-bottom flex jus-b">
+									<view class="li-left">
+										<view class="goods-name twoline">{{item.goods_name}}</view>
+									</view>
+								</view>
+								<view class="li-prices flex">
+									<view class="li-price" wx:if="{{item.goods_price}}">
+										<text>团购价</text>
+										<text>￥{{item.goods_price}}</text>
+									</view>
+									<view class="li-price agence" wx:if="{{item.retail_price && hasLogin}}">
+										<text>分销价</text>
+										<text>￥{{item.retail_price}}</text>
+									</view>
+									<view class="li-price agence" wx:if="{{item.direct_price}}">
+										<text>直属价</text>
+										<text>￥{{item.direct_price}}</text>
+									</view>
+									<view class="li-price agence" wx:if="{{item.lianc_price}}">
+										<text>联创价</text>
+										<text>￥{{item.lianc_price}}</text>
+									</view>
+								</view>
+							</view>
+						</view>
+						<view class="li-done flex" hidden="{{item.buyer_num == 0}}">
+							<view class="heads flex">
+								<view class="head" wx:for="{{item.buyer}}" wx:key="index">
+									<image src="{{item}}"></image>
+								</view>
+							</view>
+							<view class="nums">{{item.buyer_num}}人已抢</view>
+							<navigator url="../productdetail/index?goods_id={{item.goods_id}}" hover-class="none" class="li-right li-on">
+								立即抢购
+							</navigator>
+						</view>
+					</view>
+				</block>
+			</view>
+
+			<view class='user-support'></view>
+		</view>
+	</scroll-view>
+
+
+	<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" current="0"></mp-tabbar>
+</view>

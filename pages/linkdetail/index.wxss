@@ -1,0 +1,23 @@
+/* pages/linkdetail/index.wxss */
+
+.address {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: rgba(51, 51, 51, 1);
+}
+
+.oporation {
+  padding: 26rpx 32rpx 0;
+}
+
+.left image {
+  width: 33rpx;
+  height: 33rpx;
+  margin-right: 12rpx;
+}
+
+.right image {
+  width: 28rpx;
+  height: 30rpx;
+  margin-right: 12rpx;
+}

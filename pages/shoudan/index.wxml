@@ -1,0 +1,339 @@
+<!--为空提示模板-->
+<import src='../template/empty.wxml' />
+
+<view wx:if="{{hasLogin}}">
+	<view class="top">
+		<view class="tabs flex">
+			<view class='tab {{currentIndex==0?"active":""}}' bindtap='tab' data-index="0">待收单
+			</view>
+			<view class='tab {{currentIndex==1?"active":""}}' bindtap='tab' data-index="1" data-type="1">待审核
+			</view>
+			<view class='tab {{currentIndex==2?"active":""}}' bindtap='tab' data-index="2" data-type="2">平台已收单
+			</view>
+		</view>
+	</view>
+	<view class="search-box">
+		<!-- <view class="seach-time flex jus-b ali-c" hidden="{{currentIndex==2}}">
+      <view class="flex">
+        <view wx:if="{{currentIndex == 1}}" class="time {{currentTime ==0? 'c-today':''}}" bindtap="timeSearch" data-time="0">所有日期</view>
+        <view class="time {{currentTime == 1? 'c-today':''}}" bindtap="timeSearch" data-time="1">{{now}}</view>
+        <view class="time {{currentTime == 2 ?'c-today':''}}" bindtap="timeSearch" data-time="2">{{yers}}</view>
+        <view class="time {{currentTime == 3 ?'c-today':''}}" bindtap="timeSearch" data-time="3">{{before}}</view>
+      </view>
+      <image class="search-ico" bindtap="showSearch" wx:if="{{currentIndex == 0}}" src="/images/ico-zoom.png"></image>
+    </view> -->
+
+		<view class="tabbar" wx:if="{{distributor > 1}}">
+			<view class="item {{myCurrentIndex == 1 ? 'on' : ''}}" bindtap="mySwitch" data-index="1">
+				<text>普通收单</text>
+				<view class="block"></view>
+			</view>
+			<view class="item {{myCurrentIndex == 2 ? 'on' : ''}}" bindtap="mySwitch" data-index="2">
+				<view>大健康收单</view>
+				<view class="block"></view>
+			</view>
+		</view>
+    
+		<view class="search" hidden="{{isSearch && currentIndex == 0}}">
+			<view class="search-bg flex ali-c">
+				<image class="search-ico" src="/images/ico-zoom.png"></image>
+				<input bindinput="searchOrder" value="{{info}}" placeholder="请输入下单人电话号码"></input>
+				<picker value="{{day}}" end="{{today}}" mode="date" bindchange="selectDay">
+					<view class="flex ali-c">
+						<text class="search-time">{{day}}</text>
+						<image class="down" src="/images/down.png"></image>
+					</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+	<!-- 待交单 -->
+	<view class="wrap {{isX?'wrap-x-one':''}} {{!isShow ? 'preventTouchMove':''}}" wx:if="{{currentIndex==0 && !isNone}}">
+		<view>
+			<view class="orders">
+				<view class="total">{{waitOrder.length}}个订单，共{{goods_num}}单，共计应收{{waitTotal}}元</view>
+				<view class="item ali-c" wx:for="{{waitOrder}}" wx:key="*this">
+					<view class='item-select flexc'>
+						<icon type="circle" color="#666666" wx:if="{{!item.selected}}" data-index="{{index}}" bindtap="selectList"></icon>
+						<icon type="success" color="#E4592A" wx:if="{{item.selected}}" data-index="{{index}}" bindtap="selectList"></icon>
+					</view>
+					<view class="wait-item flexv">
+						<view class="wait-icon" wx:if="{{userLevel == 2 && item.first_mark == 0}}" data-id="{{item.id}}" bindtap="sign">未收款</view>
+						<view class="wait-icon" wx:if="{{userLevel == 3 && item.second_mark == 0}}" data-id="{{item.id}}" bindtap="sign">未收款</view>
+						<view class="wait-icon on" wx:if="{{userLevel == 2 && item.first_mark == 1}}">
+							已收款</view>
+						<view class="wait-icon on" wx:if="{{userLevel == 3 && item.second_mark == 1}}">
+							已收款</view>
+						<view class="info flex ali-c">
+							<image class="head" src="{{item.user_info.avatar}}"></image>
+							<view class="info-right">
+								<text class="phone">{{item.user_info.mobile}}</text>
+								<image wx:if="{{item.user_info.level==1}}" src="/images/fenxiao.png"></image>
+								<image wx:if="{{item.user_info.level==2}}" src="/images/direct.png"></image>
+								<image wx:if="{{item.user_info.level==3}}" src="/images/lianc.png"></image>
+								<view class="wait-time">{{item.createtime}}</view>
+							</view>
+						</view>
+						<navigator url="../waitdetail/index?id={{item.id}}&status=1&type={{myCurrentIndex}}" hover-class="none">
+							<view class="wait-total flex ali-c">
+								<view class='audiTotal flexv'>
+									<view>
+										<text>总额：</text>
+										<text>￥</text>
+										<text>{{item.total_price}}</text>
+									</view>
+									<view>
+										<text>已取消单数：</text>
+										<text style="font-size:28rpx;">{{item.cancel_num}}</text>
+										<text style="font-size:20rpx;color:#999999;">个</text>
+									</view>
+								</view>
+								<view class="wait-nums">
+									<text> 单数：</text>
+									<text>{{item.total_num}}</text>
+									<text>个</text>
+								</view>
+								<image class="arrow" src="/images/right_arrow.png"></image>
+							</view>
+						</navigator>
+						<view class="wait-bottom">
+							<view class="interl flex jus-b">
+								<view class="change">
+									<text>积分兑换：</text> {{item.integral == null? '0.00': item.integral}}</view>
+								<view class="wait-price" wx:if="{{userLevel == 2 || 0 >= item.first_receivables}}">
+									<text>应收金额：</text> {{item.receivables}}元
+								</view>
+								<view class="wait-price" wx:if="{{userLevel == 3 && item.first_receivables > 0}}">
+									<text>应收金额：</text> {{item.first_receivables}}元
+								</view>
+							</view>
+							<view class="ps flex jus-b">
+								<view class="flex1 flex"><text>备注</text>：{{item.remark}}</view>
+								<view class="flex1 flex jus-e" wx:if="{{userLevel == 2 || 0 >= item.second_total_price}}"><text>应缴金额：</text>{{item.first_total_price}}元</view>
+								<view class="flex1 flex jus-e" wx:if="{{userLevel == 3  && item.second_total_price > 0}}"><text>应缴金额：</text>{{item.second_total_price}}元</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<!--到底了提示-->
+			<view class="weui-loadmore weui-loadmore_line classify-nomore" wx:if="{{!isNone}}">
+				<view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+			</view>
+		</view>
+		<!--底部结算-->
+		<block wx:if="{{!isNone}}">
+			<!-- <block> -->
+			<view class='seat-bottom'></view>
+			<view class='shopcart-foot flex ali-c' style="bottom: {{bottom + 110}}rpx;">
+				<view class='foot-select flexc'>
+					<icon type='success' color="#E4592A" hidden="{{!selectAllStates}}" bindtap="selectAll"></icon>
+					<icon type='circle' color="#666666" hidden="{{selectAllStates}}" bindtap="selectAll"></icon>
+				</view>
+				<view class='foot-all'>
+					<text bindtap="selectAll">全选</text>
+				</view>
+				<view class='flex foot-total'>
+					<text> 合计应缴：</text>
+					<view class="flex flexv">
+						<view class="price">￥{{totalPrice}}</view>
+						<view class="done-orders">已选{{totalNum}}个订单</view>
+					</view>
+				</view>
+				<!-- <view class='foot-sub flexc' bindtap="deleteOrder">删除</view> -->
+				<view class='foot-sub flexc' bindtap="toPlaceOrder">交单</view>
+			</view>
+		</block>
+	</view>
+	<!-- 待交单end -->
+
+	<!-- 待审核 -->
+	<view class="wrap {{isX?'wrap-x':''}}" hidden="{{currentIndex == 0}}" wx:if="{{!isNone_shen && auditOrder.length > 0 && currentIndex == 1}}">
+		<view class="total">{{auditTotal.orders_num ? auditTotal.orders_num : '0'}}个订单，共{{auditTotal.goods_num ? auditTotal.goods_num:'0'}}单，共计应收{{auditTotal ? auditTotal.orders_sum : '0'}}元</view>
+		<block wx:for="{{auditOrder}}" wx:key="index">
+			<view class="wait-item flexv">
+				<view class="info flex ali-c">
+					<image class="head" src="{{item.user_info.avatar}}"></image>
+					<view class="info-right">
+						<text class="phone">{{item.user_info.mobile}}</text>
+						<image wx:if="{{item.user_info.level==1}}" src="/images/fenxiao.png"></image>
+						<image wx:if="{{item.user_info.level==2}}" src="/images/direct.png"></image>
+						<image wx:if="{{item.user_info.level==3}}" src="/images/lianc.png"></image>
+						<view class="wait-time">{{item.createtime}}</view>
+					</view>
+				</view>
+				<navigator url="../waitdetail/index?id={{item.id}}&status=1&type={{myCurrentIndex}}" hover-class="none">
+					<view class="wait-total flex ali-c">
+						<view class='audiTotal flexv'>
+							<view>
+								<text>总额：</text>
+								<text>￥</text>
+								<text>{{item.total_price}}</text>
+							</view>
+							<view>
+								<text>已取消单数：</text>
+								<text style="font-size:28rpx;">{{item.cancel_num}}</text>
+								<text style="font-size:20rpx;color:#999999;">个</text>
+							</view>
+						</view>
+						<view class="wait-nums">
+							<text> 单数：</text>
+							<text>{{item.total_num}}</text>
+							<text>个</text>
+						</view>
+						<image class="arrow" src="/images/right_arrow.png"></image>
+					</view>
+				</navigator>
+				<view class="wait-bottom">
+					<view class="interl flex jus-b">
+						<view class="change">
+							<text>积分兑换：</text>{{item.integral == null? '0.00' : item.integral}}
+						</view>
+						<view class="wait-price" wx:if="{{userLevel == 2 || 0 >= item.first_receivables}}">
+							<text>应收金额：</text> {{item.receivables}}元
+						</view>
+						<view class="wait-price" wx:if="{{userLevel == 3 && item.first_receivables > 0}}">
+							<text>应收金额：</text> {{item.first_receivables}}元
+						</view>
+					</view>
+					<view class="ps flex jus-b">
+						<view class="flex1 flex">
+							<text>备注</text>：{{item.remark}}
+						</view>
+						<view class="flex1 flex jus-e" wx:if="{{userLevel == 2 || 0 >= item.second_total_price}}"><text>应缴金额</text>：{{item.first_total_price}}元</view>
+						<view class="flex1 flex jus-e" wx:if="{{userLevel == 3 && item.second_total_price > 0}}"><text>应缴金额</text>：{{item.second_total_price}}元</view>
+					</view>
+				</view>
+			</view>
+		</block>
+		<view class="weui-loadmore weui-loadmore_line classify-nomore" wx:if="{{!isNone_shen}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+		</view>
+
+		<!-- 底部应缴结算 -->
+		<block wx:if="{{auditOrder.length}}">
+			<view class='seat-bottom'></view>
+			<view class='shopcart-foot flex ali-c' style="bottom: {{bottom + 110}}rpx;">
+				<view class='flex' style="padding-left:20rpx;box-sizing:border-box;">
+					<text>合计应缴：</text>
+					<view class="flex flexv">
+						<view class="price">￥{{auditTotal.payprice}}</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+	<!-- 已审核 -->
+	<view class="wrap {{isX?'wrap-x':''}}" hidden="{{currentIndex == 0}}" wx:if="{{!isNone_shou && acquiringOrder.length > 0 && currentIndex == 2}}">
+		<view class="total">{{auditTotal_shou.orders_num ? auditTotal_shou.orders_num : '0'}}个订单，共{{auditTotal_shou.goods_num ? auditTotal_shou.goods_num:'0'}}单，共计应收{{auditTotal_shou ? auditTotal_shou.orders_sum : '0'}}元</view>
+		<block wx:for="{{acquiringOrder}}" wx:key="index">
+			<view class="wait-item flexv">
+				<view class="info flex ali-c">
+					<image class="head" src="{{item.user_info.avatar}}"></image>
+					<view class="info-right">
+						<text class="phone">{{item.user_info.mobile}}</text>
+						<image wx:if="{{item.user_info.level==1}}" src="/images/fenxiao.png"></image>
+						<image wx:if="{{item.user_info.level==2}}" src="/images/direct.png"></image>
+						<image wx:if="{{item.user_info.level==3}}" src="/images/lianc.png"></image>
+						<view class="wait-time">{{item.createtime}}</view>
+					</view>
+				</view>
+				<navigator url="../waitdetail/index?id={{item.id}}&status=1&type={{myCurrentIndex}}" hover-class="none">
+					<view class="wait-total flex ali-c">
+						<view class='audiTotal flexv'>
+							<view>
+								<text>总额：</text>
+								<text>￥</text>
+								<text>{{item.total_price}}</text>
+							</view>
+							<view>
+								<text>已取消单数：</text>
+								<text style="font-size:28rpx;">{{item.cancel_num}}</text>
+								<text style="font-size:20rpx;color:#999999;">个</text>
+							</view>
+						</view>
+						<view class="wait-nums">
+							<text> 单数：</text>
+							<text>{{item.total_num}}</text>
+							<text>个</text>
+						</view>
+						<image class="arrow" src="/images/right_arrow.png"></image>
+					</view>
+				</navigator>
+				<view class="wait-bottom">
+					<view class="interl flex jus-b">
+						<view class="change">
+							<text>积分兑换：</text>{{item.integral == null? '0.00' : item.integral}}
+						</view>
+						<view class="wait-price" wx:if="{{userLevel == 2 || 0 >= item.first_receivables}}">
+							<text>应收金额：</text> {{item.receivables}}元
+						</view>
+						<view class="wait-price" wx:if="{{userLevel == 3 && item.first_receivables > 0}}">
+							<text>应收金额：</text> {{item.first_receivables}}元
+						</view>
+					</view>
+					<view class="ps flex jus-b">
+						<view class="flex1 flex">
+							<text>备注</text>：{{item.remark}}
+						</view>
+						<view class="flex1 flex jus-e" wx:if="{{userLevel == 2 || 0 >= item.second_total_price}}"><text>应缴金额</text>：{{item.first_total_price}}元</view>
+						<view class="flex1 flex jus-e" wx:if="{{userLevel == 3 && item.second_total_price > 0}}"><text>应缴金额</text>：{{item.second_total_price}}元</view>
+					</view>
+				</view>
+			</view>
+		</block>
+		<view class="weui-loadmore weui-loadmore_line classify-nomore" wx:if="{{!isNone_shou}}">
+			<view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+		</view>
+		<!-- 底部应缴结算 -->
+		<block wx:if="{{acquiringOrder.length}}">
+			<view class='seat-bottom'></view>
+			<view class='shopcart-foot flex ali-c' style="bottom: {{bottom + 110}}rpx;">
+				<view class='flex' style="padding-left:20rpx;box-sizing:border-box;">
+					<text>合计应缴：</text>
+					<view class="flex flexv">
+						<view class="price">￥{{auditTotal_shou.payprice}}</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+
+
+
+	<!--为空提示-->
+	<template is="empty" data="{{emptyTip}}" wx:if="{{(auditOrder.length == 0 && currentIndex == 1) || (acquiringOrder.length == 0 && currentIndex == 2) || (waitOrder.length == 0 && currentIndex == 0)}}" />
+	<!-- 待审核end -->
+</view>
+
+<form bindsubmit="formsubmit">
+	<view class="dialog-content" hidden="{{isShow}}">
+		<view class="weui-mask" bindtap="closeDialog"></view>
+		<view class="dialog">
+			<view class="dia-content flexv">
+				<view class="content-title">确认交单</view>
+				<view class="subtitle">共{{totalNum}}个订单，订单总额：{{totalPrice}}</view>
+				<view class="subtitle">共取消{{totalNumDel}}单，取消订单总额：{{totalPriceDel}}</view>
+				<view class="text-bg flexv">
+					<view class="text-line">
+						<text>可用积分：</text>
+						<text>{{balance}}</text>
+						<text>分</text>
+					</view>
+					<view class="text-linetwo ali-c">
+						<icon type="{{use?'success':'circle'}}" size="17" color="{{use?'#E4592A':'#666666'}}" data-balance="{{balance}}" bindtap="useInteral"></icon>
+						<text>积分兑换</text>
+					</view>
+				</view>
+				<view class="btns">
+					<button class="cancel" bindtap="cancel">取消</button>
+					<button class="sure" form-type="submit">确认订单</button>
+				</view>
+			</view>
+		</view>
+	</view>
+</form>
+
+<!-- <mp-tabbar style="position:fixed;z-index:100;bottom:0;width:100%;left:0;right:0;" current="1"></mp-tabbar> -->
+<mp-tabbar style="position:fixed;height:110rpx;padding-bottom:{{bottom ? bottom : 0}}rpx;bottom:{{bottom ? bottom : 0}}rpx; box-sizing:border-box;width:100%;left:0;right:0;z-index:999" current="1"></mp-tabbar>

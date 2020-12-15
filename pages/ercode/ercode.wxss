@@ -1,0 +1,15 @@
+/* pages/ercode/ercode.wxss */
+.ercode{
+  margin-top: 150rpx;
+}
+
+.ercode image{
+  width: 300rpx;
+  height: 300rpx;
+}
+
+.ercode text{
+  color: #999;
+  font-size: 32rpx;
+  margin-top: 50rpx;
+}

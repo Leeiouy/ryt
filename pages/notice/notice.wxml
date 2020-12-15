@@ -1,0 +1,29 @@
+<!--pages/notice/notice.wxml-->
+<!--为空提示模板-->
+<import src='../template/empty.wxml' />
+
+<view class='news-list'>
+  <!--列表-->
+  <navigator url="/pages/noticeDetail/noticeDetail?news_id={{item.id}}" class='news-item flex'
+             wx:for="{{newsList}}" wx:key="{{item.id}}" hover-class='none'>
+    <view class='news-img'> 
+      <image wx:if="{{item.image}}" src="{{item.image?item.image:'/images/default.png'}}" class='fill'></image>
+    </view> 
+    <view class='item-mid'>
+      <view class='news-title twoline'>{{item.title}}</view>
+      <view class='flex jus-b'><text class="cor-grey">{{item.createtime}}</text> <view class="ali-c"><image class="view-img" src="/images/liulan-2@2x.png"></image><text class="cor-grey">{{item.views}}次阅读</text> </view> </view>
+    </view>
+  </navigator>
+ 
+  <!--加载中提示-->
+  <view class="weui-loadmore" hidden="{{!loading}}">
+    <view class="weui-loading"></view>
+  </view>
+  <!--没有更多提示-->
+  <view wx:if='{{newsList.length == 1}}' class="weui-loadmore weui-loadmore_line classify-nomore" hidden="{{!nomore}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">我也是有底线的</view>
+  </view>
+
+  <!--为空提示-->
+  <template is="empty" data="{{emptyTip}}" wx:if='{{newsList.length == 0}}' /> 
+</view>

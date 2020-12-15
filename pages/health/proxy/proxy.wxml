@@ -1,0 +1,45 @@
+<view class="my-container" wx:if="{{status == -1}}" style="background: #B8231E url('{{proxyBg}}') no-repeat top center;background-size: 100%;">
+  <view class="table">
+    <image class="tag" src="/images/tag-dl.png"></image>
+    <!-- <view class="line">
+      <view class="text">姓名：</view>
+      <input placeholder="请输入姓名" placeholder-class="ph-style" bindinput="myInputName" maxlength="8"></input>
+    </view>
+    <view class="line">
+      <view class="text">电话：</view>
+      <input placeholder="请输入电话" placeholder-class="ph-style" bindinput="myInputNum" type="number" maxlength="11"></input>
+    </view> -->
+    <view class="line" bindtap="showPicker">
+      <view class="text">代理等级：</view>
+      <input disabled wx:if="{{levelContent}}" placeholder="{{levelContent}}" placeholder-class="ph-style"></input>
+      <image src="/images/right_arrow.png"></image>
+    </view>
+
+    <view class="line">
+      <view class="text">邀请人：</view>
+      <input placeholder="请输入邀请人手机号：" value="{{inviterMobile}}" placeholder-class="ph-style" bindinput="myInputCode" type="number" maxlength="11"></input>
+    </view>
+    
+
+    <view class="btn" bindtap="submit">立即申请</view>
+  </view>
+
+</view>
+
+<view class="my-container flex-d status-box"  wx:if="{{status != -1}}">
+  <image class="status-img" src="/images/agree.png" wx:if="{{status == 0}}"></image>
+  <image class="status-img" src="/images/refuse.png" wx:if="{{status == 20}}"></image>
+  <view wx:if="{{status == 0}}" class="status">正在审核中...</view>
+  <view wx:if="{{status == 20}}" class="status">原因：您的审核未通过</view>
+  <view wx:if="{{status == 20}}" class="retry" bindtap="retry">重新申请</view>
+</view>
+
+<view class="mask" wx:if="{{isShowPicker}}">
+  <view class="box">
+    <van-picker columns="{{ levelShow }}" default-index="{{ 0 }}" bind:change="onChange" ></van-picker>
+  </view>
+  <view class="btns">
+    <view class="btn cancel" bindtap="cancel">取消</view>
+    <view class="btn confirm" bindtap="ok">确定</view>
+  </view>
+</view>

@@ -1,0 +1,87 @@
+<!--pages/placeOrder/placeorder.wxml-->
+<form bindsubmit="submitOrder" report-submit='true'>
+  <view class='placeorder'>
+    <!--没有默认收货地址-->
+    <view class='address' wx:if="{{!add_res}}" bindtap="toAddAddress">
+      <view class='add-address'>
+        <image class='location' src='../../images/address_icon_adress.png'></image>
+        <text>添加收货地址</text>
+        <image class='arrow' src='../../images/right_arrow.png'></image>
+      </view>
+      <image class='line' src='../../images/address_add_line.png'></image>
+    </view>
+
+    <!--有默认收货地址-->
+    <view class='address' bindtap='selectAddress' wx:if="{{add_res}}">
+      <view class='address-top'>
+        <text>{{add_res.name}}</text>
+        <text>{{add_res.phone}}</text>
+      </view>
+      <view class='add-address'>
+        <image class='location' src='../../images/address_icon_adress.png'></image>
+        <text>{{add_res.site}}</text>
+        <image class='arrow' src='../../images/right_arrow.png'></image>
+      </view>
+      <image class='line' src='../../images/address_add_line.png'></image>
+    </view>
+    <!--购买商品清单-->
+    <view class="placeholder-goods weui-panel weui-panel_access">
+      <view class="weui-panel__bd">
+        <!--商品详情进来-->
+        <block wx:for="{{goodsInfo}}" wx:key="{{item.goods_id}}">
+          <view class="weui-media-box weui-media-box_appmsg" wx:if="{{item.status== 2}}">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image class="weui-media-box__thumb" src="{{item.image}}" />
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+              <view class="weui-media-box__title twoline">{{item.goods_name}}</view>
+              <view class='guige'>{{item.key_name}}</view>
+              <view class="weui-media-box__desc jus-b">
+                <text class='price flex'>￥{{item.goods_price}} <text wx:if="{{item.freight}}">运费￥{{item.freight}}元</text></text>
+                <text>x{{item.num}}</text>
+              </view>
+            </view>
+          </view>
+        </block>
+        <!--购物车进来-->
+        <view class="weui-media-box weui-media-box_appmsg" wx:for="{{goodsInfo}}" wx:key="{{item.shoping_cart_id}}" wx:if="{{order.status == 1}}">
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+            <image class="weui-media-box__thumb" src="{{item.image}}" />
+          </view>
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+            <view class="weui-media-box__title">{{item.goods_name}}</view>
+            <view class='guige'>规格：{{item.key_name}}</view>
+            <view class="weui-media-box__desc jus-b">
+              <text class='price flex'>￥{{item.goods_price}}<text wx:if="{{item.freight}}"> 运费￥{{item.freight}}元</text></text>
+              <text>x{{item.num}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <!--费用信息列表-->
+    <view class='total-information'>
+      <view>
+      <!-- 共计 {{}} 件商品， -->
+       商品合计：
+        <text>¥{{order.totalprice}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="ps-panel">
+    <view class="intro">订单备注：</view>
+    <view class="texta">
+      <textarea name="remark" placeholder="请填写备注，最多不超过50字～"></textarea>
+    </view>
+  </view>
+
+  <!--下单-->
+  <view class='seat-bottom'></view>
+  <view class='placehoder-foot flex {{isX? "foot-bottom" :""}}'>
+    <view class='font flex1'>合计金额：
+      <text>￥{{order.totalprice}}</text> </view>
+    <!-- <view class='placeholder-sub' bindtap='submitOrder'>提交订单</view> -->
+    <button class='placeholder-sub' form-type='submit'>提交订单</button>
+  </view>
+</form>

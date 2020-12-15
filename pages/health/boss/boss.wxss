@@ -1,0 +1,43 @@
+/* pages/myboss/index.wxss */
+.myboss{
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.code-box{
+  width: 600rpx;
+  border-radius: 10rpx;
+  margin: 160rpx auto 0;
+  padding: 40rpx 70rpx 80rpx;
+  background-color: #fff;
+}
+
+.code-box .head{
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333;
+}
+
+.code{
+  width: 460rpx;
+  height: 460rpx;
+  margin: 40rpx auto 0;
+  background-color: #f5f5f5;
+}
+.code .non{
+  width: 194rpx;
+  height: 178rpx;
+  margin: auto;
+}
+
+.up-btn{
+  width: 600rpx;
+  height: 80rpx;
+  margin: 60rpx auto 0;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 10rpx;
+  background-color: #E4592A;
+}

@@ -1,0 +1,33 @@
+<!--pages/collect/collect.wxml-->
+<!--不为空时-->
+<view class='collect' wx:if="{{collectList.length}}">
+  <!--商品-->
+  <block wx:for="{{collectList}}">
+    <view class='collect-item flex' bindtap="toDetail" data-type="{{item.goods_type}}" data-id="{{item.goods_id}}">
+      <view hover-class="none">
+        <view class='img-box'>
+          <image src="{{item.images}}" class='fill'></image>
+        </view>
+      </view>
+      <view class='item-intro flex1'>
+        <view hover-class="none">
+          <view class='twoline goods-title'><text wx:if="{{item.goods_type == 4}}">#大健康#</text>{{item.goods_name}}</view>
+        </view>
+        <view class="c-delete" data-id="{{item.goods_id}}" data-index="{{index}}" catchtap="collectDel">
+          <image src="/images/search-ico-delete.png"></image>
+        </view>
+      </view>
+    </view>
+  </block>
+  <!--到底了-->
+  <view class="weui-loadmore weui-loadmore_line">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+  </view>
+</view>
+
+<!--为空时-->
+<view class='shopcart-none' wx:if="{{isNone}}">
+  <image src="/images/none-order.png" class='none-ico'></image>
+  <view class='none-tip'>您暂时还没有收藏商品~</view>
+  <navigator class='none-btn' hover-class='none' open-type="switchTab" url='/pages/index/index'>去逛逛</navigator>
+</view>

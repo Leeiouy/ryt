@@ -1,0 +1,36 @@
+/* .noLogin{
+  padding: 50rpx 20rpx 20rpx 20rpx;
+  width: 480rpx;
+  border-radius: 10rpx;
+  background-color: #fff;
+}
+.noLogin-cards{
+  text-align: center;
+}
+.noLogin-cards image{
+  width: 130rpx;
+  height: 130rpx;
+}
+.noLogin-cards .text{
+  font-size: 36rpx;
+  margin-top: 10rpx;
+}
+.noLogin-desc{
+  text-align: center;
+  color: #999;
+  margin-top: 30rpx;
+}
+.noLogin-btn{
+  height: 80rpx;
+  margin-top: 30rpx;
+  background-color: #1376cd;
+}
+.noLogin-btn image{
+  width: 34rpx;
+  height: 34rpx;
+  margin-right: 10rpx;
+}
+.noLogin-btn text{
+  font-size: 26rpx;
+  color: #fff;
+} */

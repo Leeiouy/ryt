@@ -1,0 +1,16 @@
+<!--pages/mycode/index.wxml-->
+<view class="mycode flexv">
+  <view class="code-box flexv">
+    <view class="head flex">
+      <view class="name">微信号：</view>
+      <input type="text" class="infos flex1 oneline" bindinput="init" placeholder="请输入微信号" maxlength="30" value="{{wechat_num}}" ></input>
+    </view>
+
+    <view class="code flex">
+      <image src="{{avatar}}" mode="aspectFit" wx:if="{{avatar}}" bindtap="chooseImg"></image>
+      <image src="/images/add-code.png" class="non" wx:else bindtap="chooseImg"></image>
+    </view>
+  </view>
+
+  <view class="up-btn" bindtap="fileImg">保存</view>
+</view>

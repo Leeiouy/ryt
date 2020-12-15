@@ -1,0 +1,37 @@
+<!--pages/myachieverank/index.wxml-->
+
+<view class="title flex">
+  <view class="yers {{type == 1? 'today' :''}}" data-type='1' bindtap='tab'>个人业绩</view>
+  <view class="yers {{type == 2? 'today' :''}}" data-type='2' bindtap='tab'>团队业绩</view>
+</view>
+<view>
+  <view class="agent jus-b ali-c">
+    <view class="left ali-c">
+      <select prop-array='{{selectArray}}' bind:myEvent="onMyEvent"></select>
+    </view>
+    <view>{{month}}</view>
+  </view>
+  <view class="rank">
+    <text>排名</text>
+    <text>姓名</text>
+  </view>
+  <view class="list">
+    <block wx:for="{{rankList}}" wx:key="{{item.order_num}}">
+      <view class="item">
+        <text wx:if="{{index>2}}">{{index+1}}</text>
+        <image class="rank-img" wx:if="{{index== 0}}" src="/images/no.1.png"></image>
+        <image class="rank-img" wx:if="{{index== 1}}" src="/images/no.2.png"></image>
+        <image class="rank-img" wx:if="{{index== 2}}" src="/images/no.3.png"></image>
+        <text class="username">{{item.username}}</text>
+        <text>{{item.tot_price}}元</text>
+        <text>{{item.order_num}}单</text>
+      </view>
+    </block>
+  </view>
+</view>
+
+<!--为空时-->
+<!-- <view class='shopcart-none' wx:if="{{isNone}}">
+  <image src="https://riyuetaoguoji.com/images/rank-none.png" class='none-ico'></image>
+  <view class='none-tip'>暂无团队信息~</view>
+</view> -->
