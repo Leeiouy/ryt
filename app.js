@@ -1,6 +1,6 @@
 //app.js
 App({
-  baseURL:'https://ptlf.0791jr.com/api/',
+  baseURL: 'https://ptlf.0791jr.com/api/',
   // baseURL: 'https://riyuetaoguoji.com/api/',       //线上
   // baseURL: 'https://riyuetaoguoji.0791jr.com/api/',       //test
   onLaunch: function (options) {
@@ -30,8 +30,7 @@ App({
         }
 
       },
-      fail: (err) => {
-      }
+      fail: (err) => {}
     })
 
     const updateManager = wx.getUpdateManager()
@@ -77,6 +76,15 @@ App({
       icon: 'none',
       duration: 1000
     })
+  },
+
+  Toast(title, icon = 'none', mask = true, duration = 1500) {
+    wx.showToast({
+      title,
+      icon,
+      duration,
+      mask,
+    });
   },
   //全局信息
   globalData: {

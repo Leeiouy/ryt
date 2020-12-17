@@ -45,27 +45,6 @@
       <view style="margin-top:20rpx">支付开团邀请好友参团，人数不足自动退款</view>
     </view>
   </view>
-  <!-- <view class="desc">
-    <view class="desc-title">{{goodsData.goods_name}}</view>
-    <view class="li-prices flex">
-      <view class="li-price">
-        <text>团购价</text>
-        <text>￥{{goodsData.goods_price}}</text>
-      </view>
-      <view class="li-price" wx:if="{{level >= 1 && hasLogin}}">
-        <text>分销价</text>
-        <text>￥{{goodsData.retail_price}}</text>
-      </view>
-      <view class="li-price" wx:if="{{level >= 2 && hasLogin}}">
-        <text>直属价</text>
-        <text>￥{{goodsData.direct_price}}</text>
-      </view>
-      <view class="li-price" wx:if="{{level >= 3 && hasLogin}}">
-        <text>联创价</text>
-        <text>￥{{goodsData.lianc_price}}</text>
-      </view>
-    </view>
-  </view> -->
   <!-- 图文详情、发圈素材 -->
   <view class="detail-tab">
     <view class="detail-tab-navbar flex">
@@ -84,42 +63,16 @@
   </view>
   <!-- 为空时 -->
   <van-empty description="暂无商品描述信息哦~" wx:if="{{!goodsData.content}}" />
-  <!-- 底部 -->
-  <!-- <view class='detail-foot weui-flex {{isX? "foot-bottom" :""}}'>
-    <view class="flex foot-left ali-c">
-      <view class="flexc cart-left">
-        <view class="flexv flexc ali-c" wx:if="{{goodsData.is_collect == 0}}" bindtap='onOffCollect' data-collect="0" data-status="2">
-          <image src="/images/details_collect_normal.png"></image>
-          <view>收藏</view>
-        </view>
-        <view class="flexv ali-c" wx:if='{{goodsData.is_collect == 1}}' bindtap='onOffCollect' data-collect="1"  data-status="1">
-          <image src="/images/my_icon_integral.png"></image>
-          <view>已收藏</view>
-        </view>
-      </view>
-      <view class="flexv flexc cart-left" bindtap="clickToShopcart">
-        <view class="ico-box">
-          <image src="/images/shopping_cart.png"></image>
-          <text class='ico-box-num' wx:if="{{cart_num - 0 > 0}}">{{cart_num}}</text>
-        </view>
-        <view>购物车</view>
-      </view>
-    </view>
-    <view class="weui-flex__item weui-flex foot-right">
-      <view wx:if="{{!optionsData.type == 2 || !optionsData.type == 1}}" class="flexc join" bindtap='showCart' data-joinorbuy="join">加入购物车</view>
-      <view class="flexc buy" bindtap='showCart' data-joinorbuy="buy" wx:if="{{!seckillData}}">立即购买</view>
-    </view>
-  </view> -->
-  <van-goods-action >
+  <van-goods-action>
     <van-goods-action-icon icon="chat-o" text="客服" dot />
     <van-goods-action-icon icon="like-o" color="{{goodsData.is_collect?'red':''}}" text="收藏" bind:click='collect' />
-    <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
-    <van-goods-action-button text="加入购物车" type="warning" />
-    <van-goods-action-button text="立即购买" bind:click='buyGoods' />
+    <van-goods-action-icon icon="cart-o" text="购物车" info="5" bind:click='goCar' />
+    <van-goods-action-button text="加入购物车" type="warning" bind:click='addCarBtn' />
+    <van-goods-action-button text="立即购买" bind:click='buyGoodsBtn' />
   </van-goods-action>
 </view>
 <!-- 遮罩 -->
-<van-action-sheet show="{{ infoShow }}" bind:click-overlay='overlayClick'>
+<van-action-sheet show="{{ infoShow }}" bind:click-overlay='overlayClick' bind:close='overlayClose'>
   <view class="carContent">
     <view class="goodsDetail ali-c jus-b van-hairline--bottom">
       <image src="{{goodsData.images[0]}}" mode="widthFix"></image>
@@ -137,7 +90,7 @@
         <view class="guige_item">
           <view class="guige_title">{{item.spec_name}}</view>
           <view class="guige_list ali-c">
-            <view class="guige_list_item" wx:for="{{item.sub}}" wx:for-item="subItem" wx:for-index="subIndex" wx:key="subitem">
+            <view class="guige_list_item {{subItem.id==guigeIdArr[index]?'guigeActive':''}}" bind:tap="setGuige" data-guigeid='{{subItem.id}}' data-i='{{index}}' wx:for="{{item.sub}}" wx:for-item="subItem" wx:for-index="subIndex" wx:key="subitem">
               {{subItem.spec_value}}
             </view>
           </view>
@@ -146,10 +99,13 @@
     </block>
     <view class="goods_num ali-c jus-b">
       <view>购买数量</view>
-      <van-stepper value="{{ 0 }}" bind:change="onChange" />
+      <van-stepper value="{{count}}" async-change bind:change="onChangeCount" />
     </view>
-    <van-button round type="primary" block size="normal" color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))">
+    <van-button round type="primary" wx:if="{{isBuy}}" bind:click='buyGoods' block size="normal" color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))">
       立即购买
+    </van-button>
+    <van-button round type="primary" wx:if="{{isAddCar}}" bind:click='addCar' block size="normal" color="linear-gradient(90deg,#ffd01e,#ff8917)">
+      加入购物车
     </van-button>
   </view>
 </van-action-sheet>

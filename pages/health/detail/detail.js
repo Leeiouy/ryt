@@ -11,14 +11,17 @@ Page({
     goodsData: "", //商品内容
 
 
-
-
+    //-----------------规格栏选中数据-----------------
+    count: 1, //购买数量  不能超过库存
+    guigeIdArr: [], //规格id 多规格将会存储为多个
 
 
 
 
     //-----------------逻辑-----------------
     infoShow: false, //规格弹窗展示
+    isBuy: false,
+    isAddCar: false,
 
 
 
@@ -77,7 +80,6 @@ Page({
     height: "",
     isX: false, //判断是否为iphonX
   },
-
   onLoad: function (options) {
     this.setData({
       goodsId: options.goods_id,
@@ -85,6 +87,11 @@ Page({
     })
     this.getData()
   },
+
+
+
+
+
   //获取数据
   getData() {
     https.goodsDetail({
@@ -92,7 +99,6 @@ Page({
       token: wx.getStorageSync('token')
     }).then(res => {
       if (res.code == 1) {
-        console.log(res);
         //  调用wxParse解析html文本
         res.data.content && WxParse.wxParse('goodsinfo', 'html', res.data.content, this, 5);
         this.setData({
@@ -121,23 +127,7 @@ Page({
       return true
     }
   },
-
-  //立即购买
-  buyGoods() {
-    this.setData({
-      infoShow: true
-    })
-
-  },
-
-  overlayClick() {
-
-    this.setData({
-      infoShow: false
-    })
-  },
-
-
+  //--------------------------底部栏相关事件----------------------------------
   //收藏
   collect(e) {
     if (!this.isLogin()) {
@@ -154,6 +144,99 @@ Page({
       console.log(res);
     })
   },
+  //跳转购物车
+  goCar() {
+    wx.switchTab({
+      url: '/pages/shoppingcart/index'
+    })
+  },
+  //加入购物车按钮
+  addCarBtn() {
+    if (!this.isLogin()) {
+      return
+    }
+    this.setData({
+      infoShow: true,
+      isBuy: false,
+      isAddCar: true
+    })
+  },
+
+  //立即购买按钮
+  buyGoodsBtn() {
+    if (!this.isLogin()) {
+      return
+    }
+    this.setData({
+      infoShow: true,
+      isBuy: true,
+      isAddCar: false,
+    })
+  },
+
+  //--------------------------规格弹窗相关事件----------------------------------
+
+  //选中规格id
+  setGuige(e) { //多规格用数组存贮 发送网络请求会join这个数组把多规格id取出来
+    let id = e.currentTarget.dataset.guigeid;
+    let index = e.currentTarget.dataset.i;
+    this.setData({
+      [`guigeIdArr[${index}]`]: id
+    })
+  },
+  //修改购买数量
+  onChangeCount(e) {
+    let value = e.detail;
+    this.setData({
+      count: value
+    })
+  },
+
+  //加入购物车
+  addCar() {
+    if (!this.data.goodsData.goods_id) {
+      app.Toast('你未选择商品规格~')
+    }
+    https.addShopingCart({
+      token: wx.getStorageSync('token'),
+      goods_id: this.data.goodsData.goods_id,
+      num: this.data.count,
+      goods_spec_id: this.data.guigeIdArr.join(),
+      type: 1
+    }).then(res => {
+      if (res.code) {
+        app.Toast(res.msg, 'success')
+        setTimeout(() => {
+          this.overlayClick()
+        }, 1500);
+      } else {
+        app.Toast(res.msg || '加入购物车失败~')
+      }
+    })
+  },
+  //立即购买商品
+  buyGoods() {
+
+  },
+  //点击遮罩层关闭弹窗栏
+  overlayClick() {
+    this.setData({
+      infoShow: false,
+      count: 1,
+      guigeIdArr: []
+    })
+  },
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -601,9 +684,7 @@ Page({
       })
     }
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+
   onReady: function () {
 
   },

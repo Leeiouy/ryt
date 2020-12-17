@@ -602,15 +602,27 @@ swiper {
         border-radius: 20rpx;
         background-color: white;
         min-height: 100rpx;
-        padding:20rpx;
+        padding: 20rpx;
+
+        .goods_desc_playDetail_top {
+            &:active {
+                opacity: .7;
+            }
+        }
     }
-    .pt20{
+
+    .pt20 {
         padding-top: 20rpx;
     }
-    .pd_list{
-        .pd_list_name{
+
+    .pd_list {
+        .pd_list_name {
             margin-left: 30rpx;
             font-weight: 600;
+        }
+
+        &:active {
+            opacity: .7;
         }
     }
 
@@ -680,10 +692,17 @@ swiper {
             margin-top: 10rpx;
             background-color: #f7f8fa;
             font-size: 24rpx;
-            padding: 10rpx;
+            padding: 10rpx 20rpx;
             margin-right: 35rpx;
+            &:active{
+                opacity: .7;
+            }
         }
 
+        .guigeActive {
+            background: rgb(255, 96, 52);
+            color: white;
+        }
     }
 
     .goods_num {

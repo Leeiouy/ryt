@@ -141,5 +141,4 @@
 
 	<view class="foot-space"></view>
 
-	<mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" current="4"></mp-tabbar>
 </view>

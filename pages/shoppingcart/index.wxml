@@ -88,11 +88,11 @@
       </view>
     </view>
     <!--空购物车-->
-    <view class='shopcart-none' wx:if="{{isNone}}">
+    <!-- <view class='shopcart-none' wx:if="{{isNone}}">
       <image src="/images/none-order.png" class='none-ico'></image>
       <view class='none-tip'>您的购物车还没有商品哦~</view>
       <navigator open-type='switchTab' url="/pages/index/index" class='none-btn' hover-class='none'>去逛逛</navigator>
-    </view>
+    </view> -->
   </view>
 <!--底部结算-->
   <block wx:if="{{!isNone}}">

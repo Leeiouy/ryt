@@ -57,6 +57,9 @@ export const centerInfo = (parma) => api.post('Mycenter/my_center', parma);
 
 //-----------------------------------商品详情页面-------------------------------------------------------
 //商品详情
-export const goodsDetail =(parma) => api.post('item/getItemDetail', parma);
+export const goodsDetail = (parma) => api.post('item/getItemDetail', parma);
 //收藏商品
-export const goodsCollection =(parma) => api.post('collection/setCollect', parma);
+export const goodsCollection = (parma) => api.post('collection/setCollect', parma);
+
+//加入购物车
+export const addShopingCart = (parma) => api.post('item/addShopingCart', parma);

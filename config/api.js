@@ -1,5 +1,6 @@
 // 统一的请求接口
-const baseUrl = 'https://riyuetaoguoji.com/api/';
+// const baseUrl = 'https://riyuetaoguoji.com/api/';
+const baseUrl = 'https://ptlf.0791jr.com/api/';
 const http = ({
   url = '',
   param = {},
@@ -33,7 +34,7 @@ const http = ({
   }).catch((res) => {
     wx.hideLoading();
     wx.showToast({
-      title: res.message,
+      title: '网络错误~',
       icon: 'none'
     })
   })

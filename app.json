@@ -81,21 +81,25 @@
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "custom": true,
+    "color": "#515151",
+    "selectedColor": "#E4592A",
     "list": [{
-        "pagePath": "pages/index/index"
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/home_n.png",
+        "selectedIconPath": "/images/home_a.png"
       },
       {
-        "pagePath": "pages/shoudan/index"
+        "pagePath": "pages/shoppingcart/index",
+        "text": "购物车",
+        "iconPath": "/images/car_n.png",
+        "selectedIconPath": "/images/car_a.png"
       },
       {
-        "pagePath": "pages/subcase/index"
-      },
-      {
-        "pagePath": "pages/address/address"
-      },
-      {
-        "pagePath": "pages/my/index"
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "/images/my_n.png",
+        "selectedIconPath": "/images/my_a.png"
       }
     ]
   },

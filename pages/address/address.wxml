@@ -48,7 +48,3 @@
     <view class="btn">添加新地址</view>
   </navigator>
 </view>
-
-<!-- <tab></tab> -->
-<!-- <mp-tabbar style="position:fixed;bottom:0;width:100%;left:0;right:0;" current="3"></mp-tabbar> -->
-<mp-tabbar style="position:fixed;height:110rpx;bottom:{{marginBottm ? marginBottm : 0}}rpx;padding-bottom:{{marginBottm ? marginBottm : 0}}rpx;width:100%;left:0;right:0;z-index:999;box-sizing:border-box;" current="3"></mp-tabbar>
