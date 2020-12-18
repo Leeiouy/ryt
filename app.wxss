@@ -5,6 +5,10 @@
 @import 'assets/styles/skyvow.wxss';
 @import 'vant-weapp/common/index.wxss';
 
+@import 'assets/styles/main.wxss';
+@import 'assets/styles/icon.wxss';
+@import 'assets/styles/animation.wxss';
+
 page {
   font-size: 28rpx;
   height: auto;

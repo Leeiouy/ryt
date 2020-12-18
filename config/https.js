@@ -55,6 +55,23 @@ export const centerInfo = (parma) => api.post('Mycenter/my_center', parma);
 
 
 
+
+//-----------------------------------首页接口-------------------------------------------------------
+
+
+export const getIndex = (parma) => api.post('/index/index', parma);
+
+
+
+
+
+
+
+
+
+
+
+
 //-----------------------------------商品详情页面-------------------------------------------------------
 //商品详情
 export const goodsDetail = (parma) => api.post('item/getItemDetail', parma);

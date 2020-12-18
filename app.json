@@ -1,5 +1,6 @@
 {
   "pages": [
+
     "pages/index/index",
     "pages/logintwo/index",
     "pages/link/index",
@@ -72,7 +73,9 @@
     "pages/health/team/team",
     "pages/health/material/material",
     "pages/health/teamNext/teamNext",
-    "pages/health/verifyPaper/verifyPaper"
+    "pages/health/verifyPaper/verifyPaper",
+    "pages/index_i/index_i"
+
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -86,6 +89,12 @@
     "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
+        "iconPath": "/images/home_n.png",
+        "selectedIconPath": "/images/home_a.png"
+      },
+      {
+        "pagePath": "pages/index_i/index_i",
+        "text": "新首页",
         "iconPath": "/images/home_n.png",
         "selectedIconPath": "/images/home_a.png"
       },
@@ -117,7 +126,7 @@
     "van-stepper": "vant-weapp/stepper/index",
     "van-empty": "vant-weapp/empty/index",
     "van-icon": "vant-weapp/icon/index",
-    "van-image": "vant-weapp//image/index"
-
+    "van-image": "vant-weapp/image/index",
+    "van-divider": "vant-weapp/divider/index"
   }
 }

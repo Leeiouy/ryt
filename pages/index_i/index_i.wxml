@@ -1,0 +1,90 @@
+<swiper class="card-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#fa201e">
+    <swiper-item wx:for="{{banner}}" wx:key="item.id" class="{{cardCur==index?'cur':''}}">
+        <view class="swiper-item radius shadow shadow-lg bg-white">
+            <image src="{{item.image}}" mode="aspectFill" />
+        </view>
+    </swiper-item>
+</swiper>
+<view class="notify ali-c ">
+    <image src="../../images/notify_icon.png" mode="widthFix" />
+    <view>这是一条很长很长很长的通知信息哦</view>
+</view>
+<view class="column">
+    <view class="column_top bg-white ">
+        <view class="column_top_title ali-c jus-b">
+            <text class="text-black text-bold text-df ">今日团品</text>
+            <van-icon name="arrow" size="34rpx" />
+        </view>
+        <view class="column_goods ali-c jus-b">
+            <view class="column_goods_item">
+                <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                <view class="oneline column_goods_item_name">商品信息商品信息</view>
+                <view class="oneline column_goods_item_price">￥99.00</view>
+            </view>
+            <view class="column_goods_item">
+                <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                <view class="oneline column_goods_item_name">商品信息商品信息</view>
+                <view class="oneline column_goods_item_price">￥99.00</view>
+            </view>
+            <view class="column_goods_item">
+                <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                <view class="oneline column_goods_item_name">商品信息商品信息</view>
+                <view class="oneline column_goods_item_price">￥99.00</view>
+            </view>
+        </view>
+    </view>
+    <view class="column_bottom  ali-c">
+        <view class="flex1 bg-white  ">
+            <view class="column_top_title ali-c jus-b">
+                <text class="text-black text-bold text-df ">甄选优品</text>
+                <van-icon name="arrow" size="34rpx" />
+            </view>
+            <view class="column_goods ali-c jus-b">
+                <view class="column_goods_item" style="width:48%">
+                    <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                </view>
+                <view class="column_goods_item" style="width:48%">
+                    <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                </view>
+            </view>
+        </view>
+        <text style="width:20rpx"></text>
+        <view class="flex1 bg-white ">
+            <view class="column_top_title ali-c jus-b">
+                <text class="text-black text-bold text-df">往期商品</text>
+                <van-icon name="arrow" size="34rpx" />
+            </view>
+            <view class="column_goods ali-c jus-b">
+                <view class="column_goods_item" style="width:48%">
+                    <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                </view>
+                <view class="column_goods_item" style="width:48%">
+                    <image src="../../images/goods.png" mode="widthFix" style="height:100rpx; " />
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+<van-divider contentPosition="center">拼团商品</van-divider>
+<view class="goods ali-c jus-b flex-wrap">
+    <view class="goods_item" wx:for="{{6}}">
+        <view class="goods_img">
+            <image src="../../images/goods.png" mode="widthFix" style="height:100rpx;" />
+            <view class="goods_time">00:00:00</view>
+        </view>
+        <view class="goods_detail">
+            <view class="goods_info twoline">
+                <view class="goods_info_icon ali-c jus-c">
+                   <van-icon name="gold-coin" />
+                    <text class="goods_info_icon_price">1.04元</text>
+                </view>
+                这是商品内这是商品内容这是商品内容这是商品内容这是商品内容容
+            </view>
+            <view class="goods_price">
+                <text style="font-size:20rpx">当前价格</text>
+                <text style="font-size:24rpx">￥</text>
+                <text style="font-size:36rpx">95</text>
+            </view>
+        </view>
+    </view>
+</view>
