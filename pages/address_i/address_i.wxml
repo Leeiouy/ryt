@@ -1,0 +1,21 @@
+<view class="address_list">
+    <block wx:for="{{10}}">
+        <view class="address_item">
+            <view class="user ali-c">
+                <view class="name">李先生</view>
+                <view class="phone">15879775757</view>
+                <view class="default">默认</view>
+            </view>
+            <view class="addres ali-c">
+                <view class="oneline">江西省南昌市青云谱区</view>
+                <view class="oneline flex1">大地路100号地路10路100号地路1路100号地路1路100号地路1路100号地路1</view>
+                <van-icon class="icon" name="edit" />
+            </view>
+        </view>
+    </block>
+    <view class="bottom">
+        <view class="btn">
+            <van-button color='#fe0102' block round>添加收货地址</van-button>
+        </view>
+    </view>
+</view>

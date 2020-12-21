@@ -1,0 +1,78 @@
+page {
+    background-color: white;
+}
+
+.address_list {
+    padding-bottom: 130rpx;
+
+    .address_item {
+        padding: 20rpx;
+        transition: all 1s;
+
+        &:active {
+            background-color: rgb(230, 230, 230);
+        }
+
+        .user {
+            color: #333333;
+            font-size: 36rpx;
+            font-weight: bold;
+
+            .name {
+                margin-right: 40rpx;
+            }
+
+            .phone {
+                margin-right: 20rpx;
+            }
+
+            .default {
+                background-color: #fe0102;
+                color: white;
+                font-size: 16rpx;
+                height: 32rpx;
+                width: 48rpx;
+                text-align: center;
+                line-height: 32rpx;
+                border-radius: 10rpx;
+            }
+        }
+
+        .addres {
+            color: #bcbcbc;
+            font-size: 28rpx;
+            padding: 15rpx 0;
+
+            .flex1 {
+                margin-left: 15rpx;
+            }
+
+            .icon {
+                font-size: 50rpx;
+                padding: 0 20rpx;
+                color: #9f9f9f;
+
+                &:active {
+                    opacity: .7;
+                }
+            }
+        }
+
+    }
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0rpx;
+    left: 0;
+    right: 0;
+    height: 130rpx;
+    background-color: white;
+    padding-top: 30rpx;
+
+    .btn {
+        width: 90%;
+        margin: 0 auto ;
+    }
+
+}

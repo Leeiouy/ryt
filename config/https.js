@@ -54,29 +54,39 @@ export const centerInfo = (parma) => api.post('Mycenter/my_center', parma);
 
 
 
+//-----------------------------------登录接口---------------------------------------------
+export const wxLogin = (parma) => api.get('/User/wxlogin', parma);
 
-
-//-----------------------------------首页接口-------------------------------------------------------
-
-
+//-----------------------------------首页接口---------------------------------------------
+//首页数据
 export const getIndex = (parma) => api.post('/index/index', parma);
 
 
+//-----------------------------------商品详情页面------------------------------------------
 
-
-
-
-
-
-
-
-
-
-//-----------------------------------商品详情页面-------------------------------------------------------
 //商品详情
 export const goodsDetail = (parma) => api.post('item/getItemDetail', parma);
+
 //收藏商品
 export const goodsCollection = (parma) => api.post('collection/setCollect', parma);
 
 //加入购物车
 export const addShopingCart = (parma) => api.post('item/addShopingCart', parma);
+
+
+//-----------------------------------收货地址管理------------------------------------------
+
+//收货地址列表
+export const _addressList = (parma) => api.post('/Adress/getAddress', parma);
+
+//收货地址添加
+export const _addressAdd = (parma) => api.post('Adress/addAddress', parma);
+
+//收货地址修改
+export const _addressChange= (parma) => api.post('Adress/updateAddress', parma);
+
+//收货地址删除
+export const _addressRemove= (parma) => api.post('/Adress/delAddress', parma);
+
+//收货地址默认设置
+export const _addressDefault= (parma) => api.post('/Adress/setDefault', parma);

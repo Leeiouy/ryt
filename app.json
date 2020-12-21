@@ -1,6 +1,5 @@
 {
   "pages": [
-
     "pages/index/index",
     "pages/logintwo/index",
     "pages/link/index",
@@ -74,19 +73,21 @@
     "pages/health/material/material",
     "pages/health/teamNext/teamNext",
     "pages/health/verifyPaper/verifyPaper",
-    "pages/index_i/index_i"
-
+    "pages/index_i/index_i",
+    "pages/address_i/address_i",
+    "pages/addressDetail_i/addressDetail_i"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#E4592A",
-    "navigationBarTitleText": "日悦淘",
-    "navigationBarTextStyle": "white"
+    "navigationBarTitleText": "小程序",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#E4592A",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "/images/home_n.png",
@@ -127,6 +128,9 @@
     "van-empty": "vant-weapp/empty/index",
     "van-icon": "vant-weapp/icon/index",
     "van-image": "vant-weapp/image/index",
-    "van-divider": "vant-weapp/divider/index"
+    "van-divider": "vant-weapp/divider/index",
+    "van-field": "vant-weapp/field/index",
+    "van-area": "vant-weapp/area/index",
+    "van-switch": "vant-weapp/switch/index"
   }
 }

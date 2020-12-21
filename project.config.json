@@ -49,6 +49,14 @@
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
 		"plugin": {
 			"list": []
 		},
@@ -61,26 +69,23 @@
 		"miniprogram": {
 			"list": [
 				{
-					"name": "商品详情",
-					"pathName": "pages/health/detail/detail",
-					"query": "goods_id=1037&isBigHealth=",
-					"scene": null
-				},
-				{
-					"name": "我的",
-					"pathName": "pages/my/index",
+					"id": -1,
+					"name": "登录",
+					"pathName": "pages/login/login",
 					"query": "",
 					"scene": null
 				},
 				{
-					"name": "地址",
-					"pathName": "pages/index/index",
+					"id": -1,
+					"name": "地址列表",
+					"pathName": "pages/address_i/address_i",
 					"query": "",
 					"scene": null
 				},
 				{
-					"name": "地址",
-					"pathName": "pages/address/address",
+					"id": -1,
+					"name": "添加收货地址",
+					"pathName": "pages/addressDetail_i/addressDetail_i",
 					"scene": null
 				}
 			]

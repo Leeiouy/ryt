@@ -1,3 +1,6 @@
+page{
+  background-color: white;
+}
 /* pages/login/login.wxss */
 .login-head:before{
   content: "";
