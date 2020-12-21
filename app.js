@@ -18,29 +18,28 @@ App({
 
   //获取登录状态是否过期
   getLoginStatus() {
-    wx.checkSession({
-      success() {
-        
-      },
-      fail() {
-        wx.clearStorageSync();
-        // wx.showModal({
-        //   title: '提示',
-        //   content: '登录状态已经失效，请重新登录!',
-        //   showCancel: false,
-        //   confirmText: '确定',
-        //   confirmColor: '#3CC51F',
-        //   success: (result) => {
-        //     if (result.confirm) {
-        //       wx.reLaunch({
-        //         url: 'pages/login/login'
-        //       });
-        //     }
-        //   }
-        // });
-      }
-    })
-
+    if (wx.getStorageSync('token')) {
+      wx.checkSession({
+        success() {},
+        fail() {
+          wx.clearStorageSync();
+          wx.showModal({
+            title: '提示',
+            content: '登录状态已经失效，请重新登录!',
+            showCancel: false,
+            confirmText: '确定',
+            confirmColor: '#3CC51F',
+            success: (result) => {
+              if (result.confirm) {
+                wx.reLaunch({
+                  url: 'pages/login/login'
+                });
+              }
+            }
+          });
+        }
+      })
+    }
   },
   //获取小程序最新版本
   upDataWxApp() {

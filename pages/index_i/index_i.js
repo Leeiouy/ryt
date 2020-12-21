@@ -1,6 +1,10 @@
 import {
   getIndex
-} from '../../config/https'
+} from '../../config/https';
+
+import {
+  formatTime
+} from '../../utils/util'
 
 
 
@@ -8,7 +12,7 @@ import {
 Page({
   data: {
     indexData: null,
-    banner: null,//banner图片
+    banner: null, //banner图片
   },
   onLoad: function (options) {
     this.getData()
@@ -20,9 +24,11 @@ Page({
   getData() {
     getIndex().then(res => {
       if (res.code == 1) {
+
+        res.data.djk_item_list.forEach(v=>console.log(v))
         this.setData({
           indexData: res.data,
-          banner:res.data.banner
+          banner: res.data.banner
         })
       }
       console.log(res);

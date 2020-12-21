@@ -17,8 +17,8 @@
     </view>
 </view>
 <view class="bottom ali-c jus-b">
-    <view class="btn flex1 s" bind:tap="save">保存</view>
     <view class="btn flex1" bind:tap="del">删除</view>
+    <view class="btn flex1 s" bind:tap="save">保存</view>
 </view>
 <van-popup show="{{ areaShow }}" position='bottom'>
     <van-area area-list="{{ areaList }}" bind:confirm='areaConfirm' bind:cancel='areaCancel' />

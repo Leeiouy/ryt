@@ -19,7 +19,7 @@
 				</view>
 			</navigator>
 
-			<navigator url="../logintwo/index" hover-class="none" wx:if="{{!hasLogin}}">
+			<navigator url="../login/login" hover-class="none" wx:if="{{!hasLogin}}">
 				<view class="my-info jus-b ali-c">
 					<view class="flex">
 						<image class="portrait" src="{{info.avatar}}"></image>

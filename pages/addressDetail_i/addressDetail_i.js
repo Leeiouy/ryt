@@ -1,22 +1,26 @@
 import _areaList from '../../config/area';
 
+import {
+  _addressAdd,
+  _addressChange,
+  _addressRemove
+} from '../../config/https'
+
 Page({
   data: {
     name: '', //收货人
     phone: '', //手机号
     address: '', //地区
     addressDetail: '', //地区详情
+    isDefault: false, //是否为默认地址
 
 
-    areaList: _areaList,
-    isDefault: false,
-
-
-
+    //------------------选择地区相关------------------------
+    areaList: _areaList, //地区列表数据 本地的
     areaShow: false, //是否展示地区选择弹出层
   },
   onLoad: function (options) {
-    console.log(_areaList);
+    console.log(options);
   },
   //----------------输入框事件----------------
   onName(e) {
@@ -52,7 +56,7 @@ Page({
   //确认选中
   areaConfirm(e) {
     let val = e.detail;
-    let area = e.detail.values.map(v => v.name);
+    let area = val.values.map(v => v.name);
     area = area.join('-')
     this.setData({
       address: area,
@@ -72,10 +76,18 @@ Page({
 
   //保存
   save() {
-    
-    
+
+    _addressAdd().then(res => {
+      console.log(res);
+    })
   },
   //删除地址
-  del() {}
+  del() {
+
+    _addressRemove().then(res => {
+      console.log(res);
+    })
+
+  }
 
 })

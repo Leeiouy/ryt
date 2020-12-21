@@ -67,9 +67,9 @@
 </view>
 <van-divider contentPosition="center">拼团商品</van-divider>
 <view class="goods ali-c jus-b flex-wrap">
-    <view class="goods_item" wx:for="{{6}}">
+    <view class="goods_item" wx:for="{{indexData.djk_item_list}}">
         <view class="goods_img">
-            <image src="../../images/goods.png" mode="widthFix" style="height:100rpx;" />
+            <image src="{{item.image}}" mode="widthFix" style="height:100rpx;" />
             <view class="goods_time">00:00:00</view>
         </view>
         <view class="goods_detail">
@@ -78,12 +78,12 @@
                    <van-icon name="gold-coin" />
                     <text class="goods_info_icon_price">1.04元</text>
                 </view>
-                这是商品内这是商品内容这是商品内容这是商品内容这是商品内容容
+               {{item.goods_name}}
             </view>
             <view class="goods_price">
                 <text style="font-size:20rpx">当前价格</text>
                 <text style="font-size:24rpx">￥</text>
-                <text style="font-size:36rpx">95</text>
+                <text style="font-size:36rpx">{{item.retail_price}}</text>
             </view>
         </view>
     </view>
