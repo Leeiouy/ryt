@@ -15,37 +15,34 @@
   margin: 0 auto;
   margin-top: 30rpx;
 }
-.column .column_top {
-  border-radius: 20rpx;
-  padding: 0 20rpx;
-  padding-bottom: 30rpx;
-}
-.column .column_goods .column_goods_item {
+.column .column_item {
   width: 32%;
-}
-.column .column_goods .column_goods_item .column_goods_item_price {
-  color: #fa201e;
-  font-size: 30rpx;
-  font-weight: bold;
-}
-.column .column_bottom > view {
-  border-radius: 20rpx;
-  margin-top: 20rpx;
-  padding: 0 20rpx;
-  padding-bottom: 30rpx;
-}
-.column .column_top_title {
-  padding: 20rpx 0;
-}
-.column .column_goods_item image {
   border-radius: 15rpx;
+  background-color: white;
+  transition: all 0.6s;
+  text-align: center;
+  padding: 20rpx;
+}
+.column .column_item .column_item_title {
+  color: black;
+}
+.column .column_item .small {
+  font-size: 18rpx;
+  color: #7f7f7f;
+}
+.column .column_a {
+  transform: scale(1.05) !important;
+  background-color: white !important;
+}
+.column .column_n {
+  transform: scale(0.95);
+  background-color: #dfdfdf;
 }
 .goods {
   width: 96%;
   margin: 0 auto;
 }
 .goods .goods_item {
-  width: 48%;
   background-color: white;
   border-radius: 15rpx;
   overflow: hidden;
