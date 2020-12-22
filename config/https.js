@@ -55,7 +55,7 @@ export const centerInfo = (parma) => api.post('Mycenter/my_center', parma);
 
 
 //-----------------------------------登录接口---------------------------------------------
-export const wxLogin = (parma) => api.get('/User/wxlogin', parma);
+export const wxLogin = (parma) => api.post('User/wxlogin', parma);
 
 //-----------------------------------首页接口---------------------------------------------
 //首页数据
