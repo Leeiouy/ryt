@@ -10,6 +10,25 @@
   width: 50rpx;
   margin-right: 30rpx;
 }
+.banner {
+  width: 96%;
+  margin: 0 auto;
+}
+.nav {
+  padding: 20rpx 30rpx;
+  background-color: white;
+  text-align: center;
+}
+.nav .nav_item {
+  width: 20%;
+  font-size: 24rpx;
+}
+.nav .nav_item image {
+  width: 60%;
+}
+.nav .nav_item:active {
+  opacity: 0.7;
+}
 .column {
   width: 96%;
   margin: 0 auto;

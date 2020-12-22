@@ -2,18 +2,40 @@
 <view>
   <view class='banners' style="height:{{height}};width:100%;">
     <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true' bindchange="change">
-      <block wx:for="{{goodsData.images}}" wx:key="*this">
+      <block wx:for="{{banner}}" wx:key="*this">
         <swiper-item>
           <image lazy-load="true" class='i-img' mode='aspectFill' src='{{item}}'></image>
         </swiper-item>
       </block>
     </swiper>
     <view class='num'>
-      <view class='cu-num'>{{currentNum}}/{{goodsData.images.length}}</view>
+      <view class='cu-num'>{{currentNum}}/{{banner.length}}</view>
+    </view>
+  </view>
+  <view class="timeout ali-c">
+    <view class="timeout_text ali-c">
+      <view style="text-align:center">
+        <view style="font-size:24rpx">参与拼团返回红包</view>
+        <view style="font-size:18rpx">(红包随时体现)</view>
+      </view>
+      <view class="hb_Price">￥0.85</view>
+    </view>
+    <view class="timeout_time flexv jus-c ali-c">
+      <view>距离结束</view>
+      <view>00:09:04</view>
     </view>
   </view>
   <view class="goods_desc">
-    <view class="goods_desc_title">{{goodsData.goods_name}}</view>
+    <view class="goods_desc_title ali-c  jus-b">
+      <view class="twoline">{{goodsData.goods_name}}</view>
+    </view>
+    <view class="goods_desc_price ali-c">
+      <view class="p">
+        ￥
+        <text>99.99</text>
+      </view>
+      <view class="p_icon">当前价</view>
+    </view>
     <view class="goods_desc_playDetail">
       <view class="goods_desc_playDetail_top ali-c jus-b">
         <view>5人在拼单，可直接参与</view>
@@ -46,27 +68,18 @@
   </view>
   <!-- 图文详情、发圈素材 -->
   <view class="detail-tab">
-    <view class="detail-tab-navbar flex">
-      <view class="item flexc {{activeIndex == 0 ? 'on' : ''}}" id="0" bindtap='tabClick'>
-        图文详情
-      </view>
-      <view class="item flexc" bindtap="toMaterial">发圈素材</view>
+    <view class="detail-tab-navbar">
+      <van-divider contentPosition="center">商品详情</van-divider>
     </view>
     <view class="detail-tab-panel" wx:if="{{goodsData.content}}">
-      <!-- 图文内容 -->
       <view class="detail-tab-content info" hidden="{{activeIndex != 0}}">
-        <!-- 通过wxParese解析html -->
         <template is="wxParse" data="{{wxParseData: goodsinfo.nodes}}" />
       </view>
     </view>
   </view>
-  <!-- 为空时 -->
   <van-empty description="暂无商品描述信息哦~" wx:if="{{!goodsData.content}}" />
   <van-goods-action>
-    <van-goods-action-icon icon="chat-o" text="客服" dot />
     <van-goods-action-icon icon="like-o" color="{{goodsData.is_collect?'red':''}}" text="收藏" bind:click='collect' />
-    <van-goods-action-icon icon="cart-o" text="购物车" info="5" bind:click='goCar' />
-    <van-goods-action-button text="加入购物车" type="warning" bind:click='addCarBtn' />
     <van-goods-action-button text="立即购买" bind:click='buyGoodsBtn' />
   </van-goods-action>
 </view>
@@ -108,45 +121,3 @@
     </van-button>
   </view>
 </van-action-sheet>
-<view class='mask' hidden='{{mask}}' catchtap='hideAllBox'></view>
-<!-- 购物车弹窗 -->
-<view class='lay-box detail-cart' hidden="{{cartBox}}">
-  <view class='box-cart-title'>
-    <image src="{{goodsData.images[0]}}" class='box-img'></image>
-    <view class='price-box'>
-      <!-- 价格库存 -->
-      <view class='price'>￥{{specActivePrice}}</view>
-      <view class="sales">库存({{inventory}})</view>
-      <!-- 右上角关闭按钮 -->
-      <image src="/images/ico-close.png" class='lay-close' bindtap='showCart'></image>
-    </view>
-  </view>
-  <scroll-view scroll-y class='box-content'>
-    <!-- 多规格-多属性选择 -->
-    <view wx:if='{{goodsData.spec_type == 20}}' class='box-spec' wx:for="{{goodsData.item_sku}}" wx:key="*this" wx:for-index="boxindex">
-      <view class='cor-grey'>{{item.spec_name}}</view>
-      <view class='spec-items'>
-        <!-- 属性列表 -->
-        <button class='spec-item {{attr.isHasSpec ? "on" : ""}} {{attr.isCould ? "" : "grey"}}' disabled="{{!attr.isCould}}" wx:for="{{item.sub}}" wx:for-item="attr" wx:key="*this" data-gui_id="{{attr.id}}" data-item_id="{{attr.id}}" data-num="{{attr.num}}" data-sub="{{item.sub}}" data-index="{{boxindex}}" data-index_x="{{index}}" data-attr="{{attr}}" data-spname="{{attr.spec_value}}" bindtap="selectSpec">
-          {{attr.spec_value}}
-        </button>
-      </view>
-    </view>
-    <!-- 选择数量 -->
-    <view class='updown-box jus-b ali-c'>
-      <view class='cor-grey'>数量</view>
-      <!-- 商品数量加减按钮 -->
-      <view class='updown flexc'>
-        <!-- 减 -->
-        <view class='down' hover-class='button-hover' bindtap='reduceNumber'>-</view>
-        <!-- 输入框 -->
-        <input type='number' class='nums' value='{{goodsNumber}}' bindinput="inputValueChange"></input>
-        <!-- 加 -->
-        <view class='up' hover-class='button-hover' bindtap='addNumber'>+</view>
-      </view>
-    </view>
-  </scroll-view>
-  <view class='box-btn {{isX? "cart-bottom" :""}}' bindtap='cartBoxClick' data-joinorbuy="{{joinOrBuy}}">
-    确定
-  </view>
-</view>

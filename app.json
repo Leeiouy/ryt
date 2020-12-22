@@ -1,6 +1,6 @@
 {
   "pages": [
-
+    "pages/index_i/index_i",
     "pages/index/index",
     "pages/logintwo/index",
     "pages/link/index",
@@ -74,7 +74,7 @@
     "pages/health/material/material",
     "pages/health/teamNext/teamNext",
     "pages/health/verifyPaper/verifyPaper",
-    "pages/index_i/index_i",
+
     "pages/address_i/address_i",
     "pages/addressDetail_i/addressDetail_i"
   ],

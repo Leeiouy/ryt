@@ -1,3 +1,21 @@
+<view class="nav ali-c jus-b">
+    <view class="nav_item">
+        <image src="/images/dd.png" mode="widthFix" />
+        <view>我的订单</view>
+    </view>
+    <view class="nav_item">
+        <image src="/images/qb.png" mode="widthFix" />
+        <view>我的钱包</view>
+    </view>
+    <view class="nav_item">
+        <image src="/images/cz.png" mode="widthFix" />
+        <view>质押金充值</view>
+    </view>
+    <view class="nav_item">
+        <image src="/images/fx.png" mode="widthFix" />
+        <view>好友分享</view>
+    </view>
+</view>
 <swiper class="card-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#fa201e">
     <swiper-item wx:for="{{banner}}" wx:key="item.id" class="{{cardCur==index?'cur':''}}">
         <view class="swiper-item radius shadow shadow-lg bg-white">
@@ -5,6 +23,9 @@
         </view>
     </swiper-item>
 </swiper>
+<!-- <view class="banner">
+    <image src="/images/ptBanner.png" mode="widthFix" />
+</view> -->
 <view class="notify ali-c ">
     <image src="../../images/notify_icon.png" mode="widthFix" />
     <view>这是一条很长很长很长的通知信息哦</view>

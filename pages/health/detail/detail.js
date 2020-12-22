@@ -9,6 +9,7 @@ Page({
     //-----------------数据-----------------
     goodsId: "", //商品id
     goodsData: "", //商品内容
+    banner: ['http://uimgproxy.suning.cn/uimg1/sop/commodity/sWyxQk3UPKeAhRIm_2Qbzg.jpg_800w_800h_4e', "http://uimgproxy.suning.cn/uimg1/sop/commodity/sWyxQk3UPKeAhRIm_2Qbzg.jpg_800w_800h_4e", 'http://uimgproxy.suning.cn/uimg1/sop/commodity/sWyxQk3UPKeAhRIm_2Qbzg.jpg_800w_800h_4e'],
 
 
     //-----------------规格栏选中数据-----------------

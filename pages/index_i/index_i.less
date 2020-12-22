@@ -13,6 +13,30 @@
     }
 }
 
+.banner {
+    width: 96%;
+    margin: 0 auto;
+}
+
+.nav {
+    padding: 20rpx 30rpx;
+    background-color: white;
+    text-align: center;
+
+    .nav_item {
+        width: 20%;
+        font-size: 24rpx;
+
+        image {
+            width: 60%;
+        }
+
+        &:active {
+            opacity: .7;
+        }
+    }
+}
+
 .column {
     width: 96%;
     margin: 0 auto;
@@ -26,10 +50,12 @@
         transition: all .6s;
         text-align: center;
         padding: 20rpx;
-        .column_item_title{
+
+        .column_item_title {
             color: black;
         }
-        .small{
+
+        .small {
             font-size: 18rpx;
             color: #7f7f7f;
         }
@@ -39,7 +65,8 @@
         transform: scale(1.05) !important;
         background-color: white !important;
     }
-    .column_n{
+
+    .column_n {
         transform: scale(0.95);
         background-color: #dfdfdf;
     }
