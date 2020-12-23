@@ -11,7 +11,12 @@ App({
     }
 
 
-    this.getLoginStatus()
+    wx.onAppRoute((route) => {
+      //路由全局回调，判断是否token过期问题
+      this.getLoginStatus()
+    })
+
+
     this.upDataWxApp()
 
   },
@@ -32,7 +37,10 @@ App({
             success: (result) => {
               if (result.confirm) {
                 wx.reLaunch({
-                  url: 'pages/login/login'
+                  url: '/pages/login/login',
+                  fali(e){
+                    console.log(e);
+                  }
                 });
               }
             }

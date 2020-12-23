@@ -14,17 +14,17 @@
    },
    toIndex() {
      wx.switchTab({
-       url: 'pages/index/index'
+       url: '/pages/index/index',
+       fail: (e)=>{console.log(e);},
      })
    },
    toBack() {
-     wx.navigateBack({
-       delta: 1
-     });
+     wx.navigateBack();
    },
    //用户点击按钮发起授权
    WeChatUserInfo: function (e) {
      let rawData = e.detail.rawData;
+     let that = this;
      wx.login({
        success(res) {
          if (res.code) {
@@ -36,8 +36,12 @@
              console.log(res);
              if (res.code == 1) {
                app.Toast('登录成功～', 'success')
+
+               wx.setStorageSync('token', res.data.userInfo.token);
+               wx.setStorageSync('userInfo', res.data.userinfo);
+
                setTimeout(() => {
-                 this.data.status ? this.toIndex() : this.toBack();
+                 that.data.status ? that.toBack() : that.toIndex();
                }, 1500);
              } else {
                app.Toast('授权登录失败,请重试！')

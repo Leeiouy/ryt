@@ -119,6 +119,7 @@ Page({
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/logintwo/index?type=1',
+
             })
           }
         }

@@ -89,14 +89,8 @@
     "selectedColor": "#E4592A",
     "list": [
       {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "/images/home_n.png",
-        "selectedIconPath": "/images/home_a.png"
-      },
-      {
         "pagePath": "pages/index_i/index_i",
-        "text": "新首页",
+        "text": "首页",
         "iconPath": "/images/home_n.png",
         "selectedIconPath": "/images/home_a.png"
       },
