@@ -73,15 +73,15 @@
 }
 
 .goods {
-    width: 96%;
+    width: 92%;
     margin: 0 auto;
 
     .goods_item {
-        // width: 48%;
         background-color: white;
         border-radius: 15rpx;
         overflow: hidden;
         margin-bottom: 30rpx;
+        padding-bottom: 20rpx;
 
         .goods_img {
             position: relative;
@@ -94,36 +94,67 @@
                 right: 0;
                 left: 0;
                 text-align: center;
-                font-size: 24rpx;
-                height: 40rpx;
-                line-height: 40rpx;
+                font-size: 30rpx;
+                height: 70rpx;
+                line-height: 70rpx;
             }
         }
 
         .goods_detail {
             padding: 15rpx;
 
+            .goods_info {
+                >text {
+                    font-weight: bold;
+                    font-size: 30rpx;
+                    line-height: 50rpx;
+                }
+            }
+
             .goods_info_icon {
                 position: relative;
-                top: -2rpx;
-                width: 90rpx;
-                height: 30rpx;
+                /* top: -2rpx; */
+                /* width: 90rpx; */
+                /* height: 30rpx; */
+                padding: 5rpx 10rpx;
                 background-color: #fa201e;
                 display: inline-block;
-                font-size: 18rpx;
+                font-size: 32rpx;
                 color: white;
                 line-height: 35rpx;
                 text-align: center;
                 border-radius: 20rpx;
+                margin-right: 10rpx;
+
+                .ii {
+                    position: relative;
+                    top: 5rpx;
+                }
 
                 .goods_info_icon_price {
                     position: relative;
-                    top: -1rpx;
+                    top: -3rpx;
                 }
             }
 
             .goods_price {
                 color: #fa201e;
+                padding: 10rpx 0;
+            }
+
+            .goods_hot {
+                .goods_hot_avatar {
+                    >view {
+                        width: 50rpx;
+                        height: 50rpx;
+                        border-radius: 50%;
+                        overflow: hidden;
+                    }
+                }
+                .goods_hot_num{
+                    font-size: 22rpx;
+                    transform: translateX(-20px);
+                }
             }
 
         }

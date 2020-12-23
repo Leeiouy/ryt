@@ -53,8 +53,12 @@ Page({
     }
 
   },
-
-
+  goodsDetail(e) {
+    let id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/health/detail/detail?goods_id=${id}`
+    });
+  },
 
   onReachBottom: function () {
 

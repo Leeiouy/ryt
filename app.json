@@ -17,7 +17,6 @@
     "pages/linkadd/index",
     "pages/linkdetail/index",
     "pages/orderplace/index",
-    "pages/myteam/index",
     "pages/orderaftersale/index",
     "pages/orderrefund/index",
     "pages/Material/index",
@@ -59,8 +58,6 @@
     "pages/mycode/index",
     "pages/myboss/index",
     "pages/oferList/oferList",
-    "pages/myteam1/index",
-    "pages/myteam2/index",
     "pages/empower/empower",
     "pages/avatarCut/index",
     "pages/health/index/index",
@@ -74,9 +71,9 @@
     "pages/health/material/material",
     "pages/health/teamNext/teamNext",
     "pages/health/verifyPaper/verifyPaper",
-
     "pages/address_i/address_i",
-    "pages/addressDetail_i/addressDetail_i"
+    "pages/addressDetail_i/addressDetail_i",
+    "pages/myteam/myteam"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -88,6 +85,7 @@
     "color": "#515151",
     "selectedColor": "#E4592A",
     "list": [
+
       {
         "pagePath": "pages/index_i/index_i",
         "text": "首页",
@@ -95,7 +93,7 @@
         "selectedIconPath": "/images/home_a.png"
       },
       {
-        "pagePath": "pages/shoppingcart/index",
+        "pagePath": "pages/myteam/myteam",
         "text": "团队",
         "iconPath": "/images/item_n.png",
         "selectedIconPath": "/images/item_a.png"
@@ -126,6 +124,7 @@
     "van-divider": "vant-weapp/divider/index",
     "van-field": "vant-weapp/field/index",
     "van-area": "vant-weapp/area/index",
-    "van-switch": "vant-weapp/switch/index"
+    "van-switch": "vant-weapp/switch/index",
+    "van-share-sheet": "vant-weapp/share-sheet/index"
   }
 }

@@ -20,7 +20,23 @@ Page({
 
 
     //-----------------逻辑-----------------
+
+    share_list: [{
+        name: '微信',
+        icon: 'wechat',
+        openType: 'share'
+      },
+      {
+        name: '复制链接',
+        icon: 'link'
+      },
+      {
+        name: '分享海报',
+        icon: 'poster'
+      },
+    ],
     infoShow: false, //规格弹窗展示
+    showShare: false, //分享弹窗
     isBuy: false,
     isAddCar: false,
 
@@ -232,6 +248,19 @@ Page({
 
 
 
+  //-------------------------分享弹窗相关事件----------------------------------
+  share() {
+    this.setData({
+      showShare: true
+    })
+  },
+
+  onShareClose() {
+
+    this.setData({
+      showShare: false
+    })
+  },
 
 
 

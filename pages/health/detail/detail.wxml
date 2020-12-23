@@ -79,7 +79,8 @@
   </view>
   <van-empty description="暂无商品描述信息哦~" wx:if="{{!goodsData.content}}" />
   <van-goods-action>
-    <van-goods-action-icon icon="like-o" color="{{goodsData.is_collect?'red':''}}" text="收藏" bind:click='collect' />
+    <van-goods-action-icon icon="share-o"  text="分享" bind:click='share' />
+     <!-- <van-goods-action-icon icon="share-o"  text="分享" bind:click='collect' /> -->
     <van-goods-action-button text="立即购买" bind:click='buyGoodsBtn' />
   </van-goods-action>
 </view>
@@ -121,3 +122,13 @@
     </van-button>
   </view>
 </van-action-sheet>
+
+
+
+<van-share-sheet
+  show="{{ showShare }}"
+  title="立即分享给好友"
+  options="{{ share_list }}"
+  bind:select="onSelect"
+  bind:close="onShareClose"
+/>
