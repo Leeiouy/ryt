@@ -14,7 +14,7 @@
    },
    toIndex() {
      wx.switchTab({
-       url: '/pages/index/index',
+       url: '/pages/index_i/index_i',
        fail: (e)=>{console.log(e);},
      })
    },

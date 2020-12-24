@@ -5,6 +5,7 @@ import {
   _addressChange,
   _addressRemove
 } from '../../config/https'
+const app = getApp();
 
 Page({
   data: {
@@ -18,9 +19,29 @@ Page({
     //------------------选择地区相关------------------------
     areaList: _areaList, //地区列表数据 本地的
     areaShow: false, //是否展示地区选择弹出层
+
+
+
+    //------------------上个页面带过来的地址数据------------------------
+    pageInfo: null
+
   },
   onLoad: function (options) {
-    console.log(options);
+    let info = options.info && JSON.parse(options.info)
+    if (info) {
+      wx.setNavigationBarTitle({
+        title: '编辑地址'
+      });
+      this.setData({
+        pageInfo: info,
+        name: info.name,
+        phone: info.phone,
+        address: info.province + '-' + info.city + '-' + info.region,
+        addressDetail: info.detail,
+        isDefault: Number(info.isdefault) ? true : false
+      })
+    }
+
   },
   //----------------输入框事件----------------
   onName(e) {
@@ -70,24 +91,113 @@ Page({
     })
   },
   //----------------按钮事件----------------
-
+  //判断是否提交条件
+  judge() {
+    if (!this.data.name) {
+      app.Toast('收货人名字未填写!')
+      return false
+    }
+    if (!this.data.phone) {
+      app.Toast('收货人手机号未填写!')
+      return false
+    }
+    if (this.data.phone.length !== 11) {
+      app.Toast('收货人手机号格式错误!')
+      return false
+    }
+    if (!this.data.address) {
+      app.Toast('收货人地址未选择!')
+      return false
+    }
+    if (!this.data.addressDetail) {
+      app.Toast('收货人地址详情未填写!')
+      return false
+    }
+    return true
+  },
 
 
 
   //保存
-  save() {
+  add() {
+    if (!this.judge()) {
+      return
+    }
+    _addressAdd({
+      token: wx.getStorageSync('token'),
+      name: this.data.name,
+      phone: this.data.phone,
+      province: this.data.address.split('-')[0],
+      city: this.data.address.split('-')[1],
+      region: this.data.address.split('-')[2],
+      detail: this.data.addressDetail,
+      isdefault: this.data.isDefault ? 1 : 0
+    }).then(res => {
+      if (res.code == 1) {
+        app.Toast('添加地址成功!', 'success')
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
+      } else {
+        app.Toast('添加地址失败!')
+      }
+    })
+  },
 
-    _addressAdd().then(res => {
-      console.log(res);
+  //修改
+  change() {
+    if (!this.judge()) {
+      return
+    }
+    _addressChange({
+      token: wx.getStorageSync('token'),
+      address_id: this.data.pageInfo.address_id,
+      name: this.data.name,
+      phone: this.data.phone,
+      province: this.data.address.split('-')[0],
+      city: this.data.address.split('-')[1],
+      region: this.data.address.split('-')[2],
+      detail: this.data.addressDetail,
+      isdefault: this.data.isDefault ? 1 : 0
+    }).then(res => {
+      if (res.code == 1) {
+        app.Toast('修改地址成功!', 'success')
+        setTimeout(() => {
+          wx.navigateBack();
+        }, 1500);
+      } else {
+        app.Toast('修改地址失败!')
+      }
     })
   },
   //删除地址
   del() {
-
-    _addressRemove().then(res => {
-      console.log(res);
-    })
-
+    wx.showModal({
+      title: '提示',
+      content: '您确定要删除此收货地址吗？',
+      showCancel: true,
+      cancelText: '取消',
+      cancelColor: '#000000',
+      confirmText: '确定',
+      confirmColor: '#3CC51F',
+      success: (result) => {
+        if (result.confirm) {
+          _addressRemove({
+            token: wx.getStorageSync('token'),
+            address_id: this.data.pageInfo.address_id,
+          }).then(res => {
+            if (res.code == 1) {
+              app.Toast('删除地址成功!', 'success')
+              setTimeout(() => {
+                wx.navigateBack();
+              }, 1500);
+            } else {
+              app.Toast('删除地址失败!')
+            }
+          })
+        }
+      }
+    });
   }
 
 })

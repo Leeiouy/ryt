@@ -1,14 +1,14 @@
 <view class="address_list">
-    <block wx:for="{{10}}">
-        <view class="address_item">
+    <block wx:for="{{address_list}}">
+        <view class="address_item" bind:tap="toDetail" data-info='{{item}}'>
             <view class="user ali-c">
-                <view class="name">李先生</view>
-                <view class="phone">15879775757</view>
-                <view class="default">默认</view>
+                <view class="name">{{item.name}}</view>
+                <view class="phone">{{item.phone}}</view>
+                <view class="default" wx:if="{{item.isdefault==1}}">默认</view>
             </view>
             <view class="addres ali-c">
-                <view class="oneline">江西省南昌市青云谱区</view>
-                <view class="oneline flex1">大地路100号地路10路100号地路1路100号地路1路100号地路1路100号地路1</view>
+                <view class="oneline">{{item.province}}{{item.city}} </view>
+                <view class="oneline flex1">{{item.detail}} </view>
                 <van-icon class="icon" name="edit" />
             </view>
         </view>
