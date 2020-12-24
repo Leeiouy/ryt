@@ -1,0 +1,97 @@
+
+
+.my {
+    position: relative;
+
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        height: 700rpx;
+        width: 100%;
+        // background-color: #ff5454;
+        // background-image: linear-gradient(180deg, #ff5454 0%, #ff8366 42%, #ffffff 74%);
+
+
+    }
+
+    .user {
+
+        padding-top: 100rpx;
+        color: white;
+
+        .user_avatar {
+            width: 150rpx;
+            height: 150rpx;
+            border-radius: 50%;
+            background-color: white;
+        }
+        .user_name {
+            font-size: 32rpx;
+        }
+    }
+
+    .module {
+        width: 90%;
+        margin: 0 auto;
+        padding: 20rpx;
+        background-color: white;
+        border-radius: 30rpx;
+        margin-top: 24rpx;
+
+        .title {
+            border-bottom: 1rpx solid #f2f2f2;
+            padding: 10rpx 0;
+        }
+
+        .order {
+            margin-top: 30rpx;
+            text-align: center;
+            font-size: 26rpx;
+            color: #666666;
+
+            >view {
+                flex: 1;
+
+                &:active {
+                    opacity: .7;
+                }
+            }
+
+            image {
+                width: 60rpx;
+
+            }
+        }
+    }
+
+    .options {
+        margin: 30rpx auto;
+        // margin-top: 30rpx;
+        border-radius: 30rpx;
+        background-color: white;
+        padding: 0 30rpx;
+        width: 90%;
+
+
+        .options_item {
+            padding: 0 20rpx;
+            height: 100rpx;
+
+
+            .flex1 {
+                margin: 0 20rpx;
+            }
+
+            &:active {
+                opacity: .7;
+            }
+        }
+
+        .bb {
+            border-bottom: 1rpx solid #e6e6e6;
+        }
+    }
+}

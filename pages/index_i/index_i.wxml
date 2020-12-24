@@ -19,7 +19,7 @@
 <swiper class="card-swiper square-dot bg-white" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500" indicator-color="#8799a3" indicator-active-color="#fa201e">
     <swiper-item wx:for="{{banner}}" wx:key="item.id" class="{{cardCur==index?'cur':''}}">
         <view class="swiper-item radius shadow shadow-lg bg-white">
-            <image src="https://m.360buyimg.com/mobilecms/s700x280_jfs/t1/127501/33/18505/233398/5fad61cfEb70301cb/7d480afea328baec.jpg!cr_1125x445_0_171!q70.jpg.dpg" mode="aspectFill" />
+            <image src="{{item.image}}" mode="aspectFill" />
         </view>
     </swiper-item>
 </swiper>
@@ -49,9 +49,9 @@
 </view>
 <van-divider contentPosition="center">拼团商品</van-divider>
 <view class="goods ">
-    <view class="goods_item shadow-warp bg-white" wx:for="{{indexData.djk_item_list}}" bind:tap="goodsDetail" data-id='{{item.goods_id}}'>
+    <view class="goods_item shadow-warp bg-white" wx:for="{{indexData.djk_item_list}}" wx:key="{{index}}" bind:tap="goodsDetail" data-id='{{item.goods_id}}'>
         <view class="goods_img">
-            <image src="https://img11.360buyimg.com/n1/jfs/t29512/55/1617490699/63150/a106f233/5ce61c90Nab909067.jpg" mode="widthFix" style="height:100rpx;" />
+            <image src="{{item.image}}" mode="widthFix" style="height:100rpx;" />
             <view class="goods_time">00:00:00</view>
         </view>
         <view class="goods_detail">
@@ -69,9 +69,9 @@
             </view>
             <view class="goods_hot ali-c jus-b">
                 <view class="goods_hot_avatar ali-c">
-                    <block wx:for="{{8}}">
-                        <view style="position: relative; left: -{{index*10}}rpx;  z-index:{{index}} ;">
-                            <image src="https://img.yzcdn.cn/vant/cat.jpeg" mode="aspectFill" />
+                    <block wx:for="{{item.buyer}}" wx:for-item="buyer_item" wx:for-index="buyer_index" wx:key="buyer_item">
+                        <view style="position: relative; left: -{{buyer_index*10}}rpx;  z-index:{{buyer_index}};">
+                            <image src="{{buyer_item}}" mode="aspectFill" />
                         </view>
                     </block>
                 </view>

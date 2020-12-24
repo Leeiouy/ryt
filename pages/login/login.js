@@ -38,7 +38,7 @@
                app.Toast('登录成功～', 'success')
 
                wx.setStorageSync('token', res.data.userInfo.token);
-               wx.setStorageSync('userInfo', res.data.userinfo);
+               wx.setStorageSync('userInfo', res.data.userInfo);
 
                setTimeout(() => {
                  that.data.status ? that.toBack() : that.toIndex();

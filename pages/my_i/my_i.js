@@ -1,66 +1,62 @@
 // pages/my_i/my_i.js
+const app = getApp();
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    Custom: app.globalData.Custom,
+    userInfo: null
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
 
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
+    if (this.isLogin()) {
+      this.setData({
+        userInfo: wx.getStorageSync('userInfo')
+      })
+
+
+    }
+
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  login() {
+    if (!wx.getStorageSync('token')) {
+      wx.navigateTo({
+        url: '/pages/login/login',
+      })
+    }
   },
+  isLogin() {
+    if (!wx.getStorageSync('token')) {
+      wx.showModal({
+        title: '温馨提示',
+        content: '您暂未登录，是否要去登录？',
+        confirmText: "确定",
+        success(res) {
+          if (res.confirm) {
+            wx.navigateTo({
+              url: '/pages/login/login',
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+            })
+          }
+        }
+      })
+      return false
+    } else {
+      return true
+    }
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
+  toAddress() {
+    if (!this.isLogin()) {
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/address_i/address_i'
+    });
 
   }
 })

@@ -10,6 +10,15 @@ App({
       this.other_id = options.query.other_user_id;
     }
 
+    wx.getSystemInfo({
+      success: e => {
+        this.globalData.StatusBar = e.statusBarHeight;
+        let custom = wx.getMenuButtonBoundingClientRect();
+        this.globalData.Custom = custom;
+        this.globalData.CustomBar = custom.bottom + custom.top - e.statusBarHeight;
+      }
+    })
+
 
     wx.onAppRoute((route) => {
       //路由全局回调，判断是否token过期问题
@@ -38,7 +47,7 @@ App({
               if (result.confirm) {
                 wx.reLaunch({
                   url: '/pages/login/login',
-                  fali(e){
+                  fali(e) {
                     console.log(e);
                   }
                 });

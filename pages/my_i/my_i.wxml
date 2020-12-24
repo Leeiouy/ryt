@@ -1,7 +1,47 @@
-<navigator class="" target="" url="/pages/login/login" hover-class="navigator-hover" open-type="navigate">
-    登录
-</navigator>
-
-<navigator class="" target="" url="/pages/address_i/address_i" hover-class="navigator-hover" open-type="navigate">
-    地址管理
-</navigator>
+<!-- <cu-tabBar bgColor="bg-cyan" isBack="{{true}}">
+    <view slot="content">个人信息</view>
+</cu-tabBar> -->
+<view class="my">
+    <view class="bg">
+        <image src="/images/myCenter.png" mode="widthFix" />
+    </view>
+    <view class="user flexv jus-c ali-c" style="padding-top:{{CustomBar}}px" bind:tap="login">
+        <van-image round fit="cover" width="120rpx" height="120rpx" src="/images/noLogin.png" />
+        <view class="user_name">{{userInfo.nickname||'未登录'}}</view>
+    </view>
+    <view class="module">
+        <view class="title ali-c jus-b">
+            <view>我的订单</view>
+            <van-icon name="arrow" />
+        </view>
+        <view class="order ali-c jus-b">
+            <view>
+                <image src="/images/details_store.png" mode="widthFix" />
+                <view>全部订单</view>
+            </view>
+            <view>
+                <image src="/images/details_store.png" mode="widthFix" />
+                <view>未付款</view>
+            </view>
+            <view>
+                <image src="/images/details_store.png" mode="widthFix" />
+                <view>已发货</view>
+            </view>
+            <view>
+                <image src="/images/details_store.png" mode="widthFix" />
+                <view>已完成</view>
+            </view>
+            <view>
+                <image src="/images/details_store.png" mode="widthFix" />
+                <view>售后订单</view>
+            </view>
+        </view>
+    </view>
+    <view class="options">
+        <view class="options_item jus-b ali-c" bind:tap="toAddress">
+            <view class="cuIcon-location lg text-gray"></view>
+            <view class="flex1">我的地址</view>
+            <van-icon name="arrow" />
+        </view>
+    </view>
+</view>
