@@ -1,0 +1,7 @@
+<navigator class="" target="" url="/pages/login/login" hover-class="navigator-hover" open-type="navigate">
+    登录
+</navigator>
+
+<navigator class="" target="" url="/pages/address_i/address_i" hover-class="navigator-hover" open-type="navigate">
+    地址管理
+</navigator>
