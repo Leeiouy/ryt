@@ -83,10 +83,15 @@ export const _addressList = (parma) => api.post('/Adress/getAddress', parma);
 export const _addressAdd = (parma) => api.post('Adress/addAddress', parma);
 
 //收货地址修改
-export const _addressChange= (parma) => api.post('Adress/updateAddress', parma);
+export const _addressChange = (parma) => api.post('Adress/updateAddress', parma);
 
 //收货地址删除
-export const _addressRemove= (parma) => api.post('/Adress/delAddress', parma);
+export const _addressRemove = (parma) => api.post('/Adress/delAddress', parma);
 
 //收货地址默认设置
-export const _addressDefault= (parma) => api.post('/Adress/setDefault', parma);
+export const _addressDefault = (parma) => api.post('/Adress/setDefault', parma);
+
+//-----------------------------------我的页面-----------------------------------------
+
+//个人中心
+export const _myCenter = (parma) => api.post('/Mycenter/my_center', parma);

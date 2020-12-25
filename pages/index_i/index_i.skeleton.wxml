@@ -1,0 +1,111 @@
+<!-- 此文件为开发者工具生成，生成时间: 2020/12/25 下午2:15:30 
+使用方法：
+在 /Volumes/home - 数据/前端文件/10.24李显灵工作文件拷贝/my项目/ryt/pages/index_i/index_i.wxml 引入模板
+
+```
+<import src="index_i.skeleton.wxml"/>
+<template is="skeleton" wx-if="{{loading}}" />
+```
+
+在 /Volumes/home - 数据/前端文件/10.24李显灵工作文件拷贝/my项目/ryt/pages/index_i/index_i.wxss 中引入样式
+```
+@import "./index_i.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html -->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="nav ali-c jus-b">
+      <view class="nav_item">
+        <image mode="widthFix" style="height: 41px;" class="sk-image"></image>
+        <view class="sk-transparent sk-text-14-2857-57 sk-text" style="background-position-x: 50%;">
+          我的订单
+        </view>
+      </view>
+      <view class="nav_item">
+        <image mode="widthFix" style="height: 41px;" class="sk-image"></image>
+        <view class="sk-transparent sk-text-14-2857-585 sk-text" style="background-position-x: 50%;">
+          我的钱包
+        </view>
+      </view>
+      <view class="nav_item">
+        <image mode="widthFix" style="height: 41px;" class="sk-image"></image>
+        <view class="sk-transparent sk-text-14-2857-584 sk-text" style="background-position-x: 50%;">
+          质押金充值
+        </view>
+      </view>
+      <view class="nav_item">
+        <image mode="widthFix" style="height: 41px;" class="sk-image"></image>
+        <view class="sk-transparent sk-text-14-2857-899 sk-text" style="background-position-x: 50%;">
+          好友分享
+        </view>
+      </view>
+    </view>
+    <swiper circular="true" class="card-swiper square-dot bg-white" duration="500" indicator-dots="true" interval="5000" current="1">
+      <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+        <view class="swiper-item radius shadow shadow-lg bg-white">
+          <image mode="aspectFill" class="sk-image"></image>
+        </view>
+      </swiper-item>
+      <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(100%, 0px) translateZ(0px);">
+        <view class="swiper-item radius shadow shadow-lg bg-white">
+          <image mode="aspectFill" class="sk-image"></image>
+        </view>
+      </swiper-item>
+      <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(100%, 0px) translateZ(0px);">
+        <view class="swiper-item radius shadow shadow-lg bg-white">
+          <image mode="aspectFill" class="sk-image"></image>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="notify ali-c">
+      <image mode="widthFix" style="height: 25px;" class="sk-image"></image>
+      <swiper autoplay="false" circular="true" vertical="true" class="flex1" interval="3000" style="height:50px;line-height:50px" current="0">
+        <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(0px, 0%) translateZ(0px);" class="sk-transparent sk-text-36-0000-176 sk-text">
+          自用省钱 分享赚钱
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="column ali-c jus-b">
+      <view class="column_item" data-active="1">
+        <view class="column_item_title sk-transparent sk-text-14-2857-118 sk-text" style="background-position-x: 50%;">
+          品牌优选
+        </view>
+        <view class="small sk-transparent sk-text-14-2857-213 sk-text" style="background-position-x: 50%;">
+          抢品质好货
+        </view>
+        <image mode="widthFix" style="height: 95px;" class="sk-image"></image>
+      </view>
+      <view class="column_item" data-active="2">
+        <view class="column_item_title sk-transparent sk-text-14-2857-30 sk-text" style="background-position-x: 50%;">
+          厂家直销
+        </view>
+        <view class="small sk-transparent sk-text-14-2857-908 sk-text" style="background-position-x: 50%;">
+          抢品质好货
+        </view>
+        <image mode="widthFix" style="height: 95px;" class="sk-image"></image>
+      </view>
+      <view class="column_item" data-active="3">
+        <view class="column_item_title sk-transparent sk-text-14-2857-206 sk-text" style="background-position-x: 50%;">
+          往期团购
+        </view>
+        <view class="small sk-transparent sk-text-14-2857-440 sk-text" style="background-position-x: 50%;">
+          抢品质好货
+        </view>
+        <image mode="widthFix" style="height: 95px;" class="sk-image"></image>
+      </view>
+    </view>
+    <view is="vant-weapp/divider/index">
+      <view class="van-divider divider-index--van-divider van-divider--center divider-index--van-divider--center sk-transparent sk-text-20-8333-648 sk-text sk-pseudo sk-pseudo-circle" style="border: none;">
+        拼团商品
+      </view>
+    </view>
+    <view class="goods">
+      <view class="goods_item shadow-warp bg-white sk-pseudo sk-pseudo-circle" data-id="1037">
+        <view class="goods_img">
+          <image mode="widthFix" style="height: 165px;" class="sk-image"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

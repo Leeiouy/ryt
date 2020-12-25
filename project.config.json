@@ -21,7 +21,7 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
     "babelSetting": {
       "ignore": [],
@@ -35,7 +35,8 @@
     "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true
+    "minifyWXSS": true,
+    "useApiHostProcess": false
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
@@ -96,6 +97,18 @@
         {
           "name": "我的页面",
           "pathName": "pages/my_i/my_i",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "团队",
+          "pathName": "pages/myteam/myteam",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "设置",
+          "pathName": "pages/setting/index",
           "scene": null
         }
       ]

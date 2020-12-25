@@ -19,6 +19,10 @@ VantComponent({
       type: Boolean,
       value: true,
     },
+    fontColor:{
+      type:String,
+      value:'white'
+    }
   },
   data: {
     timeData: parseTimeData(0),

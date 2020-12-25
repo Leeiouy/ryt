@@ -1,27 +1,66 @@
 // pages/my_i/my_i.js
 const app = getApp();
 
+import {
+  _myCenter
+} from '../../config/https'
+
 Page({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
     Custom: app.globalData.Custom,
-    userInfo: null
+    //---------------------------------
+    userInfo: null, //登录保存的头像和昵称
+    centerData: null //
+
   },
   onLoad: function (options) {
-
+    console.log(_myCenter);
   },
   onShow: function () {
     if (this.isLogin()) {
       this.setData({
         userInfo: wx.getStorageSync('userInfo')
       })
-
-
     }
 
-
+    this.getData()
   },
+
+
+  getData() {
+
+    _myCenter({
+      token: wx.getStorageSync('token') || ''
+    }).then(res => {
+      if (res.code == 1) {
+        this.setData({
+          centerData: res.data
+        })
+      } else {
+        app.Toast('网络错误!')
+      }
+    })
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   login() {
     if (!wx.getStorageSync('token')) {
@@ -50,6 +89,7 @@ Page({
       return true
     }
   },
+  //跳转地址管理
   toAddress() {
     if (!this.isLogin()) {
       return
@@ -57,6 +97,14 @@ Page({
     wx.navigateTo({
       url: '/pages/address_i/address_i'
     });
-
+  },
+  //跳转设置页面
+  toSetting() {
+    if (!this.isLogin()) {
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/setting/index'
+    });
   }
 })

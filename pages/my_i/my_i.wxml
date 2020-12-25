@@ -6,7 +6,7 @@
         <image src="/images/myCenter.png" mode="widthFix" />
     </view>
     <view class="user flexv jus-c ali-c" style="padding-top:{{CustomBar}}px" bind:tap="login">
-        <van-image round fit="cover" width="120rpx" height="120rpx" src="/images/noLogin.png" />
+        <van-image round fit="cover" width="120rpx" height="120rpx" src="/images/me_tx_empty.png" />
         <view class="user_name">{{userInfo.nickname||'未登录'}}</view>
     </view>
     <view class="module">
@@ -15,26 +15,12 @@
             <van-icon name="arrow" />
         </view>
         <view class="order ali-c jus-b">
-            <view>
-                <image src="/images/details_store.png" mode="widthFix" />
-                <view>全部订单</view>
-            </view>
-            <view>
-                <image src="/images/details_store.png" mode="widthFix" />
-                <view>未付款</view>
-            </view>
-            <view>
-                <image src="/images/details_store.png" mode="widthFix" />
-                <view>已发货</view>
-            </view>
-            <view>
-                <image src="/images/details_store.png" mode="widthFix" />
-                <view>已完成</view>
-            </view>
-            <view>
-                <image src="/images/details_store.png" mode="widthFix" />
-                <view>售后订单</view>
-            </view>
+            <block wx:for="{{centerData.order_module}}">
+                <view>
+                    <image src="{{item.image}}" mode="widthFix" />
+                    <view>{{item.name}}</view>
+                </view>
+            </block>
         </view>
     </view>
     <view class="options">
@@ -43,5 +29,17 @@
             <view class="flex1">我的地址</view>
             <van-icon name="arrow" />
         </view>
+        <view class="options_item jus-b ali-c" bind:tap="toSetting">
+            <view class="cuIcon-settingsfill lg text-gray"></view>
+            <view class="flex1">设置</view>
+            <van-icon name="arrow" />
+        </view>
+        <navigator url="/pages/my/index">
+            <view class="options_item jus-b ali-c" >
+                <view class="cuIcon-location lg text-gray"></view>
+                <view class="flex1">旧我的页面</view>
+                <van-icon name="arrow" />
+            </view>
+        </navigator>
     </view>
 </view>

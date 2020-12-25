@@ -61,7 +61,7 @@
             }
 
             image {
-                width: 60rpx;
+                width: 40rpx;
 
             }
         }
@@ -69,17 +69,16 @@
 
     .options {
         margin: 30rpx auto;
-        // margin-top: 30rpx;
         border-radius: 30rpx;
         background-color: white;
-        padding: 0 30rpx;
         width: 90%;
+        overflow: hidden;
 
 
         .options_item {
-            padding: 0 20rpx;
+            padding: 0 40rpx;
             height: 100rpx;
-
+            transition: all .7s;
 
             .flex1 {
                 margin: 0 20rpx;
@@ -87,6 +86,7 @@
 
             &:active {
                 opacity: .7;
+                background-color: rgb(192, 192, 192);
             }
         }
 

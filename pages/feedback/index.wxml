@@ -1,9 +1,9 @@
 <!--pages/feedback/index.wxml-->
 <form bindsubmit="formSubmit">
   <view class="feedback">
-    <view class='title'>请详细描述您遇到的问题或建议（500字以内）</view>
+    <view class='title'>请详细描述您遇到的问题或建议（100字以内）</view>
     <view class='textarea-box'>
-      <textarea placeholder='请输入您的宝贵意见～' value="{{content}}" name='content'></textarea>
+      <textarea placeholder='请输入您的宝贵意见～' value="{{content}}" name='content' maxlength="100"></textarea>
     </view>
   </view>
   <view class='submit-box'>

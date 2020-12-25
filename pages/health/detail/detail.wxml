@@ -1,10 +1,11 @@
+
 <import src="/wxParse/wxParse.wxml" />
 <view>
-  <view class='banners' style="height:{{height}};width:100%;">
-    <swiper autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular='true' bindchange="change">
-      <block wx:for="{{banner}}" wx:key="*this">
+  <view class='banners' style="height:{{bannerHeight[currentNum-1]}}rpx;width:100%;">
+    <swiper autoplay interval="3000" duration="1000" circular='true' bindchange="change">
+      <block wx:for="{{goodsData.images}}" wx:key="*this">
         <swiper-item>
-          <image lazy-load="true" class='i-img' mode='aspectFill' src='{{item}}'></image>
+          <image lazy-load="true" class='i-img' mode='aspectFill' src='{{item}}' bindload="imgLoad"></image>
         </swiper-item>
       </block>
     </swiper>

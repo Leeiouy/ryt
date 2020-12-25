@@ -13,8 +13,12 @@ Page({
   data: {
     indexData: null,
     banner: null, //banner图片
-
     column_a: '',
+
+
+
+
+    skeletonShow:true//骨架屏显示
   },
   onLoad: function (options) {
     this.getData()
@@ -26,12 +30,17 @@ Page({
   getData() {
     getIndex().then(res => {
       if (res.code == 1) {
+        res.data.djk_item_list.forEach(v => {
+          v.remainingTime = (Number(v.end_time) - Number(v.start_time)) * 1000
+          console.log(v.remainingTime);
+        })
         this.setData({
           indexData: res.data,
-          banner: res.data.banner
+          banner: res.data.banner,
+          skeletonShow:false
         })
       }
-      console.log(res);
+
     })
   },
 
@@ -39,9 +48,7 @@ Page({
 
   columnTap(e) {
     let val = e.currentTarget.dataset.active
-
     if (val == this.data.column_a) {
-
       this.setData({
         column_a: ''
       })
