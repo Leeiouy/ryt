@@ -5,12 +5,12 @@
     <swiper autoplay interval="3000" duration="1000" circular='true' bindchange="change">
       <block wx:for="{{goodsData.images}}" wx:key="*this">
         <swiper-item>
-          <image lazy-load="true" class='i-img' mode='aspectFill' src='{{item}}' bindload="imgLoad"></image>
+          <image lazy-load="true" class='i-img'  src='{{item}}' bindload="imgLoad"></image>
         </swiper-item>
       </block>
     </swiper>
     <view class='num'>
-      <view class='cu-num'>{{currentNum}}/{{banner.length}}</view>
+      <view class='cu-num'>{{currentNum}}/{{goodsData.images.length}}</view>
     </view>
   </view>
   <view class="timeout ali-c">
@@ -81,7 +81,7 @@
   <van-empty description="暂无商品描述信息哦~" wx:if="{{!goodsData.content}}" />
   <van-goods-action>
     <van-goods-action-icon icon="share-o"  text="分享" bind:click='share' />
-     <!-- <van-goods-action-icon icon="share-o"  text="分享" bind:click='collect' /> -->
+     <van-goods-action-icon icon="like-o"  text="收藏" bind:click='collect' />
     <van-goods-action-button text="立即购买" bind:click='buyGoodsBtn' />
   </van-goods-action>
 </view>

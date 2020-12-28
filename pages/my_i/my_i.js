@@ -24,13 +24,10 @@ Page({
         userInfo: wx.getStorageSync('userInfo')
       })
     }
-
     this.getData()
   },
 
-
   getData() {
-
     _myCenter({
       token: wx.getStorageSync('token') || ''
     }).then(res => {
@@ -50,11 +47,29 @@ Page({
 
 
 
+  // 到订单
+  toOrder(e) {
+    if (!this.isLogin()) {
+      return
+    }
+    const state = e.currentTarget.dataset.state,
+      type = e.currentTarget.dataset.type;
+    console.log(state, type)
+    wx.navigateTo({
+      url: '/pages/order/index?state=' + state + '&type=' + type
+    })
+  },
 
 
-
-
-
+  //到收藏
+  toCollect() {
+    if (!this.isLogin()) {
+      return
+    }
+    wx.navigateTo({
+      url: '/pages/mycollect/index'
+    })
+  },
 
 
 
@@ -79,7 +94,6 @@ Page({
           if (res.confirm) {
             wx.navigateTo({
               url: '/pages/login/login',
-
             })
           }
         }

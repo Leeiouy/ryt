@@ -1,0 +1,23 @@
+<!--pages/sales/team/team.wxml-->
+<!--为空提示模板-->
+<import src='../../../template/empty.wxml' />
+
+<view class="myteam flexv">
+
+  <view class="team-title">我的队友: {{data.count}}</view>
+  <view class="teamItem jus-b" wx:for="{{list}}" wx:key="index"wx:if="{{!isNone}}">
+    <view class="itemLeft flex1 flex">
+      <image src="{{item.avatar}}"></image>
+      <text class="flex1 oneline">{{item.nickname}}</text>
+    </view>
+    
+    <view class="flex right_box" bindtap="toDetail" data-id="{{item.uid}}" wx:if="{{item.invite_num > 0}}">
+      <text class="flex" space="nbsp">下级队友: <text>{{item.invite_num}}个</text></text>
+      <image src="../../../../assets/img/p_rightarrow.png"></image>
+    </view>
+  </view>
+   
+   <!--为空提示-->
+  <template is="empty" data="{{emptyTip}}" wx:if='{{isNone}}' />
+   
+</view>

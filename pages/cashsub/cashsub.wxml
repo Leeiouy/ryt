@@ -1,0 +1,69 @@
+<view class="cash flexv">
+
+  <!-- 提现方式 -->
+  <view class="types flex">
+    <view class="name">选择提现方式：</view>
+    <!-- 微信 -->
+    <view class="type flex"  bindtap="chooseType" data-type="0">
+      <view class="type-check flexc {{type == 0 ? 'on' : ''}}">
+        <view class="checked"></view>
+      </view>
+      <view class="type-name">微信</view>
+    </view>
+    <!-- 银行卡 -->
+    <view class="type flex" bindtap="chooseType" data-type="1">
+      <view class="type-check flexc {{type == 1 ? 'on' : ''}}">
+        <view class="checked"></view>
+      </view>
+      <view class="type-name">银行卡</view>
+    </view>
+  </view>
+
+  <!-- 提现信息 -->
+  <!-- 微信账号 -->
+  <view class="choose ali-c" wx:if="{{type == 0}}">
+    <view class="name">真实姓名</view>
+    <input type="text" class="flex1" placeholder="请输入真实姓名" value="{{wxNumber}}" bindinput="init" maxlength="30" ></input>
+  </view>
+  <!-- 银行卡 -->
+  <view class="choose ali-c" wx:else>
+    <view class="name">银行卡</view>
+    <input type="text"
+      class="flex1"
+      placeholder="请选择银行卡"
+      disabled
+      value="{{bankCard ? bankCard.openbank +'(' + bankCard.account + ')' : ''}}"
+      bindtap="chooseCard"
+      maxlength="30"
+    ></input>
+    <image src="/assets/img/p_rightarrow.png" class="to-ico"></image>
+  </view>
+
+  <!-- 金额 -->
+  <view class="cash-box flexv">
+    <view class="title">提现金额</view>
+    <view class="fix-box ali-c">
+      <text class="ico tc">￥</text>
+      <input type="digit"
+        class="flex1"
+        placeholder-style="font-size: 30rpx;"
+        placeholder="请输入提现金额"
+        maxlength="8"
+        value="{{money}}"
+        bindinput="initMoney"
+      ></input>
+    </view>
+    <view class="notice jus-b">
+      <view class="balance flex" space="nbsp">
+        <text space="nbsp">我的余额 {{info.user_info.balance ? info.user_info.balance : '0.00'}}元，</text>
+        <text class="cash-all blue" space="nbsp" bindtap="cashAll">全部提现</text>
+      </view>
+      <text space="nbsp" class="limit">{{type == 0 ? '微信' : '银行卡'}}最低提现金额 {{type == 0 ? info.wx_min_withdraw : info.min_withdraw}}元</text>
+    </view>
+  </view>
+
+
+  <!-- 提现按钮 -->
+  <view class="cash-btn tc" bindtap="submit">提现</view>
+
+</view>

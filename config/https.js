@@ -57,21 +57,33 @@ export const centerInfo = (parma) => api.post('Mycenter/my_center', parma);
 //-----------------------------------登录接口---------------------------------------------
 export const wxLogin = (parma) => api.post('User/wxlogin', parma);
 
+
+
 //-----------------------------------首页接口---------------------------------------------
-//首页数据
-export const getIndex = (parma) => api.post('/index/index', parma);
+//首页接口
+export const _getIndex = (parma) => api.post('/index/index', parma);
+
+//常售商品
+export const _getIndexGoods = (parma) => api.post('/index/index', parma);
+
+
+
 
 
 //-----------------------------------商品详情页面------------------------------------------
 
 //商品详情
-export const goodsDetail = (parma) => api.post('item/getItemDetail', parma);
+export const _goodsDetail = (parma) => api.post('item/getItemDetail', parma);
+
+//商品规格获取
+export const _goodsSku = (parma) => api.post('item/getItemSku', parma);
+
 
 //收藏商品
-export const goodsCollection = (parma) => api.post('collection/setCollect', parma);
+export const _goodsCollection = (parma) => api.post('collection/setCollect', parma);
 
 //加入购物车
-export const addShopingCart = (parma) => api.post('item/addShopingCart', parma);
+export const _addShopingCart = (parma) => api.post('item/addShopingCart', parma);
 
 
 //-----------------------------------收货地址管理------------------------------------------

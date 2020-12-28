@@ -1,0 +1,117 @@
+.cash{
+  min-height: 100vh;
+  background-color: #f6f6f6;
+}
+
+/* 提现方式 */
+.types{
+  height: 100rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  line-height: 100rpx;
+  color: #333;
+  background-color: #fff;
+}
+.types .type{
+  margin-left: 40rpx;
+}
+.types .type .type-check{
+  width: 36rpx;
+  height: 36rpx;
+  margin: auto 0;
+  border-radius: 100%;
+  border: 1rpx solid #ededed;
+}
+.types .type .type-check .checked{
+  background-color: transparent;
+}
+.types .type .type-check.on{
+  border-color: #0276B9;
+}
+.types .type .type-check.on .checked{
+  width: 20rpx;
+  height: 20rpx;
+  margin: auto;
+  border-radius: 100%;
+  background-color: #0276B9;
+}
+.types .type .type-name{
+  margin-left: 15rpx;
+}
+
+/* 账号信息 */
+.choose{
+  height: 100rpx;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  color: #333;
+  background-color: #fff;
+}
+.choose .name{
+  line-height: 100rpx;
+}
+.choose input{
+  height: 60rpx;
+  margin: auto 0 auto 20rpx;
+  line-height: 60rpx;
+  text-align: right;
+}
+.choose .to-ico{
+  width: 18rpx;
+  height: 30rpx;
+  margin: auto 0 auto 20rpx;
+}
+
+/* 金额 */
+.cash-box{
+  margin-top: 20rpx;
+  padding: 30rpx;
+  background-color: #fff;
+}
+.cash-box .title{
+  font-size: 32rpx;
+  line-height: 120%;
+  color: #333;
+}
+.cash-box .fix-box {
+  padding: 40rpx 20rpx;
+  border-bottom: 1rpx solid #ededed;
+  font-size: 88rpx;
+  line-height: 120%;
+  color:#333;
+}
+.cash-box .fix-box .ico{
+  width: 80rpx;
+}
+.cash-box .fix-box input {
+  margin-left: 20rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+/* 提示 */
+.cash-box .notice {
+  margin-top: 30rpx;
+  margin-left: 12rpx;
+  font-size: 24rpx;
+  line-height: 120%;
+  color: #999;
+}
+
+
+/* 提现按钮 */
+.cash-btn{
+  width: 650rpx;
+  height: 88rpx;
+  margin: 200rpx auto 40rpx;
+  border-radius: 44rpx;
+  background-color: #0276B9;
+  font-size: 32rpx;
+  line-height: 88rpx;
+  color: #fff;
+  text-align: center;
+}
+.cash-btn:active{
+  opacity: .7;
+}

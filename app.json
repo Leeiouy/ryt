@@ -74,18 +74,21 @@
     "pages/address_i/address_i",
     "pages/addressDetail_i/addressDetail_i",
     "pages/myteam/myteam",
-    "pages/my_i/my_i"
+    "pages/my_i/my_i",
+    "pages/team/team",
+    "pages/cashsub/cashsub"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarTitleText": "小程序",
+    "navigationBarTitleText": "日悦淘",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#E4592A",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index_i/index_i",
         "text": "首页",
         "iconPath": "/images/home_n.png",

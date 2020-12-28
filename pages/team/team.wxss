@@ -1,0 +1,69 @@
+/* pages/sales/team/team.wxss */
+/*为空提示*/
+/* @import '../../../template/empty.wxss'; */
+
+page {
+  background: #f6f6f6;
+}
+
+.team-title{
+  height: 80rpx;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  font-size: 30rpx;
+  line-height: 80rpx;
+  border-bottom: 1rpx solid #ededed;
+  background-color: #fff;
+}
+.teamItem {
+  height: 140rpx;
+  display: flex;
+  justify-content: space-between;
+  font-family: PingFang SC;
+  font-weight: 500;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+}
+
+.teamItem>text {
+  font-size: 26rpx;
+  color: #676767;
+  margin-right: 57rpx;
+}
+.teamItem text text{
+  color: #549ff8;
+}
+.teamItem .right_box {
+  width: 230rpx;
+}
+.teamItem .right_box image {
+  width: 12rpx;
+  height: 22rpx;
+  margin: auto 0 auto 10rpx;
+}
+
+.itemLeft {
+  display: flex;
+  align-items: center;
+}
+
+.itemLeft image {
+  width: 80rpx;
+  height: 80rpx;
+  background: pink;
+  margin-left: 30rpx;
+  margin-right: 32rpx;
+  border-radius: 100%;
+}
+.itemLeft text {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+
+.empty-hints image {
+  width: 324rpx;
+  height: 306rpx;
+  margin: 240rpx auto 0;
+}

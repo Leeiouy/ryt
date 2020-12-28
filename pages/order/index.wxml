@@ -1,11 +1,10 @@
-<!--pages/order/order.wxml-->
-<!--为空提示模板-->w
+<!-- pages/order/order.wxml -->
+<!-- 为空提示模板 -->
+w
 <import src='../template/empty.wxml' />
-
-<!--我的订单-->
+<!-- 我的订单 -->
 <view class="weui-tab">
-
-  <!--标题列表-->
+  <!-- 标题列表 -->
   <view class='navbar'>
     <view class="search">
       <image src="/images/ico-zoom.png"></image>
@@ -27,22 +26,24 @@
       <view id="4" data-jk="50" class="navbar__item {{activeIndex == 4 ? 'bar__item_on' : ''}}" bindtap="tabClick">
         <view class="navbar__title">已完成</view>
       </view>
-      <!--滑块-->
+      <!-- 滑块 -->
       <view class="navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px);"></view>
     </scroll-view>
   </view>
-  <!--内容列表-->
+  <!-- 内容列表 -->
   <view class="order-list" wx:if="{{orderList.length > 0}}">
     <!-- <view class="order-list"> -->
     <!-- <view class='item'> -->
     <view class='item' wx:for="{{orderList}}" wx:key="*this">
-      <!--订单信息-->
+      <!-- 订单信息 -->
       <view class='item-title jus-b'>
         <text>订单编号：{{item.order_no}}</text>
         <view class='cor-red'>
           <text wx:if="{{item.order_status==30}}">待收货</text>
           <text wx:if="{{item.order_status==20 && item.is_confirm_order}}">待发货</text>
-          <text wx:if="{{(item.order_status==10||item.order_status==20)&&!item.is_confirm_order}}">待确定</text>
+          <text wx:if="{{(item.order_status==10||item.order_status==20)&&!item.is_confirm_order}}">
+            待确定
+          </text>
           <text wx:if="{{item.order_status==50}}">已完成</text>
           <text wx:if="{{item.order_status==0}}">已取消</text>
         </view>
@@ -50,14 +51,16 @@
       <!-- 商品列表 -->
       <view class='item-goods'>
         <view class='flex inner' wx:for="{{item.sub}}" wx:key="{{item.id}}" wx:for-item="goods" bindtap='toGoods' data-item_id='{{goods.goods_id}}' data-a_id='{{item.a_id}}'>
-
           <!-- <view class='item-goods'> -->
           <view class='flex inner'>
             <view class='item-goods-img'>
               <image src="{{goods.image}}" class='fill'></image>
             </view>
             <view class='flex1'>
-              <view class='twoline goods_name'><text wx:if="{{item.activity_type == 4}}">#大健康#</text>{{goods.goods_name}}</view>
+              <view class='twoline goods_name'>
+                <text wx:if="{{item.activity_type == 4}}">#大健康#</text>
+                {{goods.goods_name}}
+              </view>
               <view class='ali-c jus-b'>
                 <view>
                   <view class="guigge">规格：{{goods.key_name}}</view>
@@ -68,36 +71,44 @@
             </view>
           </view>
         </view>
-        <!--总价-->
-        <view class='item-total'>共
-          <text>1</text>件商品 合计:
+        <!-- 总价 -->
+        <view class='item-total'>
+          共
+          <text>1</text>
+          件商品 合计:
           <text class='cor-red'>¥{{item.pay_price}}</text>
         </view>
-        <!--操作按钮-->
+        <!-- 操作按钮 -->
         <view class='operation'>
-          <navigator class='operation-btn' hover-class='none' url='../orderDetail/orderDetail?orderid={{item.id}}'>查看详情</navigator>
-          <view class='operation-btn red' wx:if="{{item.order_submit_id == 0 && item.order_status == 10}}"
-          bindtap="del" data-id="{{item.id}}">取消订单</view>
-          <navigator class='operation-btn' hover-class='none' 
-          hidden="{{item.order_status==50||(item.order_status==10 && item.order_submit_id <= 0)||item.order_status == 0}}" 
-          url='/pages/aftersale/index?orderid={{item.id}}'>申请售后</navigator>
-          <view class='operation-btn' wx:if="{{item.order_status==30 || 1}}" 
-          bindtap="showPop">查看物流</view>
-          <view class='operation-btn red' wx:if="{{item.order_status==30}}" bindtap="confirmReceipt" data-id="{{item.id}}">确认收货</view>
+          <navigator class='operation-btn' hover-class='none' url='../orderDetail/orderDetail?orderid={{item.id}}'>
+            查看详情
+          </navigator>
+          <view class='operation-btn red' wx:if="{{item.order_submit_id == 0 && item.order_status == 10}}" bindtap="del" data-id="{{item.id}}">
+            取消订单
+          </view>
+          <navigator class='operation-btn' hover-class='none' hidden="{{item.order_status==50||(item.order_status==10 && item.order_submit_id <= 0)||item.order_status == 0}}" url='/pages/aftersale/index?orderid={{item.id}}'>
+            申请售后
+          </navigator>
+          <view class='operation-btn' wx:if="{{item.order_status==30 || 1}}" bindtap="showPop">
+            查看物流
+          </view>
+          <view class='operation-btn red' wx:if="{{item.order_status==30}}" bindtap="confirmReceipt" data-id="{{item.id}}">
+            确认收货
+          </view>
         </view>
       </view>
-      </view>
-    </view>
-    <!--为空提示-->
-    <template is="empty" data="{{emptyTip}}" wx:if="{{isNone || !hasLogin}}" />
-    <!--到底了提示-->
-    <view class="weui-loadmore weui-loadmore_line classify-nomore" wx:if="{{!isNone && hasLogin}}">
-      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
     </view>
   </view>
-  <van-popup show="{{ show }}" bind:close="onClose">
-    <view class="code">
-      <image mode='aspectFill' src="http://riyuetaoguoji.com/ercode.jpg" data-src="http://riyuetaoguoji.com/ercode.jpg" bindtap='previewImg'></image>
-      <view class="code-tips">请点击保存上方二维码 即可查询物流信息</view>
-    </view>
-  </van-popup>
+  <!-- 为空提示 -->
+  <template is="empty" data="{{emptyTip}}" wx:if="{{isNone || !hasLogin}}" />
+  <!-- 到底了提示 -->
+  <view class="weui-loadmore weui-loadmore_line classify-nomore" wx:if="{{!isNone && hasLogin}}">
+    <view class="weui-loadmore__tips weui-loadmore__tips_in-line">到底了</view>
+  </view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose">
+  <view class="code">
+    <image mode='aspectFill' src="http://riyuetaoguoji.com/ercode.jpg" data-src="http://riyuetaoguoji.com/ercode.jpg" bindtap='previewImg'></image>
+    <view class="code-tips">请点击保存上方二维码 即可查询物流信息</view>
+  </view>
+</van-popup>

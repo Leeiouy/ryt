@@ -1,1 +1,159 @@
-/* pages/myteam/myteam.wxss */
+page {
+  background: #F6F6F6;
+}
+
+.userBox {
+  height: 265rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background: linear-gradient(0deg, rgba(2, 118, 185, 0.8) 0%, rgba(2, 118, 185, 1) 99%); */
+   background-color: #ff5454;
+  background-image: linear-gradient(180deg, #ff5454 0%, #ff8366 100%);
+}
+
+.mainContainer {
+  background: #ffffff;
+}
+
+.userInfo {
+  padding: 0 0 0 30rpx;
+}
+
+.userImg {
+  width: 140rpx;
+  height: 140rpx;
+  margin: 0 20rpx 0 0;
+  background: #fff;
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.userText text {
+  font-size: 22rpx;
+  line-height: 120%;
+  color: #fff;
+}
+
+.userText .white {
+  font-weight: bold;
+  font-size: 32rpx;
+  /* margin-bottom: 34rpx; */
+  font-family: PingFang SC;
+  color: rgba(255, 255, 255, 1);
+  line-height: 120%;
+}
+
+.userIconBox {
+  display: flex;
+  align-items: center;
+}
+
+.userIcon {
+  width: 28rpx;
+  height: 22rpx;
+  vertical-align: center;
+}
+
+.userIconText {
+  margin-left: 14rpx;
+}
+
+.userMoney {
+  padding: 0 20rpx;
+  text-align: center;
+  font-family: PingFang SC;
+}
+
+.userMoney text {
+  display: block;
+  font-size: 23rpx;
+  color: #fff;
+}
+
+.userMoney text:nth-child(1) {
+  font-size: 40rpx;
+}
+
+.userMoney text:nth-child(2) {
+  margin-top: 19rpx;
+}
+
+.userMoney text:nth-child(3) {
+  width: 150rpx;
+  height: 45rpx;
+  line-height: 45rpx;
+  text-align: center;
+  border-radius: 23rpx;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 1);
+  margin-top: 17rpx;
+  background-color: #EF2424;
+}
+
+.yjBox {
+  height: 150rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: PingFang SC;
+}
+
+.yjLeft,
+.yjRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.yjLeft text:nth-child(1),
+.yjRight text:nth-child(1) {
+  color: #f75625;
+  font-size: 38rpx;
+}
+
+.yjLeft text:nth-child(2),
+.yjRight text:nth-child(2) {
+  color: #666;
+  font-size: 24rpx;
+}
+
+.yjLine {
+  width: 1rpx;
+  height: 90rpx;
+  background-color: #e6e6e6;
+}
+
+.iconText {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.iconOne {
+  display: flex;
+  width: 33.33%;
+  height: 215rpx;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-top: 1px solid #e6e6e6;
+  border-right: 1px solid #dcdcdc;
+}
+
+.iconOne:nth-child(3n) {
+  border-right: none;
+}
+
+.iconOne image {
+  max-width: 60rpx;
+  max-height: 50rpx;
+}
+
+.iconOne text {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 500;
+  margin-top: 22rpx;
+  color: #333;
+}

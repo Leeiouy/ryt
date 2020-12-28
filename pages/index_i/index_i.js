@@ -1,5 +1,5 @@
 import {
-  getIndex
+  _getIndex
 } from '../../config/https';
 
 import {
@@ -28,11 +28,10 @@ Page({
   },
 
   getData() {
-    getIndex().then(res => {
+    _getIndex().then(res => {
       if (res.code == 1) {
-        res.data.djk_item_list.forEach(v => {
+        res.data.item_list.forEach(v => {
           v.remainingTime = (Number(v.end_time) - Number(v.start_time)) * 1000
-          console.log(v.remainingTime);
         })
         this.setData({
           indexData: res.data,

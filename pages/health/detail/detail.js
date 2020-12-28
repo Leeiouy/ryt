@@ -9,9 +9,6 @@ Page({
     //-----------------数据-----------------
     goodsId: "", //商品id
     goodsData: "", //商品内容
-    banner: ['http://uimgproxy.suning.cn/uimg1/sop/commodity/sWyxQk3UPKeAhRIm_2Qbzg.jpg_800w_800h_4e', "http://uimgproxy.suning.cn/uimg1/sop/commodity/sWyxQk3UPKeAhRIm_2Qbzg.jpg_800w_800h_4e", 'http://uimgproxy.suning.cn/uimg1/sop/commodity/sWyxQk3UPKeAhRIm_2Qbzg.jpg_800w_800h_4e'],
-
-
     //-----------------规格栏选中数据-----------------
     count: 1, //购买数量  不能超过库存
     guigeIdArr: [], //规格id 多规格将会存储为多个
@@ -74,7 +71,7 @@ Page({
 
   //获取数据
   getData() {
-    https.goodsDetail({
+    https._goodsDetail({
       goods_id: this.data.goodsId,
       token: wx.getStorageSync('token')
     }).then(res => {
@@ -97,8 +94,7 @@ Page({
         success(res) {
           if (res.confirm) {
             wx.navigateTo({
-              url: '/pages/logintwo/index?type=1',
-
+              url: '/pages/login/login'
             })
           }
         }
@@ -116,7 +112,7 @@ Page({
     }
     const token = wx.getStorageSync('token');
     const itemId = this.data.goodsData.goods_id;
-    https.goodsCollection({
+    https._goodsCollection({
       token,
       itemId,
       type: "1",
@@ -178,7 +174,7 @@ Page({
     if (!this.data.goodsData.goods_id) {
       app.Toast('你未选择商品规格~')
     }
-    https.addShopingCart({
+    https._addShopingCart({
       token: wx.getStorageSync('token'),
       goods_id: this.data.goodsData.goods_id,
       num: this.data.count,
@@ -217,9 +213,7 @@ Page({
       showShare: true
     })
   },
-
   onShareClose() {
-
     this.setData({
       showShare: false
     })
@@ -292,6 +286,7 @@ Page({
     let height = e.detail.height;
     let width = e.detail.width;
     let H = this.data.bannerHeight;
+    console.log(e);
     H.push(height)
     this.setData({
       bannerHeight: H
