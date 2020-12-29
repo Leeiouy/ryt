@@ -14,7 +14,7 @@
             <image src="/images/cz.png" mode="widthFix" />
             <view>质押金充值</view>
         </view>
-        <view class="nav_item">
+        <view class="nav_item" bind:tap="hyShare">
             <image src="/images/fx.png" mode="widthFix" />
             <view>好友分享</view>
         </view>

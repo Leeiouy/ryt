@@ -1,10 +1,10 @@
-<!--pages/avatarCut/avatarCut.wxml-->
-<import src="../../components/we-cropper/we-cropper.wxml"/>
+<!-- pages/avatarCut/avatarCut.wxml -->
+<import src="../../components/we-cropper/we-cropper.wxml" />
 <view class="cropper-wrapper">
-  <template is="we-cropper" data="{{...cropperOpt}}"/>
+  <template is="we-cropper" data="{{...cropperOpt}}" />
   <view class="cropper-buttons">
     <canvas canvas-id='attendCanvasId' class='myCanvas' style="width:100px;height:100px;"></canvas>
-    <view class="upload" bindtap="uploadTap">重新选择</view>
-    <view class="getCropperImage" bindtap="getCropperImage">确定</view>
+    <van-button type="default" bind:click="uploadTap">重新选取</van-button>
+    <van-button type="primary" bind:click="getCropperImage">确定选中</van-button>
   </view>
 </view>

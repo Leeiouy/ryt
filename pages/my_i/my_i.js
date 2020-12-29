@@ -82,6 +82,11 @@ Page({
       wx.navigateTo({
         url: '/pages/login/login',
       })
+    } else {
+      wx.navigateTo({
+        url: '/pages/myinformation/index',
+      })
+
     }
   },
   isLogin() {

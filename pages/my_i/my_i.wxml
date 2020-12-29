@@ -5,9 +5,13 @@
     <view class="bg">
         <image src="/images/myCenter.png" mode="widthFix" />
     </view>
-    <view class="user flexv jus-c ali-c" style="padding-top:{{CustomBar}}px" bind:tap="login">
+    <view class="user ali-c jus-a" style="padding-top:{{CustomBar}}px" bind:tap="login">
         <van-image round fit="cover" width="120rpx" height="120rpx" src="/images/me_tx_empty.png" />
-        <view class="user_name">{{userInfo.nickname||'未登录'}}</view>
+        <view class="user_info flex1">
+            <view class="user_name">{{userInfo.nickname||'未登录'}}</view>
+            <view class="user_name">{{userInfo.nickname||'12739182739'}}</view>
+        </view>
+        <van-icon name="arrow" />
     </view>
     <view class="module">
         <view class="title ali-c jus-b">

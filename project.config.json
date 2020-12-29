@@ -109,6 +109,12 @@
         {
           "name": "设置",
           "pathName": "pages/setting/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人资料",
+          "pathName": "pages/myinformation/index",
           "scene": null
         }
       ]

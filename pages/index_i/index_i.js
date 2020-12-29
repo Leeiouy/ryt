@@ -14,11 +14,7 @@ Page({
     indexData: null,
     banner: null, //banner图片
     column_a: '',
-
-
-
-
-    skeletonShow:true//骨架屏显示
+    skeletonShow: true //骨架屏显示
   },
   onLoad: function (options) {
     this.getData()
@@ -26,7 +22,6 @@ Page({
   onShow: function () {
 
   },
-
   getData() {
     _getIndex().then(res => {
       if (res.code == 1) {
@@ -36,7 +31,7 @@ Page({
         this.setData({
           indexData: res.data,
           banner: res.data.banner,
-          skeletonShow:false
+          skeletonShow: false
         })
       }
 
@@ -65,6 +60,19 @@ Page({
       url: `/pages/health/detail/detail?goods_id=${id}`
     });
   },
+
+
+
+  //好友分享
+  hyShare() {
+    wx.navigateTo({
+      url: '/pages/invite/index'
+    });
+  },
+
+
+
+
 
   onReachBottom: function () {
 

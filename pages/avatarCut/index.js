@@ -141,7 +141,6 @@ uploadImage (filePath, cb) {   //个人封装的简单的上传单张图片上�
         console.log(res)
         let data = JSON.parse(res.data); //由于拿到的数据未解析，这里先解析json
         if (data.code == 1){
-          console.log(222)
           cb(res);
           wx.request({
             url: app.baseURL + '/user/profile',
