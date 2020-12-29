@@ -1,6 +1,6 @@
 <import src="index_i.skeleton.wxml" />
 <template is="skeleton" wx-if="{{skeletonShow}}" />
-<view wx:else>
+<view >
     <view class="nav ali-c jus-b">
         <view class="nav_item">
             <image src="/images/dd.png" mode="widthFix" />

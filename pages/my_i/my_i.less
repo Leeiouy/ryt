@@ -27,11 +27,12 @@
             background-color: white;
 
         }
+
         .user_info {
             margin: 30rpx;
 
             .user_name {
-                font-size: 32rpx;
+                font-size: 36rpx;
                 font-weight: bold;
             }
         }
@@ -41,7 +42,7 @@
     .module {
         width: 90%;
         margin: 0 auto;
-        padding: 20rpx;
+        padding: 10rpx 20rpx;
         background-color: white;
         border-radius: 30rpx;
         margin-top: 24rpx;
@@ -49,6 +50,8 @@
         .title {
             border-bottom: 1rpx solid #f2f2f2;
             padding: 10rpx 0;
+            font-size: 30rpx;
+            font-weight: bold;
         }
 
         .order {
@@ -77,26 +80,21 @@
         border-radius: 30rpx;
         background-color: white;
         width: 90%;
-        overflow: hidden;
-
-
+        .options_title{
+            padding: 20rpx 30rpx;
+            font-size: 30rpx;
+            font-weight: bold;
+        }
         .options_item {
-            padding: 0 40rpx;
-            height: 100rpx;
-            transition: all .7s;
-
-            .flex1 {
-                margin: 0 20rpx;
+            width: 25%;
+            text-align: center;
+            padding: 20rpx 0;
+            .lg{
+                font-size: 40rpx;
             }
-
             &:active {
                 opacity: .7;
-                background-color: rgb(192, 192, 192);
             }
-        }
-
-        .bb {
-            border-bottom: 1rpx solid #e6e6e6;
         }
     }
 }

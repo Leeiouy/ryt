@@ -1,6 +1,7 @@
 /**app.wxss**/
 
 @import 'assets/styles/skyvow.wxss';
+@import 'assets/styles/weui.wxss';
 @import 'vant-weapp/common/index.wxss';
 
 @import 'assets/styles/main.wxss';
@@ -149,7 +150,7 @@ image {
 } */
 
 button.weui-btn {
-  background-color: #f76827;
+  background-color: #ff5454;
   border-radius: 50rpx;
   color: #fff;
 }

@@ -107,6 +107,7 @@ Page({
     wx.request({
       url: app.baseURL + '/Qrcode/getQrcode?token=' + wx.getStorageSync('token'),
       success(res){
+        console.log(res);
         if(res.data.code == 1){
           that.setData({
             qrCode:res.data.data.qrcode

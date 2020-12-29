@@ -59,13 +59,13 @@ page{
   display: block;
   width: 200rpx;
   height: 80rpx;
-  border: 1px solid #fd6732;
+  border: 1px solid #ff5454;
   border-radius: 40rpx;
   font-size: 28rpx;
   text-align: center;
   line-height: 76rpx;
   margin: 44rpx auto;
-  color: #fd6732;
+  color: #ff5454;
 }
 
 .goods-title text {

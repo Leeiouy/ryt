@@ -107,3 +107,6 @@ export const _addressDefault = (parma) => api.post('/Adress/setDefault', parma);
 
 //个人中心
 export const _myCenter = (parma) => api.post('/Mycenter/my_center', parma);
+
+//个人资料
+export const _myUserInfo = (parma) => api.post('/Mycenter/userInfo', parma);

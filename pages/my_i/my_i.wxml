@@ -1,15 +1,12 @@
-<!-- <cu-tabBar bgColor="bg-cyan" isBack="{{true}}">
-    <view slot="content">个人信息</view>
-</cu-tabBar> -->
 <view class="my">
     <view class="bg">
         <image src="/images/myCenter.png" mode="widthFix" />
     </view>
-    <view class="user ali-c jus-a" style="padding-top:{{CustomBar}}px" bind:tap="login">
-        <van-image round fit="cover" width="120rpx" height="120rpx" src="/images/me_tx_empty.png" />
+    <view class="user ali-c jus-a" style="padding-top:{{CustomBar}}px" bind:tap="tapAavatar">
+        <van-image round fit="cover" width="120rpx" height="120rpx" src="{{userInfo.avatar||'/images/me_tx_empty.png'}}" />
         <view class="user_info flex1">
-            <view class="user_name">{{userInfo.nickname||'未登录'}}</view>
-            <view class="user_name">{{userInfo.nickname||'12739182739'}}</view>
+            <view class="user_name">{{userInfo.username||'未登录'}}</view>
+            <view >{{userInfo.mobile||'未绑定手机号'}}</view>
         </view>
         <van-icon name="arrow" />
     </view>
@@ -27,28 +24,45 @@
             </block>
         </view>
     </view>
-    <view class="options">
-        <view class="options_item jus-b ali-c" bind:tap="toAddress">
-            <view class="cuIcon-location lg text-gray"></view>
-            <view class="flex1">我的地址</view>
-            <van-icon name="arrow" />
-        </view>
-        <view class="options_item jus-b ali-c" bind:tap="toCollect">
-            <view class="cuIcon-favorfill lg text-gray"></view>
-            <view class="flex1">收藏列表</view>
-            <van-icon name="arrow" />
-        </view>
-        <view class="options_item jus-b ali-c" bind:tap="toSetting">
-            <view class="cuIcon-settingsfill lg text-gray"></view>
-            <view class="flex1">设置</view>
-            <van-icon name="arrow" />
-        </view>
-        <navigator url="/pages/my/index">
-            <view class="options_item jus-b ali-c">
-                <view class="cuIcon-location lg text-gray"></view>
-                <view class="flex1">旧我的页面</view>
-                <van-icon name="arrow" />
+    <view class="options ">
+        <view class="options_title">更多功能</view>
+        <view class=" ali-c flex-wrap">
+            <view class="options_item" bind:tap="">
+                <view class="cuIcon-moneybag lg text-gray"></view>
+                <view class="flex1">我的钱包</view>
             </view>
-        </navigator>
+            <view class="options_item" bind:tap="toCard">
+                <view class="cuIcon-vipcard lg text-gray"></view>
+                <view class="flex1">银行卡绑定</view>
+            </view>
+            <view class="options_item" bind:tap="toAddress">
+                <view class="cuIcon-location lg text-gray"></view>
+                <view class="flex1">我的地址</view>
+            </view>
+            <view class="options_item" bind:tap="toInvite">
+                <view class="cuIcon-share lg text-gray"></view>
+                <view class="flex1">分享好友</view>
+            </view>
+            <view class="options_item" bind:tap="toCollect">
+                <view class="cuIcon-favorfill lg text-gray"></view>
+                <view class="flex1">我的收藏</view>
+            </view>
+            <view class="options_item" bind:tap="toFeedback">
+                <view class="cuIcon-edit lg text-gray"></view>
+                <view class="flex1">意见反馈</view>
+            </view>
+            <view class="options_item" bind:tap="toAbout">
+                <view class="cuIcon-creative lg text-gray"></view>
+                <view class="flex1">关于我们</view>
+            </view>
+            <view class="options_item">
+                <view class="cuIcon-service lg text-gray"></view>
+                <view class="flex1">在线客服</view>
+            </view>
+        </view>
     </view>
+    <!-- <navigator url="/pages/my/index">旧我的页面</navigator> -->
+    <!-- <view style="margin:0 auto;width:90%">
+        <van-button type="danger" block size="normal" bind:click='outLogin'>退出登录</van-button>
+    </view> -->
 </view>

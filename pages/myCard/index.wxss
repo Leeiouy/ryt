@@ -30,7 +30,7 @@ line-height: 48rpx;
   bottom: 0rpx;
   width:100%;
 height:88rpx;
-background:#FD7040;
+background:#ff5454;
 font-size:32rpx;
 font-weight:400;
 color:rgba(255,255,255,1);
