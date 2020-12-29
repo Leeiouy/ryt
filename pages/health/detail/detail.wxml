@@ -1,7 +1,7 @@
 
 <import src="/wxParse/wxParse.wxml" />
 <view>
-  <view class='banners' style="height:{{bannerHeight[currentNum-1]}}rpx;width:100%;">
+  <view class='banners' style="height:750rpx;width:100%;">
     <swiper autoplay interval="3000" duration="1000" circular='true' bindchange="change">
       <block wx:for="{{goodsData.images}}" wx:key="*this">
         <swiper-item>

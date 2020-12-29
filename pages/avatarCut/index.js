@@ -157,9 +157,7 @@ uploadImage (filePath, cb) {   //个人封装的简单的上传单张图片上�
                 })
               }
               //跳转到"我的"页面
-              wx.switchTab({
-                url: "/pages/my/index",
-              });
+             wx.navigateBack( );
             }
           })
         }
