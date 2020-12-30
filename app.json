@@ -76,7 +76,8 @@
     "pages/myteam/myteam",
     "pages/my_i/my_i",
     "pages/team/team",
-    "pages/cashsub/cashsub"
+    "pages/cashsub/cashsub",
+    "pages/order_i/order_i"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -87,8 +88,7 @@
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#E4592A",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index_i/index_i",
         "text": "首页",
         "iconPath": "/images/home_n.png",
@@ -129,6 +129,8 @@
     "van-area": "vant-weapp/area/index",
     "van-switch": "vant-weapp/switch/index",
     "van-share-sheet": "vant-weapp/share-sheet/index",
-    "van-count-down": "vant-weapp/count-down/index"
+    "van-count-down": "vant-weapp/count-down/index",
+    "van-tab": "vant-weapp/tab/index",
+    "van-tabs": "vant-weapp/tabs/index"
   }
 }

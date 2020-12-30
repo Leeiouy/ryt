@@ -110,3 +110,49 @@ export const _myCenter = (parma) => api.post('/Mycenter/my_center', parma);
 
 //个人资料
 export const _myUserInfo = (parma) => api.post('/Mycenter/userInfo', parma);
+
+
+
+
+
+
+
+//----------------------------------订单页面----------------------------------------
+
+
+//订单列表
+export const _orderList = (parma) => api.post('/order/getOrderLists', parma);
+
+//订单详情
+export const _orderDetail = (parma) => api.post('/order/getOrderDetail', parma);
+
+
+//删除订单
+export const _delOrder = (parma) => api.post('/order/setDelOrder', parma);
+
+//取消订单
+export const _cancleOrder = (parma) => api.post('/order/setCancelOrder', parma);
+
+//查看物流
+export const _seeWl = (parma) => api.post('/order/lookLogistics', parma);
+
+//确认收货
+export const _confirmOrder = (parma) => api.post('/order/confirm_receipt', parma);
+
+//获得发布评价页面
+export const _addEvaluatePage = (parma) => api.post('/Evaluate/getAddEvaluate', parma);
+
+//发布评价
+export const _addEvaluate = (parma) => api.post('/Evaluate/addevaluate', parma);
+
+//售后申请
+export const _applyAfterSale = (parma) => api.post('/order/applyAfterSale', parma);
+
+//售后详情
+export const _applyAfterSaleDetail = (parma) => api.post('/order/getAfterSaleDetail', parma);
+
+//售后列表
+export const _applyAfterSaleList = (parma) => api.post('/order/getAfterSaleLists', parma);
+
+//售后页面信息
+export const _applyAfterSaleInfo = (parma) => api.post('/order/getApplyAfterSaleInfo', parma);

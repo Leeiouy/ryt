@@ -61,7 +61,7 @@
             </view>
         </view>
     </view>
-    <!-- <navigator url="/pages/my/index">旧我的页面</navigator> -->
+    <navigator url="/pages/my/index">旧我的页面</navigator>
     <!-- <view style="margin:0 auto;width:90%">
         <van-button type="danger" block size="normal" bind:click='outLogin'>退出登录</van-button>
     </view> -->

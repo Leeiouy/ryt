@@ -19,7 +19,7 @@
     <view class='item flex'>
       <view class='item-label'>银行卡号</view>
       <view class='flex1'>
-        <input type='number' confirm-type="done" name="cardNumber" placeholder='请输入银行卡号'></input>
+        <input type='number' confirm-type="done" name="cardNumber" maxlength="21" placeholder='请输入银行卡号'></input>
       </view>
     </view>
     <view class='item flex'>

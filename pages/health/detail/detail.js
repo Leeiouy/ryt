@@ -34,9 +34,6 @@ Page({
     ],
     infoShow: false, //规格弹窗展示
     showShare: false, //分享弹窗
-    isBuy: false,
-    isAddCar: false,
-
 
 
     bannerHeight: [], //banner图片每张的高度
@@ -62,13 +59,10 @@ Page({
       goodsId: options.goods_id,
       isBigHealth: options.isBigHealth || 0
     })
+  },
+  onShow: function () {
     this.getData()
   },
-
-
-
-
-
   //获取数据
   getData() {
     https._goodsDetail({
@@ -121,24 +115,6 @@ Page({
       console.log(res);
     })
   },
-  //跳转购物车
-  goCar() {
-    wx.switchTab({
-      url: '/pages/shoppingcart/index'
-    })
-  },
-  //加入购物车按钮
-  addCarBtn() {
-    if (!this.isLogin()) {
-      return
-    }
-    this.setData({
-      infoShow: true,
-      isBuy: false,
-      isAddCar: true
-    })
-  },
-
   //立即购买按钮
   buyGoodsBtn() {
     if (!this.isLogin()) {
@@ -166,29 +142,6 @@ Page({
     let value = e.detail;
     this.setData({
       count: value
-    })
-  },
-
-  //加入购物车
-  addCar() {
-    if (!this.data.goodsData.goods_id) {
-      app.Toast('你未选择商品规格~')
-    }
-    https._addShopingCart({
-      token: wx.getStorageSync('token'),
-      goods_id: this.data.goodsData.goods_id,
-      num: this.data.count,
-      goods_spec_id: this.data.guigeIdArr.join(),
-      type: 1
-    }).then(res => {
-      if (res.code) {
-        app.Toast(res.msg, 'success')
-        setTimeout(() => {
-          this.overlayClick()
-        }, 1500);
-      } else {
-        app.Toast(res.msg || '加入购物车失败~')
-      }
     })
   },
   //立即购买商品
@@ -231,7 +184,7 @@ Page({
 
 
 
- 
+
   // 轮播图切换
   change: function (e) {
     let current = e.detail.current + 1
@@ -260,27 +213,7 @@ Page({
 
 
 
-  onReady: function () {
 
-  },
-
-  /**
-   * 生命周期函数--监听页面显
-   * 示
-   */
-  onShow: function () {
-    let that = this
-    // wx.request({
-    //   url: app.baseURL + '/Mycenter/my_center?token=' + wx.getStorageSync('token'),
-    //   success(res) {
-    //     if (res.data.code == 1) {
-    //       that.setData({
-    //         level: res.data.data.info.distributor
-    //       })
-    //     }
-    //   }
-    // })
-  },
   //bannerImg 加载好函数
   imgLoad(e) {
     let height = e.detail.height;

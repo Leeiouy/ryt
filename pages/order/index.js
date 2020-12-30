@@ -141,7 +141,7 @@ Page({
       token:wx.getStorageSync('token'),
       order_status:status,
       page:page,
-      pagesize:3,
+      pagesize:10,
       search: this.data.keyword ? this.data.keyword : '' 
     }
     wx.request({

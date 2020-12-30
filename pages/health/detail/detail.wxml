@@ -115,11 +115,8 @@
       <view>购买数量</view>
       <van-stepper value="{{count}}" async-change bind:change="onChangeCount" />
     </view>
-    <van-button round type="primary" wx:if="{{isBuy}}" bind:click='buyGoods' block size="normal" color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))">
+    <van-button round type="primary" bind:click='buyGoods' block size="normal" color="linear-gradient(to right, rgb(255, 96, 52), rgb(238, 10, 36))">
       立即购买
-    </van-button>
-    <van-button round type="primary" wx:if="{{isAddCar}}" bind:click='addCar' block size="normal" color="linear-gradient(90deg,#ffd01e,#ff8917)">
-      加入购物车
     </van-button>
   </view>
 </van-action-sheet>

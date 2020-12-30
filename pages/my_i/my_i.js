@@ -8,7 +8,7 @@ import {
 
 Page({
   data: {
-    CustomBar: app.globalData.CustomBar,//距离底部高度
+    CustomBar: app.globalData.CustomBar, //距离底部高度
     //---------------------------------
     userInfo: null, //登录保存的头像和昵称
     centerData: null //个人信息
@@ -66,30 +66,6 @@ Page({
   },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // 到订单
   toOrder(e) {
     if (!this.isLogin()) {
@@ -101,6 +77,10 @@ Page({
     wx.navigateTo({
       url: '/pages/order/index?state=' + state + '&type=' + type
     })
+
+    // wx.navigateTo({
+    //   url: '/pages/order_i/order_i'
+    // })
   },
 
 

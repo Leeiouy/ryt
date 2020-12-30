@@ -1,6 +1,5 @@
 <!-- pages/order/order.wxml -->
 <!-- 为空提示模板 -->
-w
 <import src='../template/empty.wxml' />
 <!-- 我的订单 -->
 <view class="weui-tab">
@@ -14,18 +13,19 @@ w
       <view id="0" data-jk="1" class="navbar__item {{activeIndex == 0 ? 'bar__item_on' : ''}}" bindtap="tabClick">
         <view class="navbar__title">全部</view>
       </view>
-      <view id="1" data-jk="10" class="navbar__item {{activeIndex == 1 ? 'bar__item_on' : ''}}" bindtap="tabClick">
+      <!-- <view id="1" data-jk="10" class="navbar__item {{activeIndex == 1 ? 'bar__item_on' : ''}}" bindtap="tabClick">
         <view class="navbar__title">待确定</view>
-      </view>
-      <view id="2" data-jk="20" class="navbar__item {{activeIndex == 2 ? 'bar__item_on' : ''}}" bindtap="tabClick">
+      </view> -->
+      <view id="1" data-jk="20" class="navbar__item {{activeIndex == 1 ? 'bar__item_on' : ''}}" bindtap="tabClick">
         <view class="navbar__title">待发货</view>
       </view>
-      <view id="3" data-jk="30" class="navbar__item {{activeIndex == 3 ? 'bar__item_on' : ''}}" bindtap="tabClick">
+      <view id="2" data-jk="30" class="navbar__item {{activeIndex == 2 ? 'bar__item_on' : ''}}" bindtap="tabClick">
         <view class="navbar__title">待收货</view>
       </view>
-      <view id="4" data-jk="50" class="navbar__item {{activeIndex == 4 ? 'bar__item_on' : ''}}" bindtap="tabClick">
+      <view id="3" data-jk="50" class="navbar__item {{activeIndex == 3 ? 'bar__item_on' : ''}}" bindtap="tabClick">
         <view class="navbar__title">已完成</view>
       </view>
+      
       <!-- 滑块 -->
       <view class="navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px);"></view>
     </scroll-view>
