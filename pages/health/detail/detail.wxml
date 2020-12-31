@@ -1,11 +1,10 @@
-
 <import src="/wxParse/wxParse.wxml" />
 <view>
   <view class='banners' style="height:750rpx;width:100%;">
     <swiper autoplay interval="3000" duration="1000" circular='true' bindchange="change">
       <block wx:for="{{goodsData.images}}" wx:key="*this">
         <swiper-item>
-          <image lazy-load="true" class='i-img'  src='{{item}}' bindload="imgLoad"></image>
+          <image lazy-load="true" class='i-img' src='{{item}}' bindload="imgLoad"></image>
         </swiper-item>
       </block>
     </swiper>
@@ -23,7 +22,7 @@
     </view>
     <view class="timeout_time flexv jus-c ali-c">
       <view>距离结束</view>
-      <view>00:09:04</view>
+      <van-count-down time="{{ goodsData.remainingTime }}" format="DD 天 HH 时 mm 分 ss 秒"  fontColor='#ee0a24' fontSize='20rpx' />
     </view>
   </view>
   <view class="goods_desc">
@@ -33,7 +32,7 @@
     <view class="goods_desc_price ali-c">
       <view class="p">
         ￥
-        <text>99.99</text>
+        <text>{{goodsData.goods_price||'0.00'}}</text>
       </view>
       <view class="p_icon">当前价</view>
     </view>
@@ -80,8 +79,8 @@
   </view>
   <van-empty description="暂无商品描述信息哦~" wx:if="{{!goodsData.content}}" />
   <van-goods-action>
-    <van-goods-action-icon icon="share-o"  text="分享" bind:click='share' />
-     <van-goods-action-icon icon="like-o"  text="收藏" bind:click='collect' />
+    <van-goods-action-icon icon="share-o" text="分享" bind:click='share' />
+    <van-goods-action-icon icon="like-o" text="收藏" bind:click='collect' />
     <van-goods-action-button text="立即购买" bind:click='buyGoodsBtn' />
   </van-goods-action>
 </view>
@@ -120,13 +119,4 @@
     </van-button>
   </view>
 </van-action-sheet>
-
-
-
-<van-share-sheet
-  show="{{ showShare }}"
-  title="立即分享给好友"
-  options="{{ share_list }}"
-  bind:select="onSelect"
-  bind:close="onShareClose"
-/>
+<van-share-sheet show="{{ showShare }}" title="立即分享给好友" options="{{ share_list }}" bind:select="onSelect" bind:close="onShareClose" />

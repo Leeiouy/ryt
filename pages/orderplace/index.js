@@ -86,16 +86,23 @@ Page({
 
   //前往添加收货地址
   toAddAddress() {
+
     wx.navigateTo({
-      url: '/pages/addresselete/index?select=true',
+      url: '/pages/address_i/address_i?type=order',
     })
+    // wx.navigateTo({
+    //   url: '/pages/addresselete/index?select=true',
+    // })
   },
 
   //去选择收货地址
   selectAddress() {
     wx.navigateTo({
-      url: '/pages/addresselete/index?select=true',
+      url: '/pages/address_i/address_i?type=order',
     })
+    // wx.navigateTo({
+    //   url: '/pages/addresselete/index?select=true',
+    // })
   },
 
   //点击提交按钮

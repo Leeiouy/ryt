@@ -72,6 +72,7 @@ Page({
       if (res.code == 1) {
         //  调用wxParse解析html文本
         res.data.content && WxParse.wxParse('goodsinfo', 'html', res.data.content, this, 5);
+        res.data.end_time && res.data.start_time ? res.data.remainingTime = (Number(res.data.end_time) - Number(res.data.start_time)) * 1000 : '';
         this.setData({
           goodsData: res.data
         })
@@ -146,7 +147,9 @@ Page({
   },
   //立即购买商品
   buyGoods() {
-
+    wx.navigateTo({
+      url: '/pages/orderplace/index'
+    });
   },
   //点击遮罩层关闭弹窗栏
   overlayClick() {

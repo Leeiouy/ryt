@@ -173,7 +173,7 @@ textarea {
   width: 220rpx;
   height: 100rpx;
   line-height: 100rpx;
-  background: #e4592a;
+  background: #ff5454;
   color: #fff;
   text-align: center;
   border-radius: 0;

@@ -22,6 +22,10 @@ VantComponent({
     fontColor:{
       type:String,
       value:'white'
+    },
+    fontSize:{
+      type:String
+
     }
   },
   data: {

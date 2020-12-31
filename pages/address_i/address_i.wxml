@@ -9,7 +9,7 @@
             <view class="addres ali-c">
                 <view class="oneline">{{item.province}}{{item.city}} </view>
                 <view class="oneline flex1">{{item.detail}} </view>
-                <van-icon class="icon" name="edit" />
+                <van-icon class="icon" name="edit" wx:if="{{!type}}" />
             </view>
         </view>
     </block>
