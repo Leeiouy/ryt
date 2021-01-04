@@ -24,10 +24,6 @@ Page({
         openType: 'share'
       },
       {
-        name: '复制链接',
-        icon: 'link'
-      },
-      {
         name: '分享海报',
         icon: 'poster'
       },
@@ -194,6 +190,8 @@ Page({
     this.setData({
       currentNum: current > 3 ? current - 3 : current
     })
+
+  // this.toMaterial()
   },
 
   //商品评价类型---选项卡切换
@@ -207,27 +205,13 @@ Page({
       my_img: this.data.goodsData.images
     }
     let metaril = JSON.stringify(data)
+    console.log(metaril);
     wx.setStorageSync('metaril', metaril)
     wx.navigateTo({
       url: '../material/material',
     })
   },
 
-
-
-
-
-  //bannerImg 加载好函数
-  imgLoad(e) {
-    let height = e.detail.height;
-    let width = e.detail.width;
-    let H = this.data.bannerHeight;
-    console.log(e);
-    H.push(height)
-    this.setData({
-      bannerHeight: H
-    })
-  },
 
   onShareAppMessage: function () {
     return {

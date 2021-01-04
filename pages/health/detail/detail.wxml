@@ -4,7 +4,7 @@
     <swiper autoplay interval="3000" duration="1000" circular='true' bindchange="change">
       <block wx:for="{{goodsData.images}}" wx:key="*this">
         <swiper-item>
-          <image lazy-load="true" class='i-img' src='{{item}}' bindload="imgLoad"></image>
+          <image lazy-load="true" class='i-img' src='{{item}}' ></image>
         </swiper-item>
       </block>
     </swiper>
@@ -88,17 +88,17 @@
 <van-action-sheet show="{{ infoShow }}" bind:click-overlay='overlayClick' bind:close='overlayClose'>
   <view class="carContent">
     <view class="goodsDetail ali-c jus-b van-hairline--bottom">
-      <image src="{{goodsData.images[0]}}" mode="widthFix"></image>
+      <image src="{{goodsData.images[0]}}" mode="widthFix" />
       <view class="goodsInfo flex1">
         <view class="goodsPrice ali-c">
           <view class="rmbIcon">￥</view>
-          <view class="rmb">70.00</view>
+          <view class="rmb">{{goodsData.goods_price||'0.00'}}</view>
           <view class="goodsPrice_text">拼团价</view>
         </view>
         <view class="goodsText">请选择商品规格</view>
       </view>
     </view>
-    <block wx:for="{{goodsData.item_sku}}">
+    <!-- <block wx:for="{{goodsData.item_sku}}">
       <view class="guige  van-hairline--bottom">
         <view class="guige_item">
           <view class="guige_title">{{item.spec_name}}</view>
@@ -109,7 +109,7 @@
           </view>
         </view>
       </view>
-    </block>
+    </block> -->
     <view class="goods_num ali-c jus-b">
       <view>购买数量</view>
       <van-stepper value="{{count}}" async-change bind:change="onChangeCount" />

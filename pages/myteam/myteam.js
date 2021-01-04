@@ -39,27 +39,6 @@ Page({
           infos: res.data.info,
         })
         wx.stopPullDownRefresh();
-
-        // if (res.data.info_status == 0){
-        //   wx.showModal({
-        //     title: '温馨提示',
-        //     content: '您尚未完善代理信息,请去先完善信息!',
-        //     confirmText: '立即完善',
-        //     confirmColor: '#0276B9',
-        //     cancelText: '下次再说',
-        //     success(data){
-        //       if (data.confirm){
-        //         wx.navigateTo({
-        //           url: '../scanUser/scanUser?storeId=' + res.data.info.store_id,
-        //         })
-        //       }else{
-        //         wx.navigateBack()
-        //       }
-        //     }
-        //   })
-        //   return
-        // }
-
         // 订阅模板信息
         modalIds({
           index: 2

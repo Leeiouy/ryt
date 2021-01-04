@@ -91,7 +91,7 @@
         {
           "name": "商品详情",
           "pathName": "pages/health/detail/detail",
-          "query": "goods_id=1037&isBigHealth=",
+          "query": "goods_id=1530",
           "scene": null
         },
         {
@@ -121,6 +121,7 @@
         {
           "name": "新订单页面",
           "pathName": "pages/order_i/order_i",
+          "query": "",
           "scene": null
         }
       ]
