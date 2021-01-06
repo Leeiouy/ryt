@@ -1,0 +1,54 @@
+.myteam {
+    height: 265rpx;
+    background-color: #ff5454;
+    background-image: linear-gradient(180deg, #ff5454 0%, #ff8366 100%);
+
+    padding-top: 120rpx;
+
+    .my {
+        background-color: white;
+        width: 90%;
+        height: 300rpx;
+        margin: 0 auto;
+        border-radius: 20rpx 30rpx 30rpx 30rpx;
+        box-shadow: rgba(0, 102, 204, 0.2) 3px 3px 4px 0px;
+
+        .user {
+            height: 60rpx;
+            font-size: 34rpx;
+            padding-right: 40rpx;
+            .avatar {
+                width: 150rpx;
+                height: 150rpx;
+                background-color: white;
+                border-radius: 50%;
+                // border: 1rpx solid;
+                transform: translateY(-10rpx);
+            }
+
+            .name {
+                margin-left: 30rpx;
+            }
+            .class{
+                color: #f8c670;
+                border: 1rpx solid #f8c670;
+                padding: 2rpx 5rpx;
+                font-size: 24rpx;
+            }
+        }
+
+        .success {
+            margin-top: 60rpx;
+            text-align: center;
+            >view{
+                flex: 1;
+            }
+            .p {
+                font-size: 34rpx;
+                color: #ff5454;
+                font-weight: bold;
+            }
+        }
+
+    }
+}

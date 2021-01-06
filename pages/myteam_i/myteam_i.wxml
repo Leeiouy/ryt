@@ -1,0 +1,33 @@
+<view class="myteam">
+    <view class="my">
+        <view class="user ali-c">
+            <view class="avatar"></view>
+            <view class="name flex1">lee</view>
+            <view class="class">代理商</view>
+        </view>
+        <view class="success ali-c jus-c">
+            <view>
+                <view class="">总业绩</view>
+                <view class="p">28888.00</view>
+            </view>
+            <view>
+                <view class="">今日销量</view>
+                <view class="p">28888.00</view>
+            </view>
+            <view>
+                <view class="">昨日销量</view>
+                <view class="p">28888.00</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="sortBtn">
+        
+    </view>
+
+    <view class="team">
+
+
+
+    </view>
+</view>
