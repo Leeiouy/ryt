@@ -1,3 +1,61 @@
-<view class="myteam_i">
-    <view class="user"></view>
+<view class="myteam">
+    <view class="my">
+        <view class="user ali-c">
+            <view class="avatar">
+                <image src="{{myInfo.avatar}}" />
+            </view>
+            <view class="name flex1">{{myInfo.username}}</view>
+            <view class="class">{{myInfo.level}}</view>
+        </view>
+        <view class="success ali-c jus-c">
+            <view>
+                <view class="">今日销量</view>
+                <view class="p">{{myInfo.today_sales}}</view>
+            </view>
+            <view>
+                <view class="">昨日销量</view>
+                <view class="p">{{myInfo.yesterday_sales}}</view>
+            </view>
+        </view>
+        <view class="more ali-c jus-a">
+            <view class="flex1 ali-c jus-c">
+                <button class="cu-btn round bg-red button-hover">业绩排行</button>
+            </view>
+            <view style="border-left:1rpx solid;height:34rpx;"></view>
+            <view class="flex1 ali-c jus-c">
+                <button class="cu-btn round bg-red button-hover">业绩统计</button>
+            </view>
+        </view>
+    </view>
+    <view class="sort">
+        <van-tabs active="{{ active }}" color='#ff5454' bind:change="onChange">
+            <van-tab title="分销"></van-tab>
+            <van-tab title="直属"></van-tab>
+            <van-tab title="联创"></van-tab>
+        </van-tabs>
+    </view>
+    <view class="teamList shadow bg-white">
+        <block wx:for="{{teamList}}">
+            <view class="team">
+                <view class="ali-c">
+                    <view class="a">
+                        <image src="{{myInfo.avatar}}" mode="widthFix" />
+                    </view>
+                    <view class="n flex1">{{myInfo.username}}</view>
+                    <view class="c">{{myInfo.level}}</view>
+                </view>
+                <view class="success ali-c jus-c">
+                    <view>
+                        <view class="t">今日销量</view>
+                        <view class="p">{{myInfo.today_sales}}</view>
+                    </view>
+                    <view>
+                        <view class="t">昨日销量</view>
+                        <view class="p">{{myInfo.yesterday_sales}}</view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <van-empty wx:if="{{!teamList}}" description="描述文字" />
+    </view>
 </view>

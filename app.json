@@ -89,19 +89,25 @@
   "tabBar": {
     "color": "#515151",
     "selectedColor": "#E4592A",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index_i/index_i",
         "text": "首页",
         "iconPath": "/images/home_n.png",
         "selectedIconPath": "/images/home_a.png"
       },
       {
-        "pagePath": "pages/myteam/myteam",
+        "pagePath": "pages/myAchieve/index",
         "text": "团队",
         "iconPath": "/images/item_n.png",
         "selectedIconPath": "/images/item_a.png"
       },
+   
+     {
+      "pagePath": "pages/health/team/team",
+      "text": "团队1",
+      "iconPath": "/images/item_n.png",
+      "selectedIconPath": "/images/item_a.png"
+    },
       {
         "pagePath": "pages/my_i/my_i",
         "text": "我的",

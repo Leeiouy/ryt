@@ -1,6 +1,5 @@
 <view>
   <view class="info">
-    <image src="https://riyuetaoguoji.com/images/-s-my-bg.png"></image>
     <view class="my-info">
       <view class="flex ali-c jus-b">
         <view class="info-left flex ali-c">

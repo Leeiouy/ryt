@@ -1,66 +1,71 @@
 // pages/myteam_i/myteam_i.js
+
+import {
+  _myTeam,
+  _mySale,
+  _salesStatistics
+} from '../../config/https';
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
+    myInfo: null, //个人业绩
+
+
+    //-------------团队列表相关----------------------
+    teamList: null,
+    page: 1,
+    pagesize: 10,
+
 
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.getMyinfo()
+    this.getMyteamList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
 
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
+  //获取我的业绩
+  getMyinfo() {
+    _mySale({
+      token: wx.getStorageSync('token')
+    }).then(res => {
+      if (res.code == 1) {
+        this.setData({
+          myInfo: res.data.data
+        })
+      }
+    })
+  },
+  //获取团队列表
+  getMyteamList() {
+    _myTeam({
+      token: wx.getStorageSync('token'),
+      second_id: "",
+      level: "",
+      page: this.data.page,
+      pagesize: this.data.pagesize,
+    }).then(res => {
+      if (res.code == 1) {
+        this.setData({
+          teamList: [...this.data.teamList, ...res.data.list]
+        })
+      }
+    })
 
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
 
-  },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
 
-  },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
+
+
+
+
+
   onReachBottom: function () {
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  }
 })

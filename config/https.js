@@ -156,3 +156,19 @@ export const _applyAfterSaleList = (parma) => api.post('/order/getAfterSaleLists
 
 //售后页面信息
 export const _applyAfterSaleInfo = (parma) => api.post('/order/getApplyAfterSaleInfo', parma);
+
+
+
+//----------------------------------团队页面----------------------------------------
+
+//我的团队
+export const _myTeam = (parma) => api.post('/distribution/team', parma);
+
+//我的业绩
+export const _mySale = (parma) => api.post('/distribution/my_sales', parma);
+
+//业绩统计
+export const _salesStatistics = (parma) => api.post('/distribution/sales_statistics', parma);
+
+//业绩排行
+export const _salesRank = (parma) => api.post('/distribution/sales_rank', parma);

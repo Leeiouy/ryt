@@ -34,7 +34,8 @@ App({
   getLoginStatus() {
     if (wx.getStorageSync('token')) {
       wx.checkSession({
-        success() {},
+        success(e) {
+        },
         fail() {
           wx.clearStorageSync();
           wx.showModal({
