@@ -123,6 +123,11 @@
           "pathName": "pages/order_i/order_i",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "新团队页面",
+          "pathName": "pages/myteam_i/myteam_i",
+          "scene": null
         }
       ]
     }
