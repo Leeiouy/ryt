@@ -18,11 +18,11 @@ Page({
 
   },
   onLoad: function (options) {
-    this.getMyinfo()
-    this.getMyteamList()
+  
   },
   onShow: function () {
-
+    this.getMyinfo()
+    this.getMyteamList()
   },
 
   //获取我的业绩
@@ -54,7 +54,17 @@ Page({
     })
 
   },
+  toYj(e) {
+    let type = e.currentTarget.dataset.t;
+    console.log(type);
+    wx.navigateTo({
+      url: `/pages/myachieverank/index?type=${type}`,
+      fail(e){
+        console.log(e);
+      }
+    });
 
+  },
 
 
 

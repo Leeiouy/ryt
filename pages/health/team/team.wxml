@@ -1,5 +1,5 @@
 <!--pages/myteam/index.wxml-->
-<view wx:if="{{hasLogin}}">
+<!-- <view wx:if="{{hasLogin}}"> -->
 <view class="tabs">
   <view class='tab {{currentIndex==0?"active":""}}' bindtap='tab' data-index="0" data-type="1">
     <text>分销商（{{count}}）</text>
@@ -49,4 +49,4 @@
     <view class='none-tip'>暂无团队信息~</view>
   </view>
 </view>
-</view>
+<!-- </view> -->

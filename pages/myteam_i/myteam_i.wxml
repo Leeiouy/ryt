@@ -19,11 +19,15 @@
         </view>
         <view class="more ali-c jus-a">
             <view class="flex1 ali-c jus-c">
-                <button class="cu-btn round bg-red button-hover">业绩排行</button>
+                <button class="cu-btn round bg-red button-hover" bind:tap="toYj" data-t='1'>
+                    业绩排行
+                </button>
             </view>
             <view style="border-left:1rpx solid;height:34rpx;"></view>
             <view class="flex1 ali-c jus-c">
-                <button class="cu-btn round bg-red button-hover">业绩统计</button>
+                <button class="cu-btn round bg-red button-hover" bind:tap="toYj" data-t='2'>
+                    业绩统计
+                </button>
             </view>
         </view>
     </view>
@@ -56,6 +60,6 @@
                 </view>
             </view>
         </block>
-        <van-empty wx:if="{{!teamList}}" description="描述文字" />
     </view>
+    <van-empty wx:if="{{!teamList}}" image='error' description="暂无团队成员" />
 </view>

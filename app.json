@@ -94,17 +94,10 @@
         "text": "首页",
         "iconPath": "/images/home_n.png",
         "selectedIconPath": "/images/home_a.png"
-      },
-      {
-        "pagePath": "pages/myAchieve/index",
-        "text": "团队",
-        "iconPath": "/images/item_n.png",
-        "selectedIconPath": "/images/item_a.png"
-      },
-   
+      }, 
      {
-      "pagePath": "pages/health/team/team",
-      "text": "团队1",
+      "pagePath": "pages/myteam_i/myteam_i",
+      "text": "团队",
       "iconPath": "/images/item_n.png",
       "selectedIconPath": "/images/item_a.png"
     },
